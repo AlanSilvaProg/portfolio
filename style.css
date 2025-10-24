@@ -1,304 +1,280 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+:root {
+  color-scheme: light dark;
 
-\f0\fs24 \cf0 /* ===============================\
-   
-\f1 \uc0\u55356 \u57113 
-\f0  Tema autom\'e1tico claro/escuro\
-================================= */\
-:root \{\
-  color-scheme: light dark;\
-\
-  --bg-light: #f8f9fa;\
-  --fg-light: #212529;\
-  --accent-light: #0078ff;\
-  --card-light: #ffffff;\
-\
-  --bg-dark: #0d1117;\
-  --fg-dark: #c9d1d9;\
-  --accent-dark: #58a6ff;\
-  --card-dark: #161b22;\
-\}\
-\
-@media (prefers-color-scheme: dark) \{\
-  :root \{\
-    --bg: var(--bg-dark);\
-    --fg: var(--fg-dark);\
-    --accent: var(--accent-dark);\
-    --card: var(--card-dark);\
-  \}\
-\}\
-\
-@media (prefers-color-scheme: light) \{\
-  :root \{\
-    --bg: var(--bg-light);\
-    --fg: var(--fg-light);\
-    --accent: var(--accent-light);\
-    --card: var(--card-light);\
-  \}\
-\}\
-\
-/* ===============================\
-   
-\f1 \uc0\u10024 
-\f0  Layout e estilos gerais\
-================================= */\
-* \{\
-  margin: 0;\
-  padding: 0;\
-  box-sizing: border-box;\
-\}\
-\
-body \{\
-  font-family: 'Segoe UI', Roboto, sans-serif;\
-  background: var(--bg);\
-  color: var(--fg);\
-  line-height: 1.6;\
-  scroll-behavior: smooth;\
-  transition: background 0.3s, color 0.3s;\
-\}\
-\
-header \{\
-  display: flex;\
-  justify-content: space-between;\
-  align-items: center;\
-  padding: 1.2rem 3rem;\
-  position: sticky;\
-  top: 0;\
-  background: var(--card);\
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\
-  z-index: 10;\
-\}\
-\
-header h1 \{\
-  color: var(--accent);\
-  font-size: 1.5rem;\
-\}\
-\
-nav a \{\
-  margin-left: 1.5rem;\
-  text-decoration: none;\
-  color: var(--fg);\
-  font-weight: 500;\
-  transition: color 0.2s;\
-\}\
-\
-nav a:hover \{\
-  color: var(--accent);\
-\}\
-\
-main \{\
-  max-width: 1000px;\
-  margin: 0 auto;\
-  padding: 3rem 2rem;\
-\}\
-\
-/* ===============================\
-   
-\f1 \uc0\u55358 \u56809 
-\f0  Se\'e7\'f5es\
-================================= */\
-.section \{\
-  margin: 4rem 0;\
-  text-align: center;\
-\}\
-\
-.section h2 \{\
-  color: var(--accent);\
-  margin-bottom: 1rem;\
-  font-size: 1.8rem;\
-\}\
-\
-/* ===============================\
-   
-\f1 \uc0\u55357 \u56395 
-\f0  Hero (intro)\
-================================= */\
-#hero \{\
-  text-align: center;\
-  padding: 5rem 2rem;\
-\}\
-\
-#hero h2 \{\
-  font-size: 2rem;\
-  color: var(--fg);\
-\}\
-\
-#hero h2 span \{\
-  color: var(--accent);\
-\}\
-\
-#hero p \{\
-  max-width: 700px;\
-  margin: 1rem auto 2rem;\
-  font-size: 1.1rem;\
-\}\
-\
-.btn \{\
-  display: inline-block;\
-  background: var(--accent);\
-  color: #fff;\
-  padding: 0.8rem 1.5rem;\
-  border-radius: 8px;\
-  text-decoration: none;\
-  transition: background 0.3s, transform 0.2s;\
-\}\
-\
-.btn:hover \{\
-  background: color-mix(in srgb, var(--accent) 80%, black 10%);\
-  transform: translateY(-3px);\
-\}\
-\
-/* ===============================\
-   
-\f1 \uc0\u55357 \u56507 
-\f0  Projetos\
-================================= */\
-.grid \{\
-  display: grid;\
-  gap: 1.5rem;\
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\
-  margin-top: 2rem;\
-\}\
-\
-.card \{\
-  background: var(--card);\
-  padding: 1.5rem;\
-  border-radius: 12px;\
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\
-  transition: transform 0.2s, box-shadow 0.2s;\
-\}\
-\
-.card:hover \{\
-  transform: translateY(-4px);\
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);\
-\}\
-\
-.card h3 \{\
-  color: var(--accent);\
-  margin-bottom: 0.5rem;\
-\}\
-\
-.card a \{\
-  color: var(--accent);\
-  text-decoration: none;\
-  font-weight: 500;\
-\}\
-\
-/* ===============================\
-   
-\f1 \uc0\u55357 \u56555 
-\f0  Contato\
-================================= */\
-.links \{\
-  list-style: none;\
-  padding: 0;\
-  margin-top: 1rem;\
-\}\
-\
-.links li \{\
-  margin: 0.5rem 0;\
-\}\
-\
-.links a \{\
-  color: var(--accent);\
-  text-decoration: none;\
-\}\
-\
-.links a:hover \{\
-  text-decoration: underline;\
-\}\
-\
-/* ===============================\
-   
-\f1 \uc0\u9889 
-\f0  Anima\'e7\'f5es\
-================================= */\
-.fade-in \{\
-  opacity: 0;\
-  transform: translateY(20px);\
-  animation: fadeInUp 0.6s ease forwards;\
-\}\
-\
-.fade-in:nth-child(1) \{ animation-delay: 0.1s; \}\
-.fade-in:nth-child(2) \{ animation-delay: 0.2s; \}\
-.fade-in:nth-child(3) \{ animation-delay: 0.3s; \}\
-.fade-in:nth-child(4) \{ animation-delay: 0.4s; \}\
-\
-@keyframes fadeInUp \{\
-  to \{\
-    opacity: 1;\
-    transform: translateY(0);\
-  \}\
-\}\
-\
-/* ===============================\
-   
-\f1 \uc0\u55358 \u56758 
-\f0  Rodap\'e9\
-================================= */\
-footer \{\
-  text-align: center;\
-  padding: 1.5rem;\
-  font-size: 0.9rem;\
-  background: var(--card);\
-  color: #888;\
-  border-top: 1px solid rgba(255, 255, 255, 0.1);\
-\}\
-/* ===============================\
-   \uc0\u55357 \u56508  Skills (Habilidades)\
-================================= */\
-.skills-grid \{\
-  display: grid;\
-  gap: 1.5rem;\
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\
-  margin-top: 2rem;\
-\}\
-\
-.skill \{\
-  background: var(--card);\
-  padding: 1rem 1.5rem;\
-  border-radius: 12px;\
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\
-  transition: transform 0.2s, box-shadow 0.2s;\
-\}\
-\
-.skill:hover \{\
-  transform: translateY(-4px);\
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);\
-\}\
-\
-.skill-info \{\
-  display: flex;\
-  align-items: center;\
-  gap: 0.8rem;\
-  margin-bottom: 0.8rem;\
-\}\
-\
-.skill-info img \{\
-  width: 28px;\
-  height: 28px;\
-\}\
-\
-.skill-info span \{\
-  font-weight: 600;\
-  color: var(--fg);\
-\}\
-\
-.bar \{\
-  height: 10px;\
-  background: rgba(150, 150, 150, 0.2);\
-  border-radius: 8px;\
-  overflow: hidden;\
-\}\
-\
-.bar div \{\
-  height: 100%;\
-  background: var(--accent);\
-  border-radius: 8px;\
-  transition: width 1s ease-in-out;\
-\}}
+  --bg-light: #f8f9fa;
+  --fg-light: #212529;
+  --accent-light: #0078ff;
+  --card-light: #ffffff;
+
+  --bg-dark: #0d1117;
+  --fg-dark: #c9d1d9;
+  --accent-dark: #58a6ff;
+  --card-dark: #161b22;
+
+  /* Define o tema claro como padrão (fallback) */
+  --bg: var(--bg-light);
+  --fg: var(--fg-light);
+  --accent: var(--accent-light);
+  --card: var(--card-light);
+}
+
+/* Sobrescreve para o tema escuro se for a preferência do usuário */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--bg-dark);
+    --fg: var(--fg-dark);
+    --accent: var(--accent-dark);
+    --card: var(--card-dark);
+  }
+}
+
+/* ===============================
+   Layout e estilos gerais
+================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  transition: background 0.3s, color 0.3s;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+header h1 {
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: var(--fg);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* ===============================
+   Seções
+================================= */
+.section {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.section h2 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+/* ===============================
+   Hero (intro)
+================================= */
+#hero {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+#hero h2 {
+  font-size: 2rem;
+  color: var(--fg);
+}
+
+#hero h2 span {
+  color: var(--accent);
+}
+
+#hero p {
+  max-width: 700px;
+  margin: 1rem auto 2rem;
+  font-size: 1.1rem;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  /* OBS: color-mix é uma feature nova. 
+     Se não tiver suporte, use uma cor fixa 
+     ou uma função de cor de pré-processador. */
+  background: color-mix(in srgb, var(--accent) 80%, black 10%);
+  transform: translateY(-3px);
+}
+
+/* ===============================
+   Projetos
+================================= */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.card h3 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ===============================
+   Contato
+================================= */
+.links {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.links li {
+  margin: 0.5rem 0;
+}
+
+.links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   Animações
+================================= */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+.fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   Rodapé
+================================= */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  background: var(--card);
+  color: #888;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===============================
+   Skills (Habilidades)
+================================= */
+.skills-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 2rem;
+}
+
+.skill {
+  background: var(--card);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skill:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.skill-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.skill-info img {
+  width: 28px;
+  height: 28px;
+}
+
+.skill-info span {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.bar {
+  height: 10px;
+  background: rgba(150, 150, 150, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bar div {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 8px;
+  transition: width 1s ease-in-out;
+}
