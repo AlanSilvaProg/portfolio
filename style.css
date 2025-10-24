@@ -1,12 +1,14 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs24 \cf0 /* ===============================\
-   \uc0\u55356 \u57113  Tema autom\'e1tico claro/escuro\
+   
+\f1 \uc0\u55356 \u57113 
+\f0  Tema autom\'e1tico claro/escuro\
 ================================= */\
 :root \{\
   color-scheme: light dark;\
@@ -41,7 +43,9 @@
 \}\
 \
 /* ===============================\
-   \uc0\u10024  Layout e estilos gerais\
+   
+\f1 \uc0\u10024 
+\f0  Layout e estilos gerais\
 ================================= */\
 * \{\
   margin: 0;\
@@ -94,7 +98,9 @@ main \{\
 \}\
 \
 /* ===============================\
-   \uc0\u55358 \u56809  Se\'e7\'f5es\
+   
+\f1 \uc0\u55358 \u56809 
+\f0  Se\'e7\'f5es\
 ================================= */\
 .section \{\
   margin: 4rem 0;\
@@ -108,7 +114,9 @@ main \{\
 \}\
 \
 /* ===============================\
-   \uc0\u55357 \u56395  Hero (intro)\
+   
+\f1 \uc0\u55357 \u56395 
+\f0  Hero (intro)\
 ================================= */\
 #hero \{\
   text-align: center;\
@@ -146,7 +154,9 @@ main \{\
 \}\
 \
 /* ===============================\
-   \uc0\u55357 \u56507  Projetos\
+   
+\f1 \uc0\u55357 \u56507 
+\f0  Projetos\
 ================================= */\
 .grid \{\
   display: grid;\
@@ -180,7 +190,9 @@ main \{\
 \}\
 \
 /* ===============================\
-   \uc0\u55357 \u56555  Contato\
+   
+\f1 \uc0\u55357 \u56555 
+\f0  Contato\
 ================================= */\
 .links \{\
   list-style: none;\
@@ -202,7 +214,9 @@ main \{\
 \}\
 \
 /* ===============================\
-   \uc0\u9889  Anima\'e7\'f5es\
+   
+\f1 \uc0\u9889 
+\f0  Anima\'e7\'f5es\
 ================================= */\
 .fade-in \{\
   opacity: 0;\
@@ -223,7 +237,9 @@ main \{\
 \}\
 \
 /* ===============================\
-   \uc0\u55358 \u56758  Rodap\'e9\
+   
+\f1 \uc0\u55358 \u56758 
+\f0  Rodap\'e9\
 ================================= */\
 footer \{\
   text-align: center;\
@@ -232,4 +248,57 @@ footer \{\
   background: var(--card);\
   color: #888;\
   border-top: 1px solid rgba(255, 255, 255, 0.1);\
+\}\
+/* ===============================\
+   \uc0\u55357 \u56508  Skills (Habilidades)\
+================================= */\
+.skills-grid \{\
+  display: grid;\
+  gap: 1.5rem;\
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\
+  margin-top: 2rem;\
+\}\
+\
+.skill \{\
+  background: var(--card);\
+  padding: 1rem 1.5rem;\
+  border-radius: 12px;\
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\
+  transition: transform 0.2s, box-shadow 0.2s;\
+\}\
+\
+.skill:hover \{\
+  transform: translateY(-4px);\
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);\
+\}\
+\
+.skill-info \{\
+  display: flex;\
+  align-items: center;\
+  gap: 0.8rem;\
+  margin-bottom: 0.8rem;\
+\}\
+\
+.skill-info img \{\
+  width: 28px;\
+  height: 28px;\
+\}\
+\
+.skill-info span \{\
+  font-weight: 600;\
+  color: var(--fg);\
+\}\
+\
+.bar \{\
+  height: 10px;\
+  background: rgba(150, 150, 150, 0.2);\
+  border-radius: 8px;\
+  overflow: hidden;\
+\}\
+\
+.bar div \{\
+  height: 100%;\
+  background: var(--accent);\
+  border-radius: 8px;\
+  transition: width 1s ease-in-out;\
 \}}
