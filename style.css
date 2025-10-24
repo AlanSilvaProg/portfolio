@@ -5,13 +5,44 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 :root \{\
-  --bg: #0d1117;\
-  --fg: #c9d1d9;\
-  --accent: #58a6ff;\
-  --card-bg: #161b22;\
+\f0\fs24 \cf0 /* ===============================\
+   \uc0\u55356 \u57113  Tema autom\'e1tico claro/escuro\
+================================= */\
+:root \{\
+  color-scheme: light dark;\
+\
+  --bg-light: #f8f9fa;\
+  --fg-light: #212529;\
+  --accent-light: #0078ff;\
+  --card-light: #ffffff;\
+\
+  --bg-dark: #0d1117;\
+  --fg-dark: #c9d1d9;\
+  --accent-dark: #58a6ff;\
+  --card-dark: #161b22;\
 \}\
 \
+@media (prefers-color-scheme: dark) \{\
+  :root \{\
+    --bg: var(--bg-dark);\
+    --fg: var(--fg-dark);\
+    --accent: var(--accent-dark);\
+    --card: var(--card-dark);\
+  \}\
+\}\
+\
+@media (prefers-color-scheme: light) \{\
+  :root \{\
+    --bg: var(--bg-light);\
+    --fg: var(--fg-light);\
+    --accent: var(--accent-light);\
+    --card: var(--card-light);\
+  \}\
+\}\
+\
+/* ===============================\
+   \uc0\u10024  Layout e estilos gerais\
+================================= */\
 * \{\
   margin: 0;\
   padding: 0;\
@@ -19,32 +50,36 @@
 \}\
 \
 body \{\
-  font-family: 'Segoe UI', sans-serif;\
+  font-family: 'Segoe UI', Roboto, sans-serif;\
   background: var(--bg);\
   color: var(--fg);\
   line-height: 1.6;\
+  scroll-behavior: smooth;\
+  transition: background 0.3s, color 0.3s;\
 \}\
 \
 header \{\
   display: flex;\
   justify-content: space-between;\
   align-items: center;\
-  padding: 1.5rem 3rem;\
-  background: var(--card-bg);\
+  padding: 1.2rem 3rem;\
   position: sticky;\
   top: 0;\
+  background: var(--card);\
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\
   z-index: 10;\
 \}\
 \
 header h1 \{\
   color: var(--accent);\
-  font-size: 1.8rem;\
+  font-size: 1.5rem;\
 \}\
 \
 nav a \{\
-  margin-left: 1rem;\
+  margin-left: 1.5rem;\
   text-decoration: none;\
   color: var(--fg);\
+  font-weight: 500;\
   transition: color 0.2s;\
 \}\
 \
@@ -52,11 +87,18 @@ nav a:hover \{\
   color: var(--accent);\
 \}\
 \
-.section \{\
-  padding: 4rem 3rem;\
-  text-align: center;\
-  max-width: 900px;\
+main \{\
+  max-width: 1000px;\
   margin: 0 auto;\
+  padding: 3rem 2rem;\
+\}\
+\
+/* ===============================\
+   \uc0\u55358 \u56809  Se\'e7\'f5es\
+================================= */\
+.section \{\
+  margin: 4rem 0;\
+  text-align: center;\
 \}\
 \
 .section h2 \{\
@@ -65,43 +107,129 @@ nav a:hover \{\
   font-size: 1.8rem;\
 \}\
 \
-.projetos-grid \{\
-  display: grid;\
-  gap: 1.5rem;\
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\
-  margin-top: 2rem;\
+/* ===============================\
+   \uc0\u55357 \u56395  Hero (intro)\
+================================= */\
+#hero \{\
+  text-align: center;\
+  padding: 5rem 2rem;\
 \}\
 \
-.projeto \{\
-  background: var(--card-bg);\
-  padding: 1.5rem;\
-  border-radius: 10px;\
-  transition: transform 0.2s, box-shadow 0.2s;\
+#hero h2 \{\
+  font-size: 2rem;\
+  color: var(--fg);\
 \}\
 \
-.projeto:hover \{\
-  transform: translateY(-4px);\
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);\
-\}\
-\
-.projeto h3 \{\
-  margin-bottom: 0.5rem;\
+#hero h2 span \{\
   color: var(--accent);\
 \}\
 \
-.projeto a \{\
+#hero p \{\
+  max-width: 700px;\
+  margin: 1rem auto 2rem;\
+  font-size: 1.1rem;\
+\}\
+\
+.btn \{\
   display: inline-block;\
-  margin-top: 0.5rem;\
+  background: var(--accent);\
+  color: #fff;\
+  padding: 0.8rem 1.5rem;\
+  border-radius: 8px;\
+  text-decoration: none;\
+  transition: background 0.3s, transform 0.2s;\
+\}\
+\
+.btn:hover \{\
+  background: color-mix(in srgb, var(--accent) 80%, black 10%);\
+  transform: translateY(-3px);\
+\}\
+\
+/* ===============================\
+   \uc0\u55357 \u56507  Projetos\
+================================= */\
+.grid \{\
+  display: grid;\
+  gap: 1.5rem;\
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\
+  margin-top: 2rem;\
+\}\
+\
+.card \{\
+  background: var(--card);\
+  padding: 1.5rem;\
+  border-radius: 12px;\
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);\
+  transition: transform 0.2s, box-shadow 0.2s;\
+\}\
+\
+.card:hover \{\
+  transform: translateY(-4px);\
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);\
+\}\
+\
+.card h3 \{\
+  color: var(--accent);\
+  margin-bottom: 0.5rem;\
+\}\
+\
+.card a \{\
+  color: var(--accent);\
+  text-decoration: none;\
+  font-weight: 500;\
+\}\
+\
+/* ===============================\
+   \uc0\u55357 \u56555  Contato\
+================================= */\
+.links \{\
+  list-style: none;\
+  padding: 0;\
+  margin-top: 1rem;\
+\}\
+\
+.links li \{\
+  margin: 0.5rem 0;\
+\}\
+\
+.links a \{\
   color: var(--accent);\
   text-decoration: none;\
 \}\
 \
-footer \{\
-  background: var(--card-bg);\
-  text-align: center;\
-  padding: 1rem;\
-  font-size: 0.9rem;\
-  color: #8b949e;\
-  margin-top: 2rem;\
+.links a:hover \{\
+  text-decoration: underline;\
 \}\
-}
+\
+/* ===============================\
+   \uc0\u9889  Anima\'e7\'f5es\
+================================= */\
+.fade-in \{\
+  opacity: 0;\
+  transform: translateY(20px);\
+  animation: fadeInUp 0.6s ease forwards;\
+\}\
+\
+.fade-in:nth-child(1) \{ animation-delay: 0.1s; \}\
+.fade-in:nth-child(2) \{ animation-delay: 0.2s; \}\
+.fade-in:nth-child(3) \{ animation-delay: 0.3s; \}\
+.fade-in:nth-child(4) \{ animation-delay: 0.4s; \}\
+\
+@keyframes fadeInUp \{\
+  to \{\
+    opacity: 1;\
+    transform: translateY(0);\
+  \}\
+\}\
+\
+/* ===============================\
+   \uc0\u55358 \u56758  Rodap\'e9\
+================================= */\
+footer \{\
+  text-align: center;\
+  padding: 1.5rem;\
+  font-size: 0.9rem;\
+  background: var(--card);\
+  color: #888;\
+  border-top: 1px solid rgba(255, 255, 255, 0.1);\
+\}}
