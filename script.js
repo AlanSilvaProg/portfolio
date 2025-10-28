@@ -40,10 +40,10 @@ themeToggle.addEventListener("click", () => {
 
 // Projetos
 const projects = [
-  { title: "Meu Jogo", img: "assets/projects/meu-jogo.jpg", link: "projects/meu-jogo.html" },
-  { title: "WebSocket Server", img: "assets/projects/websocket-server.jpg", link: "projects/websocket-server.html" },
-  { title: "Unity Plugin", img: "assets/projects/unity-plugin.jpg", link: "projects/unity-plugin.html" },
-  { title: "Projeto Extra", img: "assets/projects/unity-plugin.jpg", link: "#" },
+  { title: "Meu Jogo", img: "assets/projects/meu-jogo.png", link: "projects/meu-jogo.html" },
+  { title: "WebSocket Server", img: "assets/projects/websocket-server.png", link: "projects/websocket-server.html" },
+  { title: "Unity Plugin", img: "assets/projects/unity-plugin.png", link: "projects/unity-plugin.html" },
+  { title: "Projeto Extra", img: "assets/projects/unity-plugin.png", link: "#" },
 ];
 
 const grid = document.getElementById("projects-grid");
