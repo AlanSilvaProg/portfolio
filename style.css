@@ -1,153 +1,151 @@
-/* ---------- BASE ---------- */
-:root {
-  --bg-dark: #0d1117;
-  --bg-light: #ffffff;
-  --text-dark: #ffffff;
-  --text-light: #000000;
-  --accent: #58a6ff;
+/* ===== Global Style ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
+  background-color: #0e0e0e;
+  color: #eaeaea;
   font-family: 'Inter', sans-serif;
-  transition: background 0.3s, color 0.3s;
   overflow-x: hidden;
 }
 
-body[data-theme="dark"] {
-  background: var(--bg-dark);
-  color: var(--text-dark);
-}
-
-body[data-theme="light"] {
-  background: var(--bg-light);
-  color: var(--text-light);
-}
-
-/* ---------- HEADER ---------- */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 10%;
+/* ===== Layout ===== */
+header, footer {
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px 20px;
 }
 
 header h1 {
-  font-size: 2rem;
-  margin: 0;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
 }
 
-.header-controls button {
-  margin-left: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: var(--accent);
+header p {
+  font-size: 1.1em;
+  opacity: 0.7;
 }
 
-/* ---------- SECTIONS ---------- */
 main {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-.section {
-  text-align: center;
-  margin-bottom: 80px;
-}
-
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--accent);
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
-/* ---------- PROJECTS ---------- */
+/* ===== Projects Grid ===== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  align-items: start;
 }
 
-.project-card {
+.project {
   position: relative;
-  width: 100%;
-  max-width: 320px;
+  border-radius: 16px;
   overflow: hidden;
-  border-radius: 10px;
+  background-color: #181818;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-card:hover {
+.project:hover {
   transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-.project-card img {
+.project img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  display: block;
+  transition: opacity 0.3s ease;
 }
 
-.project-card:hover img {
-  transform: scale(1.1);
-}
-
-.project-title {
+.project .overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  width: 100%;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 10px;
-  font-weight: 600;
-  transition: opacity 0.3s;
-}
-
-.project-card:hover .project-title {
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-#show-more {
-  margin-top: 30px;
-  padding: 10px 30px;
-  border: none;
-  background: var(--accent);
-  color: white;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
+.project:hover .overlay {
+  opacity: 1;
 }
 
-#show-more:hover {
-  background: #7ab8ff;
-}
-
-/* ---------- FOOTER ---------- */
-footer {
+.overlay h3 {
+  font-size: 1.5em;
   text-align: center;
-  padding: 40px 10%;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ---------- FADE-IN ---------- */
+/* ===== Buttons ===== */
+.show-more {
+  display: block;
+  margin: 50px auto;
+  background: #242424;
+  color: #eaeaea;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.show-more:hover {
+  background: #333333;
+}
+
+/* ===== Project Page ===== */
+.project-page {
+  text-align: center;
+}
+
+.project-page h1 {
+  margin-bottom: 20px;
+  font-size: 2.5em;
+}
+
+.project-page p {
+  font-size: 1.1em;
+  opacity: 0.8;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.project-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.project-gallery img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+/* ===== Fade In Animation ===== */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.visible {
@@ -155,27 +153,9 @@ footer {
   transform: translateY(0);
 }
 
-/* ---------- PROJECT PAGE ---------- */
-.project-page {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.project-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.project-gallery img {
-  width: 300px;
-  height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.project-gallery img:hover {
-  transform: scale(1.05);
+/* ===== Footer ===== */
+footer {
+  opacity: 0.6;
+  font-size: 0.9em;
+  margin-top: 80px;
 }
