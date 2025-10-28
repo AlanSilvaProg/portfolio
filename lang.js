@@ -130,10 +130,17 @@
     initShowMoreButtons();
     updateProjectsVisibility();
     // watch for dynamically added lang-toggle buttons (e.g., via AJAX)
-    const bodyObserver = new MutationObserver(() => {
-      attachLangToggleHandlers();
-    });
-    bodyObserver.observe(document.body, { childList: true, subtree: true });
+    let observerLocked = false;
+   
+   const bodyObserver = new MutationObserver(() => {
+     if (observerLocked) return;
+     observerLocked = true;
+     requestAnimationFrame(() => {
+       attachLangToggleHandlers();
+       observerLocked = false;
+     });
+   });
+   bodyObserver.observe(document.body, { childList: true, subtree: true });
   }
 
   if (document.readyState === 'loading') {
