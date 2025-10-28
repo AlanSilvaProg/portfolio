@@ -3,110 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio de Alan Silva</title>
+  <title>Portfólio - Alan Silva</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header class="fade-in">
-    <h1>Alan Silva</h1>
-    <nav>
-      <a href="#sobre">Sobre</a>
-      <a href="#skills">Skills</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
-    </nav>
+<body data-theme="dark">
+  <header>
+    <h1 id="title" data-i18n="title">Portfólio</h1>
+    <div class="header-controls">
+      <button id="lang-toggle">🇧🇷</button>
+      <button id="theme-toggle">🌓</button>
+    </div>
   </header>
 
   <main>
-    <section id="hero" class="fade-in">
-      <h2>👋 Olá! Eu sou <span>Alan Silva</span></h2>
-      <p>Desenvolvedor de jogos e sistemas interativos com foco em C++, Unity e arquitetura de motores próprios.</p>
-      <a href="#projetos" class="btn">Ver meus projetos</a>
-    </section>
-
-    <section id="sobre" class="fade-in section">
-      <h2>Sobre mim</h2>
-      <p>
-        Sou apaixonado por desenvolvimento de jogos e tecnologia. Trabalho com C#, C++ e .NET, e adoro criar sistemas complexos como
-        arquiteturas ECS, motores gráficos e ferramentas de edição inspiradas no Unity e Unreal.
+    <section id="about">
+      <h2 data-i18n="about_title">Sobre mim</h2>
+      <p data-i18n="about_text">
+        Sou um desenvolvedor apaixonado por tecnologia e criação de sistemas interativos.
       </p>
     </section>
 
-    <section id="skills" class="fade-in section">
-      <h2>Minhas Skills</h2>
-      <div class="skills-grid">
-        <div class="skill"><div class="skill-info"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"/><span>C++</span></div><div class="bar"><div style="width:90%"></div></div></div>
-        <div class="skill"><div class="skill-info"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"/><span>C#</span></div><div class="bar"><div style="width:85%"></div></div></div>
-        <div class="skill"><div class="skill-info"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"/><span>Unity</span></div><div class="bar"><div style="width:90%"></div></div></div>
-        <div class="skill"><div class="skill-info"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"/><span>.NET</span></div><div class="bar"><div style="width:80%"></div></div></div>
-        <div class="skill"><div class="skill-info"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/><span>JavaScript</span></div><div class="bar"><div style="width:65%"></div></div></div>
-      </div>
-    </section>
+    <section id="projects">
+      <h2 data-i18n="projects_title">Projetos</h2>
 
-    <!-- 💼 NOVA SEÇÃO DE PROJETOS -->
-    <section id="projetos" class="fade-in section">
-      <h2>Projetos</h2>
-      <div class="project-grid" id="projectGrid">
-        <!-- Cada projeto -->
-        <a class="project-card" href="projects/meu-jogo.html">
-          <img src="assets/projects/meu-jogo.jpg" alt="Meu Jogo" />
-          <div class="project-overlay">
-            <h3>Game Engine Custom</h3>
-          </div>
-        </a>
-        <a class="project-card" href="projects/websocket-server.html">
-          <img src="assets/projects/websocket-server.jpg" alt="Servidor WebSocket" />
-          <div class="project-overlay">
-            <h3>WebSocket Game Server</h3>
-          </div>
-        </a>
-        <a class="project-card" href="projects/unity-plugin.html">
-          <img src="assets/projects/unity-plugin.jpg" alt="Unity Plugin" />
-          <div class="project-overlay">
-            <h3>Unity Plugin Async</h3>
-          </div>
-        </a>
-
-        <!-- Copie e cole mais blocos <a class="project-card"> ... </a> para adicionar novos projetos -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Projetos adicionados dinamicamente -->
       </div>
 
-      <button id="showMoreBtn" class="btn">Mostrar mais</button>
-    </section>
-
-    <section id="contato" class="fade-in section">
-      <h2>Contato</h2>
-      <p>Vamos conversar! Você pode me encontrar em:</p>
-      <ul class="links">
-        <li><a href="mailto:alanfs1010@gmail.com@email.com">📧 Email</a></li>
-        <li><a href="https://github.com/AlanSilvaProg" target="_blank">💻 GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/alansilvaprogrammer/" target="_blank">💼 LinkedIn</a></li>
-      </ul>
+      <button id="show-more" data-i18n="show_more">Mostrar mais</button>
     </section>
   </main>
 
-  <footer class="fade-in">
-    <p>© 2025 Alan</p>
+  <footer>
+    <p>© 2025 Alan Silva</p>
   </footer>
 
-  <script>
-    const grid = document.getElementById('projectGrid');
-    const btn = document.getElementById('showMoreBtn');
-    const maxVisible = 3;
-
-    function updateProjects() {
-      const cards = grid.querySelectorAll('.project-card');
-      cards.forEach((card, i) => {
-        card.style.display = i < maxVisible ? 'block' : 'none';
-      });
-    }
-
-    updateProjects();
-
-    btn.addEventListener('click', () => {
-      grid.querySelectorAll('.project-card').forEach(c => c.style.display = 'block');
-      grid.style.maxHeight = 'none';
-      btn.style.display = 'none';
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
