@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio - Alan Silva</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+      const showMoreBtn = document.querySelector('.show-more');
+      const hiddenProjects = document.querySelectorAll('.project.hidden');
+      showMoreBtn.addEventListener('click', () => {
+        hiddenProjects.forEach(p => p.classList.remove('hidden'));
+        showMoreBtn.style.display = 'none';
+      });
+    });
+  </script>
 </head>
-<body data-theme="dark">
+<body>
   <header class="fade-in">
-    <h1 id="title" data-i18n="title">Portfólio</h1>
-    <div class="header-controls">
-      <button id="lang-toggle">🇧🇷</button>
-      <button id="theme-toggle">🌓</button>
-    </div>
+    <h1>Alan Silva</h1>
+    <p>Desenvolvedor de Jogos e Engenheiro de Software</p>
   </header>
 
   <main>
-    <section id="about" class="fade-in section">
-      <h2 data-i18n="about_title">Sobre mim</h2>
-      <p data-i18n="about_text">
-        Sou um desenvolvedor apaixonado por tecnologia e criação de sistemas interativos.
-      </p>
+    <section class="projects-grid fade-in">
+      <a class="project" href="projects/meu-jogo.html">
+        <img src="assets/projects/meu-jogo.jpg" alt="Meu Jogo">
+        <div class="overlay"><h3>Meu Jogo</h3></div>
+      </a>
+      <a class="project" href="projects/websocket-server.html">
+        <img src="assets/projects/websocket-server.jpg" alt="Servidor WebSocket">
+        <div class="overlay"><h3>Servidor WebSocket</h3></div>
+      </a>
+      <a class="project" href="projects/unity-plugin.html">
+        <img src="assets/projects/unity-plugin.jpg" alt="Plugin Unity">
+        <div class="overlay"><h3>Plugin Unity</h3></div>
+      </a>
+      <!-- Projetos extras ocultos -->
+      <a class="project hidden" href="#"><img src="assets/projects/placeholder.jpg"><div class="overlay"><h3>Outro Projeto</h3></div></a>
+      <a class="project hidden" href="#"><img src="assets/projects/placeholder.jpg"><div class="overlay"><h3>Mais um Projeto</h3></div></a>
     </section>
 
-    <section id="projects" class="fade-in section">
-      <h2 data-i18n="projects_title">Projetos</h2>
-
-      <div class="projects-grid" id="projects-grid">
-        <!-- Projetos criados via JS -->
-      </div>
-
-      <button id="show-more" data-i18n="show_more">Mostrar mais</button>
-    </section>
+    <button class="show-more">Mostrar Mais</button>
   </main>
 
   <footer class="fade-in">
-    <p>© 2025 Alan Silva — Desenvolvido com ❤️ e café ☕</p>
+    <p>© 2025 Alan Silva — Todos os direitos reservados.</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
