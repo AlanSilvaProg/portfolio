@@ -1,3 +1,4 @@
+// ---------- LANGUAGE ----------
 const langData = {
   "pt-BR": {
     title: "Portfólio",
@@ -5,6 +6,7 @@ const langData = {
     about_text: "Sou um desenvolvedor apaixonado por tecnologia e criação de sistemas interativos.",
     projects_title: "Projetos",
     show_more: "Mostrar mais",
+    show_less: "Mostrar menos",
   },
   "en-US": {
     title: "Portfolio",
@@ -12,6 +14,7 @@ const langData = {
     about_text: "I'm a developer passionate about technology and creating interactive systems.",
     projects_title: "Projects",
     show_more: "Show more",
+    show_less: "Show less",
   }
 };
 
@@ -31,19 +34,19 @@ function updateLanguage() {
   });
 }
 
-// Tema
+// ---------- THEME ----------
 themeToggle.addEventListener("click", () => {
   const body = document.body;
   const theme = body.getAttribute("data-theme");
   body.setAttribute("data-theme", theme === "dark" ? "light" : "dark");
 });
 
-// Projetos
+// ---------- PROJECTS ----------
 const projects = [
-  { title: "Meu Jogo", img: "assets/projects/meu-jogo.png", link: "projects/meu-jogo.html" },
-  { title: "WebSocket Server", img: "assets/projects/websocket-server.png", link: "projects/websocket-server.html" },
-  { title: "Unity Plugin", img: "assets/projects/unity-plugin.png", link: "projects/unity-plugin.html" },
-  { title: "Projeto Extra", img: "assets/projects/unity-plugin.png", link: "#" },
+  { title: "Meu Jogo", img: "assets/projects/meu-jogo.jpg", link: "projects/meu-jogo.html" },
+  { title: "WebSocket Server", img: "assets/projects/websocket-server.jpg", link: "projects/websocket-server.html" },
+  { title: "Unity Plugin", img: "assets/projects/unity-plugin.jpg", link: "projects/unity-plugin.html" },
+  { title: "Projeto Extra", img: "assets/projects/unity-plugin.jpg", link: "#" },
 ];
 
 const grid = document.getElementById("projects-grid");
@@ -56,7 +59,7 @@ function renderProjects() {
   const displayCount = showingAll ? projects.length : INITIAL_COUNT;
   projects.slice(0, displayCount).forEach(p => {
     const card = document.createElement("div");
-    card.className = "project-card";
+    card.className = "project-card fade-in";
     card.innerHTML = `
       <img src="${p.img}" alt="${p.title}" />
       <div class="project-title">${p.title}</div>
@@ -64,15 +67,32 @@ function renderProjects() {
     card.addEventListener("click", () => window.location.href = p.link);
     grid.appendChild(card);
   });
+  observeFadeIn();
 }
 
 showMoreBtn.addEventListener("click", () => {
   showingAll = !showingAll;
   showMoreBtn.textContent = showingAll
-    ? (currentLang === "pt-BR" ? "Mostrar menos" : "Show less")
+    ? langData[currentLang]["show_less"]
     : langData[currentLang]["show_more"];
   renderProjects();
 });
 
-renderProjects();
 updateLanguage();
+renderProjects();
+
+// ---------- FADE-IN OBSERVER ----------
+function observeFadeIn() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+}
+
+observeFadeIn();
