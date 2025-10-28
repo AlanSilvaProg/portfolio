@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-theme="dark">
-  <header>
+  <header class="fade-in">
     <h1 id="title" data-i18n="title">Portfólio</h1>
     <div class="header-controls">
       <button id="lang-toggle">🇧🇷</button>
@@ -16,26 +16,26 @@
   </header>
 
   <main>
-    <section id="about">
+    <section id="about" class="fade-in section">
       <h2 data-i18n="about_title">Sobre mim</h2>
       <p data-i18n="about_text">
         Sou um desenvolvedor apaixonado por tecnologia e criação de sistemas interativos.
       </p>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="fade-in section">
       <h2 data-i18n="projects_title">Projetos</h2>
 
       <div class="projects-grid" id="projects-grid">
-        <!-- Projetos adicionados dinamicamente -->
+        <!-- Projetos criados via JS -->
       </div>
 
       <button id="show-more" data-i18n="show_more">Mostrar mais</button>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Alan Silva</p>
+  <footer class="fade-in">
+    <p>© 2025 Alan Silva — Desenvolvido com ❤️ e café ☕</p>
   </footer>
 
   <script src="script.js"></script>
