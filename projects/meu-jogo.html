@@ -3,20 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Jogo</title>
+  <title>Meu Jogo — Alan Silva</title>
   <link rel="stylesheet" href="../style.css">
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
 </head>
-<body>
-  <main class="project-page">
+<body class="project-page">
+  <header class="fade-in">
     <h1>Meu Jogo</h1>
-    <p>Um jogo criado como projeto de exemplo para o portfólio.</p>
-    <div class="project-gallery">
-      <img src="../assets/projects/meu-jogo.png" alt="Preview 1">
-      <img src="../assets/projects/meu-jogo2.gif" alt="Preview 2">
-    </div>
-    <footer>
-      <p>© 2025 Alan Silva — Esse projeto foi desenvolvido como parte do meu portfólio.</p>
-    </footer>
+    <p>Um jogo desenvolvido com minha própria engine, apresentando IA avançada e simulação física.</p>
+  </header>
+
+  <main>
+    <section class="project-gallery fade-in">
+      <img src="../assets/projects/meu-jogo.jpg" alt="Preview 1">
+      <img src="../assets/projects/meu-jogo_2.jpg" alt="Preview 2">
+      <img src="../assets/projects/meu-jogo_3.gif" alt="Gameplay">
+    </section>
   </main>
+
+  <footer class="fade-in">
+    <p>Este projeto foi um estudo de arquitetura de engine de jogos em C++.</p>
+  </footer>
 </body>
 </html>
