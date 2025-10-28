@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio - Alan Silva</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       });
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
@@ -26,6 +25,8 @@
   </script>
 </head>
 <body>
+  <button class="lang-toggle">PT</button>
+
   <header class="fade-in">
     <h1>Alan Silva</h1>
     <p>Desenvolvedor de Jogos e Engenheiro de Software</p>
@@ -34,20 +35,23 @@
   <main>
     <section class="projects-grid fade-in">
       <a class="project" href="projects/meu-jogo.html">
-        <img src="assets/projects/meu-jogo.png" alt="Meu Jogo">
+        <img src="assets/projects/meu-jogo.jpg" alt="Meu Jogo">
         <div class="overlay"><h3>Meu Jogo</h3></div>
       </a>
       <a class="project" href="projects/websocket-server.html">
-        <img src="assets/projects/websocket-server.png" alt="Servidor WebSocket">
+        <img src="assets/projects/websocket-server.jpg" alt="Servidor WebSocket">
         <div class="overlay"><h3>Servidor WebSocket</h3></div>
       </a>
       <a class="project" href="projects/unity-plugin.html">
-        <img src="assets/projects/unity-plugin.png" alt="Plugin Unity">
+        <img src="assets/projects/unity-plugin.jpg" alt="Plugin Unity">
         <div class="overlay"><h3>Plugin Unity</h3></div>
       </a>
-      <!-- Projetos extras ocultos -->
-      <a class="project hidden" href="#"><img src="assets/projects/placeholder.png"><div class="overlay"><h3>Outro Projeto</h3></div></a>
-      <a class="project hidden" href="#"><img src="assets/projects/placeholder.png"><div class="overlay"><h3>Mais um Projeto</h3></div></a>
+
+      <!-- Ocultos -->
+      <a class="project hidden" href="#">
+        <img src="assets/projects/placeholder.jpg" alt="Outro Projeto">
+        <div class="overlay"><h3>Outro Projeto</h3></div>
+      </a>
     </section>
 
     <button class="show-more">Mostrar Mais</button>
