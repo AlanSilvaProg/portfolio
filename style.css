@@ -13,6 +13,7 @@ header, footer { text-align:center; padding:40px 20px; position:relative; }
 header h1 { font-size:2.2rem; margin-bottom:8px; }
 header p { font-size:1rem; opacity:0.75; }
 
+/* Lang toggle (fix) */
 .lang-toggle {
   position: fixed;
   top: 18px;
@@ -24,11 +25,13 @@ header p { font-size:1rem; opacity:0.75; }
   padding: 8px 10px;
   font-size: 18px;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 99999;           /* IMPORTANTE: manter acima de outros elementos */
+  pointer-events: auto;     /* garante que clique não seja ignorado */
   display: inline-flex;
   align-items: center;
   gap: 8px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  -webkit-tap-highlight-color: transparent;
 }
 .lang-toggle:active { transform: translateY(1px); }
 
