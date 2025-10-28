@@ -1,8 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // --- Language setup ---
+/* lang.js — robust language toggle + fade-in + show-more
+   - Persistência via localStorage (key: site_lang_v1)
+   - Attach handlers safely to .lang-toggle buttons (works across pages)
+*/
+
+(function() {
   const LANG_KEY = 'site_lang_v1';
   let lang = localStorage.getItem(LANG_KEY) || 'pt';
-  const langButtons = Array.from(document.querySelectorAll('.lang-toggle'));
 
   const translations = {
     pt: {
@@ -23,87 +26,125 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  function applyLanguage() {
-    const t = translations[lang];
-    // header
-    document.querySelectorAll('[data-i18n="headerTitle"]').forEach(e => e.textContent = t.headerTitle);
-    document.querySelectorAll('[data-i18n="headerSub"]').forEach(e => e.textContent = t.headerSub);
-    // show-more button
+  // --- helper: apply translations to data-i18n targets ---
+  function applyTranslations(showingAll=false) {
+    const t = translations[lang] || translations.pt;
+    document.querySelectorAll('[data-i18n="headerTitle"]').forEach(e => { e.textContent = t.headerTitle; });
+    document.querySelectorAll('[data-i18n="headerSub"]').forEach(e => { e.textContent = t.headerSub; });
+    document.querySelectorAll('[data-i18n="footer"]').forEach(e => { e.textContent = t.footer; });
+    document.querySelectorAll('[data-i18n="back"]').forEach(e => { e.textContent = t.back; });
+    // show-more buttons
     document.querySelectorAll('.show-more').forEach(b => {
       b.textContent = showingAll ? t.showLess : t.showMore;
     });
-    // footer
-    document.querySelectorAll('[data-i18n="footer"]').forEach(e => e.textContent = t.footer);
-    // back link (on project pages)
-    document.querySelectorAll('[data-i18n="back"]').forEach(e => e.textContent = t.back);
-
-    // update flags on all language buttons
-    langButtons.forEach(btn => btn.textContent = lang === 'pt' ? '🇧🇷' : '🇺🇸');
   }
 
-  // toggle handler (shared by all lang-toggle buttons)
+  // --- language toggle handler (shared) ---
   function toggleLang() {
     lang = (lang === 'pt') ? 'en' : 'pt';
     localStorage.setItem(LANG_KEY, lang);
-    applyLanguage();
+    // update all related UI strings
+    applyTranslations(window.__SHOWING_ALL_PROJECTS === true);
+    // update all flag buttons
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+      btn.textContent = lang === 'pt' ? '🇧🇷' : '🇺🇸';
+      btn.setAttribute('aria-label', (lang === 'pt' ? 'Mudar para inglês' : 'Switch to Portuguese'));
+    });
   }
 
-  // attach click handlers to all existing lang buttons
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', toggleLang);
-    // ensure button is accessible
-    btn.setAttribute('aria-label', 'Mudar idioma / Change language');
-  });
+  // --- ensure event attached to dynamically present or multiple buttons ---
+  function attachLangToggleHandlers() {
+    // find all current lang-toggle elements
+    const els = Array.from(document.querySelectorAll('.lang-toggle'));
+    els.forEach(el => {
+      // remove previous to avoid double-bind (safe)
+      el.removeEventListener('__langToggle__', toggleLang);
+      // add event listener using named function via a wrapper
+      // we add actual listener as regular click and mark a property to prevent duplicates
+      if (!el.__hasLangHandler) {
+        el.addEventListener('click', toggleLang);
+        el.__hasLangHandler = true;
+      }
+      // set current flag icon
+      el.textContent = lang === 'pt' ? '🇧🇷' : '🇺🇸';
+      el.setAttribute('aria-label', (lang === 'pt' ? 'Mudar para inglês' : 'Switch to Portuguese'));
+    });
+  }
 
-  // --- Fade-in observer ---
-  const observer = new IntersectionObserver(entries => {
+  // --- fade-in observer ---
+  const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        fadeObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.08 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  function observeFadeIns() {
+    document.querySelectorAll('.fade-in').forEach(el => {
+      // only observe if not already visible
+      if (!el.classList.contains('visible')) fadeObserver.observe(el);
+    });
+  }
 
-  // --- Projects "Mostrar mais" logic ---
+  // --- show more logic (works without requiring project script) ---
   const INITIAL_VISIBLE = 3;
-  const projects = Array.from(document.querySelectorAll('.project'));
-  const showMoreBtn = document.querySelector('.show-more');
   let showingAll = false;
+  window.__SHOWING_ALL_PROJECTS = false;
 
   function updateProjectsVisibility() {
+    const projects = Array.from(document.querySelectorAll('.project'));
     projects.forEach((p, i) => {
       if (!showingAll && i >= INITIAL_VISIBLE) {
-        p.classList.add('hidden'); // hidden by CSS (keeps markup but visually hidden)
+        p.classList.add('hidden');
+        p.style.pointerEvents = 'none';
       } else {
         p.classList.remove('hidden');
+        p.style.pointerEvents = '';
       }
     });
-    if (showMoreBtn) {
-      const t = translations[lang];
-      showMoreBtn.style.display = projects.length > INITIAL_VISIBLE ? 'inline-block' : 'none';
-      showMoreBtn.textContent = showingAll ? t.showLess : t.showMore;
-    }
+    // update button label
+    applyTranslations(showingAll);
+    window.__SHOWING_ALL_PROJECTS = showingAll;
   }
 
-  if (showMoreBtn) {
-    showMoreBtn.addEventListener('click', () => {
-      showingAll = !showingAll;
-      updateProjectsVisibility();
-      // scroll to grid top when expanded
-      if (showingAll) {
-        const grid = document.querySelector('.projects-grid');
-        if (grid) grid.scrollIntoView({ behavior: 'smooth' });
-      }
+  function initShowMoreButtons() {
+    document.querySelectorAll('.show-more').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showingAll = !showingAll;
+        updateProjectsVisibility();
+        if (showingAll) {
+          const grid = document.querySelector('.projects-grid');
+          if (grid) grid.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     });
   }
 
-  // initial calls
-  applyLanguage();
-  updateProjectsVisibility();
+  // --- init (safe DOM ready) ---
+  function init() {
+    attachLangToggleHandlers();
+    applyTranslations(showingAll);
+    observeFadeIns();
+    initShowMoreButtons();
+    updateProjectsVisibility();
+    // watch for dynamically added lang-toggle buttons (e.g., via AJAX)
+    const bodyObserver = new MutationObserver(() => {
+      attachLangToggleHandlers();
+    });
+    bodyObserver.observe(document.body, { childList: true, subtree: true });
+  }
 
-  // expose for debugging (optional)
-  window.__siteLang = { get: () => lang, set: (v) => { lang = v; localStorage.setItem(LANG_KEY, v); applyLanguage(); } };
-});
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // expose for debug
+  window.__siteLang = {
+    get: () => lang,
+    set: (v) => { lang = v; localStorage.setItem(LANG_KEY, v); applyTranslations(showingAll); attachLangToggleHandlers(); },
+  };
+})();
