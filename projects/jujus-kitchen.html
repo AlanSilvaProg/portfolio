@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Juju's Kitchen — Alan Silva</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script defer src="../lang.js"></script>
+</head>
+<body>
+  <button class="lang-toggle" aria-label="Toggle language">🇧🇷</button>
+
+  <header class="fade-in">
+    <h1 data-i18n="jujusKitchenTitle">Juju's Kitchen</h1>
+    <p data-i18n="jujusKitchenSub">Um jogo de culinária divertido</p>
+  </header>
+
+  <main class="project-page">
+    <section class="fade-in">
+      <h1 data-i18n="jujusKitchenHeading">Juju's Kitchen</h1>
+      <p data-i18n="jujusKitchenDescription">Um jogo de culinária divertido onde você prepara pratos deliciosos em uma cozinha animada.</p>
+
+      <style>
+        .responsive-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .responsive-grid img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          object-fit: cover;
+        }
+        .video-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .video-grid video {
+          width: 100%;
+          border-radius: 8px;
+        }
+      </style>
+
+      <div class="responsive-grid fade-in">
+        <img src="../assets/projects/Juju'sKitchen/icone-game512.png" alt="Juju's Kitchen Icon">
+      </div>
+
+      <h2 data-i18n="gameTrailer">Game Trailer</h2>
+      <div class="video-grid fade-in">
+        <video controls>
+          <source src="../assets/projects/Juju'sKitchen/Videos/VIdeo Juju's Kitchen_mpeg4.mp4" type="video/mp4">
+          <span data-i18n="videoNotSupported">Your browser does not support the video tag.</span>
+        </video>
+      </div>
+
+      <h2 data-i18n="gameplayFeatures">Gameplay Features</h2>
+      <div class="responsive-grid fade-in">
+        <img src="../assets/projects/Juju'sKitchen/Gifs/ezgif.com-gif-maker.gif" alt="Gameplay">
+      </div>
+
+      <h2 data-i18n="gameScreenshots">Game Screenshots</h2>
+      <div class="responsive-grid fade-in">
+        <img src="../assets/projects/Juju'sKitchen/Screenshots/Screenshot_1.png" alt="Screenshot 1">
+        <img src="../assets/projects/Juju'sKitchen/Screenshots/Screenshot_2.png" alt="Screenshot 2">
+        <img src="../assets/projects/Juju'sKitchen/Screenshots/Screenshot_3.png" alt="Screenshot 3">
+        <img src="../assets/projects/Juju'sKitchen/Screenshots/Screenshot_4.png" alt="Screenshot 4">
+        <img src="../assets/projects/Juju'sKitchen/Screenshots/Screenshot_5.png" alt="Screenshot 5">
+        <img src="../assets/projects/Juju'sKitchen/Screenshots/Screenshot_6.png" alt="Screenshot 6">
+      </div>
+
+      <h2 data-i18n="promotionalImages">Promotional Images</h2>
+      <div class="responsive-grid fade-in">
+        <img src="../assets/projects/Juju'sKitchen/Screenshots/Tela-promocional-1024x500.jpg" alt="Promotional 1">
+        <img src="../assets/projects/Juju'sKitchen/Screenshots/Tela-promocional-full-HD-horizontal.jpg" alt="Promotional 2">
+      </div>
+    </section>
+
+    <p style="text-align:center; margin-top:28px;">
+      <a href="../index.html" data-i18n="back" style="color:#9fbfff; text-decoration:none; font-weight:700;">← Voltar</a>
+    </p>
+  </main>
+
+  <footer class="fade-in">
+    <p data-i18n="footer">© 2025 Alan Silva — Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

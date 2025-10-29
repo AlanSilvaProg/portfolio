@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aquabitz — Alan Silva</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script defer src="../lang.js"></script>
+</head>
+<body>
+  <button class="lang-toggle" aria-label="Toggle language">🇧🇷</button>
+
+  <header class="fade-in">
+    <h1 data-i18n="aquabitzTitle">Aquabitz</h1>
+    <p data-i18n="aquabitzSub">Um jogo de aventura aquática</p>
+  </header>
+
+  <main class="project-page">
+    <section class="fade-in">
+      <h1 data-i18n="aquabitzHeading">Aquabitz</h1>
+      <p data-i18n="aquabitzDescription">Um jogo de aventura aquática onde você explora oceanos coloridos e resolve quebra-cabeças.</p>
+
+      <style>
+        .responsive-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .responsive-grid img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          object-fit: cover;
+        }
+        .video-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .video-grid video {
+          width: 100%;
+          border-radius: 8px;
+        }
+      </style>
+
+      <h2 data-i18n="gameTrailer">Game Trailer</h2>
+      <div class="video-grid fade-in">
+        <video controls>
+          <source src="../assets/projects/Aquabitz/aquabitzz.mp4" type="video/mp4">
+          <span data-i18n="videoNotSupported">Your browser does not support the video tag.</span>
+        </video>
+      </div>
+
+      <h2 data-i18n="gameplayFeatures">Gameplay Features</h2>
+      <div class="responsive-grid fade-in">
+        <img src="../assets/projects/Aquabitz/ezgif.com-video-to-gif.gif" alt="Gameplay 1">
+        <img src="../assets/projects/Aquabitz/ezgif.com-video-to-gif (1).gif" alt="Gameplay 2">
+        <img src="../assets/projects/Aquabitz/ezgif.com-video-to-gif (2).gif" alt="Gameplay 3">
+      </div>
+
+      <h2 data-i18n="gameScreenshots">Game Screenshots</h2>
+      <div class="responsive-grid fade-in">
+        <img src="../assets/projects/Aquabitz/Screen_1.jpg" alt="Screenshot 1">
+        <img src="../assets/projects/Aquabitz/Screen_3.jpg" alt="Screenshot 3">
+        <img src="../assets/projects/Aquabitz/Screen_5.jpg" alt="Screenshot 5">
+        <img src="../assets/projects/Aquabitz/Screen_8.jpg" alt="Screenshot 8">
+        <img src="../assets/projects/Aquabitz/Screen_9.jpg" alt="Screenshot 9">
+      </div>
+
+      <h2 data-i18n="gameTutorial">Game Tutorial</h2>
+      <div class="responsive-grid fade-in">
+        <img src="../assets/projects/Aquabitz/07_Tutorial.jpg" alt="Tutorial 1">
+        <img src="../assets/projects/Aquabitz/12_Tutorial.jpg" alt="Tutorial 2">
+        <img src="../assets/projects/Aquabitz/23_Tutorial.jpg" alt="Tutorial 3">
+      </div>
+
+      <h2 data-i18n="gamePlay">Game Play</h2>
+      <div class="responsive-grid fade-in">
+        <img src="../assets/projects/Aquabitz/Play_Colection.jpg" alt="Play Collection">
+        <img src="../assets/projects/Aquabitz/Play_Play.jpg" alt="Play">
+      </div>
+    </section>
+
+    <p style="text-align:center; margin-top:28px;">
+      <a href="../index.html" data-i18n="back" style="color:#9fbfff; text-decoration:none; font-weight:700;">← Voltar</a>
+    </p>
+  </main>
+
+  <footer class="fade-in">
+    <p data-i18n="footer">© 2025 Alan Silva — Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
