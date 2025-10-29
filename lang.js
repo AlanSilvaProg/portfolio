@@ -14,7 +14,22 @@
       showMore: 'Mostrar Mais',
       showLess: 'Mostrar Menos',
       footer: '© 2025 Alan Silva — Todos os direitos reservados.',
-      back: '← Voltar'
+      back: '← Voltar',
+      // Unbinary project translations
+      unbinaryTitle: 'Unbinary',
+      unbinarySub: 'Um jogo de aventura e quebra-cabeças em um mundo digital',
+      unbinaryHeading: 'Unbinary',
+      unbinaryDescription: 'Um jogo de aventura e quebra-cabeças onde você navega por um mundo digital resolvendo desafios e descobrindo a história.',
+      gameTrailers: 'Trailers do Jogo',
+      videoNotSupported: 'Seu navegador não suporta a tag de vídeo.',
+      gameplayFeatures: 'Características de Jogabilidade',
+      moreGameplay: 'Mais Jogabilidade',
+      gameWorld: 'Mundo do Jogo',
+      moreEnvironments: 'Mais Ambientes',
+      awardsAndPrizes: 'Prêmios & Conquistas',
+      achievementAward: 'Prêmio de Conquista',
+      excellenceAward: 'Prêmio de Excelência',
+      innovationPrize: 'Prêmio de Inovação'
     },
     en: {
       headerTitle: 'Alan Silva',
@@ -22,7 +37,22 @@
       showMore: 'Show More',
       showLess: 'Show Less',
       footer: '© 2025 Alan Silva — All rights reserved.',
-      back: '← Back'
+      back: '← Back',
+      // Unbinary project translations
+      unbinaryTitle: 'Unbinary',
+      unbinarySub: 'A puzzle adventure game in a digital world',
+      unbinaryHeading: 'Unbinary',
+      unbinaryDescription: 'A puzzle adventure game where you navigate through a digital world solving challenges and uncovering the story.',
+      gameTrailers: 'Game Trailers',
+      videoNotSupported: 'Your browser does not support the video tag.',
+      gameplayFeatures: 'Gameplay Features',
+      moreGameplay: 'More Gameplay',
+      gameWorld: 'Game World',
+      moreEnvironments: 'More Environments',
+      awardsAndPrizes: 'Awards & Prizes',
+      achievementAward: 'Achievement Award',
+      excellenceAward: 'Excellence Award',
+      innovationPrize: 'Innovation Prize'
     }
   };
 
