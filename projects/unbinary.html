@@ -20,13 +20,63 @@
       <h1>Unbinary</h1>
       <p>A puzzle adventure game where you navigate through a digital world solving challenges and uncovering the story.</p>
 
-      <div class="project-logo fade-in">
+      <style>
+        .responsive-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .responsive-grid img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          object-fit: cover;
+        }
+        .logo-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .logo-grid img {
+          width: 100%;
+          height: auto;
+          max-height: 200px;
+          object-fit: contain;
+        }
+        .video-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .video-grid video {
+          width: 100%;
+          border-radius: 8px;
+        }
+        .icon-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .icon-grid img {
+          width: 100%;
+          max-width: 100px;
+          height: auto;
+          margin: 0 auto;
+          display: block;
+        }
+      </style>
+
+      <div class="logo-grid fade-in">
         <img src="../assets/projects/Unbinary/Logo.png" alt="Unbinary Logo">
         <img src="../assets/projects/Unbinary/LogoArt.png" alt="Unbinary Art Logo">
       </div>
 
       <h2>Game Trailers</h2>
-      <div class="project-videos fade-in">
+      <div class="video-grid fade-in">
         <video controls>
           <source src="../assets/projects/Unbinary/Video/unbinary-official-launch-trailer.mp4" type="video/mp4">
           Your browser does not support the video tag.
@@ -38,7 +88,7 @@
       </div>
 
       <h2>Gameplay Features</h2>
-      <div class="project-gallery fade-in">
+      <div class="responsive-grid fade-in">
         <img src="../assets/projects/Unbinary/Gif/Inventory.gif" alt="Inventory System">
         <img src="../assets/projects/Unbinary/Gif/RecognizeGreen.gif" alt="Green Recognition">
         <img src="../assets/projects/Unbinary/Gif/YellowBot.gif" alt="Yellow Bot">
@@ -46,7 +96,7 @@
       </div>
 
       <h2>More Gameplay</h2>
-      <div class="project-gallery fade-in">
+      <div class="responsive-grid fade-in">
         <img src="../assets/projects/Unbinary/Gif/ezgif.com-gif-maker.gif" alt="Gameplay 1">
         <img src="../assets/projects/Unbinary/Gif/ezgif.com-gif-maker (1).gif" alt="Gameplay 2">
         <img src="../assets/projects/Unbinary/Gif/ezgif.com-gif-maker (2).gif" alt="Gameplay 3">
@@ -56,7 +106,7 @@
       </div>
 
       <h2>Game World</h2>
-      <div class="project-gallery fade-in">
+      <div class="responsive-grid fade-in">
         <img src="../assets/projects/Unbinary/Screenshots/00Map01L.png" alt="Map 00-01">
         <img src="../assets/projects/Unbinary/Screenshots/01Map01.png" alt="Map 01-01">
         <img src="../assets/projects/Unbinary/Screenshots/01Map02.png" alt="Map 01-02">
@@ -66,7 +116,7 @@
       </div>
 
       <h2>More Environments</h2>
-      <div class="project-gallery fade-in">
+      <div class="responsive-grid fade-in">
         <img src="../assets/projects/Unbinary/Screenshots/03Map01.png" alt="Map 03-01">
         <img src="../assets/projects/Unbinary/Screenshots/04Map01.png" alt="Map 04-01">
         <img src="../assets/projects/Unbinary/Screenshots/05Map01.png" alt="Map 05-01">
@@ -75,7 +125,7 @@
       </div>
 
       <h2>Icons</h2>
-      <div class="project-icons fade-in">
+      <div class="icon-grid fade-in">
         <img src="../assets/projects/Unbinary/winicon.png" alt="Windows Icon 1">
         <img src="../assets/projects/Unbinary/winicon2.png" alt="Windows Icon 2">
         <img src="../assets/projects/Unbinary/winicon3.png" alt="Windows Icon 3">
