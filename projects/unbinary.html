@@ -124,12 +124,49 @@
         <img src="../assets/projects/Unbinary/Screenshots/07Map01.png" alt="Map 07-01">
       </div>
 
-      <h2>Icons</h2>
-      <div class="icon-grid fade-in">
-        <img src="../assets/projects/Unbinary/winicon.png" alt="Windows Icon 1">
-        <img src="../assets/projects/Unbinary/winicon2.png" alt="Windows Icon 2">
-        <img src="../assets/projects/Unbinary/winicon3.png" alt="Windows Icon 3">
+      <h2>Awards & Prizes</h2>
+      <div class="awards-grid fade-in">
+        <div class="award-item">
+          <img src="../assets/projects/Unbinary/winicon.png" alt="Award 1">
+          <p>Achievement Award</p>
+        </div>
+        <div class="award-item">
+          <img src="../assets/projects/Unbinary/winicon2.png" alt="Award 2">
+          <p>Excellence Award</p>
+        </div>
+        <div class="award-item">
+          <img src="../assets/projects/Unbinary/winicon3.png" alt="Award 3">
+          <p>Innovation Prize</p>
+        </div>
       </div>
+      
+      <style>
+        .awards-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 30px;
+          margin: 30px 0;
+        }
+        .award-item {
+          background: white;
+          border-radius: 12px;
+          padding: 20px;
+          text-align: center;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .award-item img {
+          width: 100%;
+          max-width: 150px;
+          height: auto;
+          margin: 0 auto 15px;
+          display: block;
+        }
+        .award-item p {
+          color: #333;
+          font-weight: bold;
+          margin: 0;
+        }
+      </style>
     </section>
 
     <p style="text-align:center; margin-top:28px;">
