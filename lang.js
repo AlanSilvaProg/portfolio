@@ -15,6 +15,16 @@
       showLess: 'Mostrar Menos',
       footer: '© 2025 Alan Silva — Todos os direitos reservados.',
       back: '← Voltar',
+      // Index
+      projectsHeading: 'Projetos',
+      projectsPreviewHint: 'Passe o mouse sobre um projeto para ver o preview.',
+      // Generic sections
+      appIcon: 'Ícone do App',
+      appScreenshots: 'Screenshots do App',
+      gameScreenshots: 'Screenshots do Jogo',
+      promotionalImage: 'Imagem Promocional',
+      gameTrailer: 'Trailer do Jogo',
+      gameplayClips: 'Clipes de Gameplay',
       // Unbinary project translations
       unbinaryTitle: 'Unbinary',
       unbinarySub: 'Um jogo de aventura e quebra-cabeças em um mundo digital',
@@ -29,7 +39,16 @@
       awardsAndPrizes: 'Prêmios & Conquistas',
       achievementAward: 'Prêmio de Conquista',
       excellenceAward: 'Prêmio de Excelência',
-      innovationPrize: 'Prêmio de Inovação'
+      innovationPrize: 'Prêmio de Inovação',
+      // Project descriptions
+      fillTheBusSub: 'Jogo com screenshots e ícone.',
+      ziggySub: 'Projeto com GIFs, screenshots e ícone.',
+      gamebanbanbanSub: 'Projeto com GIFs de gameplay.',
+      repairKrakenSub: 'Projeto com GIFs e screenshots.',
+      locomotiva5Sub: 'Projeto com GIFs e screenshots.',
+      salvePiramideSub: 'Projeto da EditoraBrasil com GIFs e screenshots.',
+      showMonstroSub: 'Projeto da EditoraBrasil com GIFs e screenshots.',
+      harbingerSub: 'Projeto com trailer, clipes de gameplay, GIFs e screenshots.'
     },
     en: {
       headerTitle: 'Alan Silva',
@@ -38,6 +57,16 @@
       showLess: 'Show Less',
       footer: '© 2025 Alan Silva — All rights reserved.',
       back: '← Back',
+      // Index
+      projectsHeading: 'Projects',
+      projectsPreviewHint: 'Hover a project to see the preview.',
+      // Generic sections
+      appIcon: 'App Icon',
+      appScreenshots: 'App Screenshots',
+      gameScreenshots: 'Game Screenshots',
+      promotionalImage: 'Promotional Image',
+      gameTrailer: 'Game Trailer',
+      gameplayClips: 'Gameplay Clips',
       // Unbinary project translations
       unbinaryTitle: 'Unbinary',
       unbinarySub: 'A puzzle adventure game in a digital world',
@@ -52,17 +81,27 @@
       awardsAndPrizes: 'Awards & Prizes',
       achievementAward: 'Achievement Award',
       excellenceAward: 'Excellence Award',
-      innovationPrize: 'Innovation Prize'
+      innovationPrize: 'Innovation Prize',
+      // Project descriptions
+      fillTheBusSub: 'Game with screenshots and icon.',
+      ziggySub: 'Project with gameplay GIFs, screenshots, and icon.',
+      gamebanbanbanSub: 'Project with gameplay GIFs.',
+      repairKrakenSub: 'Project with GIFs and screenshots.',
+      locomotiva5Sub: 'Project with GIFs and screenshots.',
+      salvePiramideSub: 'EditoraBrasil project with GIFs and screenshots.',
+      showMonstroSub: 'EditoraBrasil project with GIFs and screenshots.',
+      harbingerSub: 'Project with trailer, gameplay clips, GIFs, and screenshots.'
     }
   };
 
   // --- helper: apply translations to data-i18n targets ---
   function applyTranslations(showingAll=false) {
     const t = translations[lang] || translations.pt;
-    document.querySelectorAll('[data-i18n="headerTitle"]').forEach(e => { e.textContent = t.headerTitle; });
-    document.querySelectorAll('[data-i18n="headerSub"]').forEach(e => { e.textContent = t.headerSub; });
-    document.querySelectorAll('[data-i18n="footer"]').forEach(e => { e.textContent = t.footer; });
-    document.querySelectorAll('[data-i18n="back"]').forEach(e => { e.textContent = t.back; });
+    // generic mapper: apply any known key found in data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(e => {
+      const key = e.getAttribute('data-i18n');
+      if (key && t[key]) e.textContent = t[key];
+    });
     // show-more buttons
     document.querySelectorAll('.show-more').forEach(b => {
       b.textContent = showingAll ? t.showLess : t.showMore;
