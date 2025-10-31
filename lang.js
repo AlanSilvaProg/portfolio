@@ -464,13 +464,14 @@
     const idxList = panel.querySelector('.menu-index');
     const projList = panel.querySelector('.menu-projects');
     const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
+    const ROOT = location.pathname.includes('/projects/') ? '../' : '';
 
     // Index sections
     INDEX_SECTIONS.forEach(sec => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.textContent = sec.label;
-      a.href = onIndex ? `#${sec.id}` : `index.html#${sec.id}`;
+      a.href = onIndex ? `#${sec.id}` : `${ROOT}index.html#${sec.id}`;
       a.addEventListener('click', (e) => {
         // smooth scroll if on index
         if (onIndex) {
@@ -489,7 +490,7 @@
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.textContent = p.title;
-      a.href = p.url;
+      a.href = `${ROOT}${p.url}`;
       li.appendChild(a);
       projList.appendChild(li);
     });

@@ -80,6 +80,7 @@ header p { font-size:1rem; opacity:0.75; }
   transition: transform .25s ease;
   z-index: 100001;
   padding: 16px 14px;
+  overflow-y: auto;
 }
 .menu-panel.open { transform: translateX(0); }
 .menu-panel h4 { margin: 8px 0; font-size: 1rem; opacity: 0.9; }
