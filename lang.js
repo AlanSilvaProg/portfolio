@@ -222,6 +222,8 @@
     observeFadeIns();
     initShowMoreButtons();
     updateProjectsVisibility();
+    // init lightbox only on project pages
+    if (document.querySelector('.project-page')) initLightbox();
     // watch for dynamically added lang-toggle buttons (e.g., via AJAX)
     let observerLocked = false;
    
@@ -247,4 +249,59 @@
     get: () => lang,
     set: (v) => { lang = v; localStorage.setItem(LANG_KEY, v); applyTranslations(showingAll); attachLangToggleHandlers(); },
   };
+})();
+
+// --- Image Lightbox (click-to-preview) ---
+(function(){
+  function initLightbox(){
+    // Avoid duplicate overlays
+    if (document.querySelector('.lightbox-overlay')) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay fade-in';
+    overlay.innerHTML = `
+      <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Close">✕</button>
+        <img class="lightbox-image" alt="" />
+        <div class="lightbox-caption"></div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const imgEl = overlay.querySelector('.lightbox-image');
+    const capEl = overlay.querySelector('.lightbox-caption');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+
+    function open(src, alt){
+      imgEl.src = src;
+      imgEl.alt = alt || '';
+      capEl.textContent = alt || '';
+      overlay.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      overlay.classList.remove('visible');
+      document.body.style.overflow = '';
+      imgEl.src = '';
+      capEl.textContent = '';
+    }
+
+    overlay.addEventListener('click', (e) => {
+      if (!e.target.closest('.lightbox-content') || e.target.classList.contains('lightbox-close')) {
+        close();
+      }
+    });
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+    // Bind click handlers to all images inside project pages
+    const imgs = Array.from(document.querySelectorAll('.project-page img'));
+    imgs.forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => open(img.src, img.alt));
+    });
+  }
+
+  // expose for reuse from init()
+  window.initLightbox = initLightbox;
 })();
