@@ -222,6 +222,7 @@
     observeFadeIns();
     initShowMoreButtons();
     updateProjectsVisibility();
+    initMenuPanel();
     // watch for dynamically added lang-toggle buttons (e.g., via AJAX)
     let observerLocked = false;
    
@@ -403,4 +404,117 @@
   window.initLightbox = initLightbox;
   // auto-init after this script block loads (safer ordering)
   if (document.querySelector('.project-page')) initLightbox();
+})();
+
+// --- Global Hamburger Menu ---
+(function(){
+  const PROJECTS = [
+    { title: 'Unbinary', url: 'projects/unbinary.html' },
+    { title: 'Nebula Garden', url: 'projects/ng.html' },
+    { title: 'Harbinger', url: 'projects/harbinger.html' },
+    { title: 'Locomotiva5', url: 'projects/locomotiva5.html' },
+    { title: 'Repair The Kraken', url: 'projects/repair-the-kraken.html' },
+    { title: 'Sokolab', url: 'projects/sokolab.html' },
+    { title: 'Ziggy', url: 'projects/ziggy.html' },
+    { title: 'War', url: 'projects/war.html' },
+    { title: 'GameBanBanBan', url: 'projects/gamebanbanban.html' },
+    { title: 'Aquabitz', url: 'projects/aquabitz.html' },
+    { title: 'IceRage', url: 'projects/icerage.html' },
+    { title: 'Minute Bomb', url: 'projects/minutebomb.html' },
+    { title: "Juju's Kitchen", url: 'projects/jujus-kitchen.html' },
+    { title: 'Fill The Bus', url: 'projects/fill-the-bus.html' },
+    { title: 'Ta Na Mesa', url: 'projects/tanamesa.html' }
+  ];
+
+  const INDEX_SECTIONS = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'certification', label: 'Certification' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'pc-console', label: 'PC/Console' },
+    { id: 'webgl-group', label: 'WebGL Games' },
+    { id: 'mobile-group', label: 'Mobile' }
+  ];
+
+  function buildMenuMarkup(){
+    const btn = document.createElement('button');
+    btn.className = 'menu-toggle';
+    btn.setAttribute('aria-label', 'Open menu');
+    btn.innerHTML = '<span class="menu-bars"></span><span>Menu</span>';
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'menu-backdrop';
+
+    const panel = document.createElement('nav');
+    panel.className = 'menu-panel';
+    panel.innerHTML = `
+      <h4>Index Sections</h4>
+      <ul class="menu-list menu-index"></ul>
+      <h4>Projects</h4>
+      <ul class="menu-list menu-projects"></ul>
+    `;
+
+    document.body.appendChild(btn);
+    document.body.appendChild(backdrop);
+    document.body.appendChild(panel);
+    return { btn, backdrop, panel };
+  }
+
+  function fillMenu(panel){
+    const idxList = panel.querySelector('.menu-index');
+    const projList = panel.querySelector('.menu-projects');
+    const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
+
+    // Index sections
+    INDEX_SECTIONS.forEach(sec => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.textContent = sec.label;
+      a.href = onIndex ? `#${sec.id}` : `index.html#${sec.id}`;
+      a.addEventListener('click', (e) => {
+        // smooth scroll if on index
+        if (onIndex) {
+          e.preventDefault();
+          const target = document.getElementById(sec.id);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+        closeMenu();
+      });
+      li.appendChild(a);
+      idxList.appendChild(li);
+    });
+
+    // Project links
+    PROJECTS.forEach(p => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.textContent = p.title;
+      a.href = p.url;
+      li.appendChild(a);
+      projList.appendChild(li);
+    });
+  }
+
+  let _btn, _backdrop, _panel;
+  function openMenu(){
+    _backdrop.classList.add('open');
+    _panel.classList.add('open');
+  }
+  function closeMenu(){
+    _backdrop.classList.remove('open');
+    _panel.classList.remove('open');
+  }
+
+  function initMenuPanel(){
+    if (document.querySelector('.menu-panel')) return;
+    const { btn, backdrop, panel } = buildMenuMarkup();
+    _btn = btn; _backdrop = backdrop; _panel = panel;
+    fillMenu(panel);
+    btn.addEventListener('click', openMenu);
+    backdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  }
+
+  // expose for external call
+  window.initMenuPanel = initMenuPanel;
 })();
