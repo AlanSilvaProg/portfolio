@@ -197,6 +197,11 @@
         p.style.pointerEvents = '';
       }
     });
+    // Also control optional groups visibility on index
+    const webgl = document.getElementById('webgl-group');
+    const mobile = document.getElementById('mobile-group');
+    if (webgl) webgl.style.display = showingAll ? 'block' : 'none';
+    if (mobile) mobile.style.display = showingAll ? 'block' : 'none';
     // update button label
     applyTranslations(showingAll);
     window.__SHOWING_ALL_PROJECTS = showingAll;
@@ -204,14 +209,17 @@
 
   function initShowMoreButtons() {
     document.querySelectorAll('.show-more').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        // Prevent index inline script double-toggle
+        e.preventDefault();
+        e.stopImmediatePropagation();
         showingAll = !showingAll;
         updateProjectsVisibility();
         if (showingAll) {
           const grid = document.querySelector('.projects-grid');
           if (grid) grid.scrollIntoView({ behavior: 'smooth' });
         }
-      });
+      }, { capture: true });
     });
   }
 
@@ -223,6 +231,15 @@
     initShowMoreButtons();
     updateProjectsVisibility();
     if (window.initMenuPanel) window.initMenuPanel();
+    // If landing on index with a hash to optional groups, auto-expand and scroll
+    const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
+    if (onIndex && (location.hash === '#webgl-group' || location.hash === '#mobile-group')) {
+      if (window.__projectsVisibility && window.__projectsVisibility.setShowAll) {
+        window.__projectsVisibility.setShowAll(true);
+      }
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
     // watch for dynamically added lang-toggle buttons (e.g., via AJAX)
     let observerLocked = false;
    
@@ -247,6 +264,25 @@
   window.__siteLang = {
     get: () => lang,
     set: (v) => { lang = v; localStorage.setItem(LANG_KEY, v); applyTranslations(showingAll); attachLangToggleHandlers(); },
+  };
+
+  // --- expose: control project visibility globally (index page) ---
+  function setShowAll(expanded){
+    showingAll = !!expanded;
+    // ensure optional groups visible when expanding
+    if (showingAll) {
+      const webgl = document.getElementById('webgl-group');
+      const mobile = document.getElementById('mobile-group');
+      if (webgl) webgl.style.display = 'block';
+      if (mobile) mobile.style.display = 'block';
+    }
+    updateProjectsVisibility();
+    applyTranslations(showingAll);
+    window.__SHOWING_ALL_PROJECTS = showingAll;
+  }
+  window.__projectsVisibility = {
+    setShowAll,
+    isShowAll: () => showingAll,
   };
 })();
 
@@ -473,11 +509,20 @@
       a.textContent = sec.label;
       a.href = onIndex ? `#${sec.id}` : `${ROOT}index.html#${sec.id}`;
       a.addEventListener('click', (e) => {
-        // smooth scroll if on index
+        // smooth scroll and ensure optional sections are visible when on index
         if (onIndex) {
           e.preventDefault();
+          // Expand all projects globally so previews show
+          if (window.__projectsVisibility && window.__projectsVisibility.setShowAll) {
+            window.__projectsVisibility.setShowAll(true);
+          }
           const target = document.getElementById(sec.id);
-          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            // Fallback to hash navigation if element is missing
+            location.hash = `#${sec.id}`;
+          }
         }
         closeMenu();
       });
