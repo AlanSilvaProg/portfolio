@@ -262,6 +262,7 @@
         <button class="lightbox-close" aria-label="Close">✕</button>
         <button class="lightbox-prev" aria-label="Previous">‹</button>
         <button class="lightbox-next" aria-label="Next">›</button>
+        <div class="lightbox-section"></div>
         <img class="lightbox-image" alt="" />
         <div class="lightbox-caption"></div>
       </div>
@@ -270,20 +271,48 @@
 
     const imgEl = overlay.querySelector('.lightbox-image');
     const capEl = overlay.querySelector('.lightbox-caption');
+    const sectionEl = overlay.querySelector('.lightbox-section');
     const closeBtn = overlay.querySelector('.lightbox-close');
     const prevBtn = overlay.querySelector('.lightbox-prev');
     const nextBtn = overlay.querySelector('.lightbox-next');
 
     let galleryNodes = [];
     let currIndex = 0;
+    let sectionTitle = '';
+
+    function getSectionTitle(container){
+      // Prefer a heading immediately above the container
+      let node = container.previousElementSibling;
+      while (node) {
+        if (node.tagName && /^H[1-6]$/.test(node.tagName)) return node.textContent.trim();
+        node = node.previousElementSibling;
+      }
+      const sec = container.closest('section');
+      if (sec) {
+        const h = sec.querySelector('h1,h2,h3,h4,h5,h6');
+        if (h) return h.textContent.trim();
+      }
+      return '';
+    }
+
+    function updateButtons(){
+      const atStart = currIndex <= 0;
+      const atEnd = currIndex >= (galleryNodes.length - 1);
+      prevBtn.disabled = atStart; nextBtn.disabled = atEnd;
+      prevBtn.classList.toggle('disabled', atStart);
+      nextBtn.classList.toggle('disabled', atEnd);
+    }
 
     function show(i){
       if (!galleryNodes.length) return;
-      currIndex = (i + galleryNodes.length) % galleryNodes.length;
+      // Non-wrap: clamp between [0, length-1]
+      currIndex = Math.max(0, Math.min(i, galleryNodes.length - 1));
       const node = galleryNodes[currIndex];
       imgEl.src = node.src;
       imgEl.alt = node.alt || '';
       capEl.textContent = node.alt || '';
+      sectionEl.textContent = sectionTitle || '';
+      updateButtons();
     }
 
     function openFrom(img){
@@ -291,6 +320,7 @@
       const container = img.closest('.responsive-grid, .project-gallery, .awards-grid') || document.querySelector('.project-page');
       galleryNodes = Array.from(container.querySelectorAll('img'));
       currIndex = galleryNodes.indexOf(img);
+      sectionTitle = getSectionTitle(container);
       overlay.classList.add('visible');
       document.body.style.overflow = 'hidden';
       show(currIndex);
@@ -302,6 +332,8 @@
       capEl.textContent = '';
       galleryNodes = [];
       currIndex = 0;
+      sectionTitle = '';
+      sectionEl.textContent = '';
     }
 
     overlay.addEventListener('click', (e) => {
@@ -315,8 +347,8 @@
     document.addEventListener('keydown', (e) => {
       if (!overlay.classList.contains('visible')) return;
       if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft') show(currIndex - 1);
-      if (e.key === 'ArrowRight') show(currIndex + 1);
+      if (e.key === 'ArrowLeft' && currIndex > 0) show(currIndex - 1);
+      if (e.key === 'ArrowRight' && currIndex < (galleryNodes.length - 1)) show(currIndex + 1);
     });
 
     // Bind click handlers to all images inside project pages
