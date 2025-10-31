@@ -260,6 +260,8 @@
     overlay.innerHTML = `
       <div class="lightbox-content">
         <button class="lightbox-close" aria-label="Close">✕</button>
+        <button class="lightbox-prev" aria-label="Previous">‹</button>
+        <button class="lightbox-next" aria-label="Next">›</button>
         <img class="lightbox-image" alt="" />
         <div class="lightbox-caption"></div>
       </div>
@@ -269,19 +271,37 @@
     const imgEl = overlay.querySelector('.lightbox-image');
     const capEl = overlay.querySelector('.lightbox-caption');
     const closeBtn = overlay.querySelector('.lightbox-close');
+    const prevBtn = overlay.querySelector('.lightbox-prev');
+    const nextBtn = overlay.querySelector('.lightbox-next');
 
-    function open(src, alt){
-      imgEl.src = src;
-      imgEl.alt = alt || '';
-      capEl.textContent = alt || '';
+    let galleryNodes = [];
+    let currIndex = 0;
+
+    function show(i){
+      if (!galleryNodes.length) return;
+      currIndex = (i + galleryNodes.length) % galleryNodes.length;
+      const node = galleryNodes[currIndex];
+      imgEl.src = node.src;
+      imgEl.alt = node.alt || '';
+      capEl.textContent = node.alt || '';
+    }
+
+    function openFrom(img){
+      // find gallery container
+      const container = img.closest('.responsive-grid, .project-gallery, .awards-grid') || document.querySelector('.project-page');
+      galleryNodes = Array.from(container.querySelectorAll('img'));
+      currIndex = galleryNodes.indexOf(img);
       overlay.classList.add('visible');
       document.body.style.overflow = 'hidden';
+      show(currIndex);
     }
     function close(){
       overlay.classList.remove('visible');
       document.body.style.overflow = '';
       imgEl.src = '';
       capEl.textContent = '';
+      galleryNodes = [];
+      currIndex = 0;
     }
 
     overlay.addEventListener('click', (e) => {
@@ -290,13 +310,20 @@
       }
     });
     closeBtn.addEventListener('click', close);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    prevBtn.addEventListener('click', () => show(currIndex - 1));
+    nextBtn.addEventListener('click', () => show(currIndex + 1));
+    document.addEventListener('keydown', (e) => {
+      if (!overlay.classList.contains('visible')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(currIndex - 1);
+      if (e.key === 'ArrowRight') show(currIndex + 1);
+    });
 
     // Bind click handlers to all images inside project pages
     const imgs = Array.from(document.querySelectorAll('.project-page img'));
     imgs.forEach(img => {
       img.style.cursor = 'zoom-in';
-      img.addEventListener('click', () => open(img.src, img.alt));
+      img.addEventListener('click', () => openFrom(img));
     });
   }
 
