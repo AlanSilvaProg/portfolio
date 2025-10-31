@@ -13,6 +13,17 @@ header, footer { text-align:center; padding:40px 20px; position:relative; }
 header h1 { font-size:2.2rem; margin-bottom:8px; }
 header p { font-size:1rem; opacity:0.75; }
 
+/* ===== Title Spacing ===== */
+.section-title { text-align:center; margin:28px 0 10px; }
+.subsection-title { text-align:center; margin:18px 0 8px; }
+
+/* ===== About Skills + Certification Grid ===== */
+.about-skills-cert { display:grid; grid-template-columns: 1fr 1fr; gap:18px; align-items:start; margin:18px 0 26px; }
+.about-skills-cert .about-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 18px; }
+.about-skills-cert .about-card h4 { margin: 0 0 8px; font-weight: 700; }
+.about-skills-cert .about-list { margin: 0; padding-left: 18px; }
+.about-skills-cert .about-list li { color: #cccccc; line-height: 1.6; margin-bottom: 4px; }
+
 /* Lang toggle (fix) */
 .lang-toggle {
   position: fixed;
@@ -235,4 +246,5 @@ footer { opacity:0.7; font-size:0.95rem; margin-top:60px; }
   header, footer { padding:28px 12px; }
   .lang-toggle { top:12px; right:12px; padding:7px 9px; font-size:16px; }
   .menu-toggle { top:12px; left:12px; padding:7px 9px; }
+  .about-skills-cert { grid-template-columns: 1fr; }
 }
