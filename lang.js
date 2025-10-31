@@ -279,6 +279,26 @@
     let galleryNodes = [];
     let currIndex = 0;
     let sectionTitle = '';
+    let containers = [];
+    let sectionIndex = 0;
+
+    function collectContainers(){
+      containers = Array.from(document.querySelectorAll('.responsive-grid, .project-gallery, .awards-grid'))
+        .filter(c => c.querySelector('img'));
+      if (!containers.length) {
+        const pg = document.querySelector('.project-page');
+        if (pg) containers = [pg];
+      }
+    }
+
+    function setContainer(idx){
+      sectionIndex = Math.max(0, Math.min(idx, containers.length - 1));
+      const container = containers[sectionIndex];
+      galleryNodes = Array.from(container.querySelectorAll('img'));
+      sectionTitle = getSectionTitle(container);
+      // Re-clamp current index to new container size
+      currIndex = Math.max(0, Math.min(currIndex, galleryNodes.length - 1));
+    }
 
     function getSectionTitle(container){
       // Prefer a heading immediately above the container
@@ -296,16 +316,16 @@
     }
 
     function updateButtons(){
-      const atStart = currIndex <= 0;
-      const atEnd = currIndex >= (galleryNodes.length - 1);
-      prevBtn.disabled = atStart; nextBtn.disabled = atEnd;
-      prevBtn.classList.toggle('disabled', atStart);
-      nextBtn.classList.toggle('disabled', atEnd);
+      const atGlobalStart = (sectionIndex === 0) && (currIndex === 0);
+      const atGlobalEnd = (sectionIndex === (containers.length - 1)) && (currIndex === (galleryNodes.length - 1));
+      prevBtn.disabled = atGlobalStart; nextBtn.disabled = atGlobalEnd;
+      prevBtn.classList.toggle('disabled', atGlobalStart);
+      nextBtn.classList.toggle('disabled', atGlobalEnd);
     }
 
     function show(i){
       if (!galleryNodes.length) return;
-      // Non-wrap: clamp between [0, length-1]
+      // Non-wrap within current container
       currIndex = Math.max(0, Math.min(i, galleryNodes.length - 1));
       const node = galleryNodes[currIndex];
       imgEl.src = node.src;
@@ -315,12 +335,32 @@
       updateButtons();
     }
 
+    function goNext(){
+      if (currIndex < (galleryNodes.length - 1)) {
+        show(currIndex + 1);
+      } else if (sectionIndex < (containers.length - 1)) {
+        setContainer(sectionIndex + 1);
+        show(0);
+      }
+    }
+
+    function goPrev(){
+      if (currIndex > 0) {
+        show(currIndex - 1);
+      } else if (sectionIndex > 0) {
+        setContainer(sectionIndex - 1);
+        // Jump to last image of previous section
+        show(galleryNodes.length - 1);
+      }
+    }
+
     function openFrom(img){
       // find gallery container
       const container = img.closest('.responsive-grid, .project-gallery, .awards-grid') || document.querySelector('.project-page');
-      galleryNodes = Array.from(container.querySelectorAll('img'));
+      collectContainers();
+      const idx = containers.indexOf(container);
+      setContainer(idx >= 0 ? idx : 0);
       currIndex = galleryNodes.indexOf(img);
-      sectionTitle = getSectionTitle(container);
       overlay.classList.add('visible');
       document.body.style.overflow = 'hidden';
       show(currIndex);
@@ -342,13 +382,13 @@
       }
     });
     closeBtn.addEventListener('click', close);
-    prevBtn.addEventListener('click', () => show(currIndex - 1));
-    nextBtn.addEventListener('click', () => show(currIndex + 1));
+    prevBtn.addEventListener('click', goPrev);
+    nextBtn.addEventListener('click', goNext);
     document.addEventListener('keydown', (e) => {
       if (!overlay.classList.contains('visible')) return;
       if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft' && currIndex > 0) show(currIndex - 1);
-      if (e.key === 'ArrowRight' && currIndex < (galleryNodes.length - 1)) show(currIndex + 1);
+      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowRight') goNext();
     });
 
     // Bind click handlers to all images inside project pages
