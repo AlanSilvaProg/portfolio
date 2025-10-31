@@ -222,8 +222,6 @@
     observeFadeIns();
     initShowMoreButtons();
     updateProjectsVisibility();
-    // init lightbox only on project pages
-    if (document.querySelector('.project-page')) initLightbox();
     // watch for dynamically added lang-toggle buttons (e.g., via AJAX)
     let observerLocked = false;
    
@@ -304,4 +302,6 @@
 
   // expose for reuse from init()
   window.initLightbox = initLightbox;
+  // auto-init after this script block loads (safer ordering)
+  if (document.querySelector('.project-page')) initLightbox();
 })();
