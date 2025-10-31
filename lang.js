@@ -222,7 +222,7 @@
     observeFadeIns();
     initShowMoreButtons();
     updateProjectsVisibility();
-    initMenuPanel();
+    if (window.initMenuPanel) window.initMenuPanel();
     // watch for dynamically added lang-toggle buttons (e.g., via AJAX)
     let observerLocked = false;
    
@@ -440,7 +440,7 @@
     const btn = document.createElement('button');
     btn.className = 'menu-toggle';
     btn.setAttribute('aria-label', 'Open menu');
-    btn.innerHTML = '<span class="menu-bars"></span><span>Menu</span>';
+    btn.innerHTML = '<span class="menu-bars"><span></span></span><span>Menu</span>';
 
     const backdrop = document.createElement('div');
     backdrop.className = 'menu-backdrop';
@@ -517,4 +517,6 @@
 
   // expose for external call
   window.initMenuPanel = initMenuPanel;
+  // auto-init to ensure visibility across pages
+  try { initMenuPanel(); } catch (e) { /* noop */ }
 })();
