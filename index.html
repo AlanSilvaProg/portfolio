@@ -29,25 +29,22 @@
 
   <main>
     <section class="fade-in">
-      <h2 style="text-align:center; margin-bottom:8px;" data-i18n="projectsHeading">Projetos</h2>
-      <p style="text-align:center; color: #aaaaaa; margin-bottom:18px;" data-i18n="projectsPreviewHint">Passe o mouse sobre um projeto para ver o preview.</p>
-
       <!-- About Me: Introduction & Experience -->
       <div class="about-grid fade-in">
         <div class="about-card">
-          <h3>Introduction</h3>
-          <p>
+          <h3 data-i18n="aboutIntroTitle">Introduction</h3>
+          <p data-i18n="aboutIntroP1">
             Graduated in Game Design from Anhembi Morumbi University (São Paulo, Brazil), I’m a game development enthusiast who has been building and studying games since 2014. I’ve worked across a wide spectrum of projects—from mobile to PC/console, from casual titles to larger-scale productions.
           </p>
-          <p>
+          <p data-i18n="aboutIntroP2">
             My primary stack is Unity Engine with C#, where I’ve focused most of my professional experience. I also have solid experience with JavaScript, Lua, and C++, with a special affinity for C++. Professionally, my contributions have predominantly been in Unity and C#.
           </p>
-          <p>
+          <p data-i18n="aboutIntroP3">
             I’ve been working in games since mid‑2019, with 6+ years of hands‑on experience delivering gameplay, systems, tools, and polished user experiences.
           </p>
         </div>
         <div class="about-card">
-          <h3>Experience</h3>
+          <h3 data-i18n="aboutExperienceTitle">Experience</h3>
           <ul class="about-list">
             <li>2019 — Unity Game Engineer — Arch Works (Intern)</li>
             <li>2019–2020 — Unity Game Engineer — Eludica (Intern)</li>
@@ -60,7 +57,7 @@
             <li>2022 — Unity Game Engineer — Pipa Studios (Current)</li>
           </ul>
 
-          <h4>Skills</h4>
+          <h4 data-i18n="skillsTitle">Skills</h4>
           <ul class="about-list">
             <li>Unity Engine</li>
             <li>Cocos Creator</li>
@@ -71,7 +68,7 @@
             <li>Game Design / Level Design</li>
           </ul>
 
-          <p style="margin-top:8px;">Unity Certified Professional: Programmer (2023–2026)</p>
+          <p style="margin-top:8px;" data-i18n="certCaption">Unity Certified Professional: Programmer (2023–2026)</p>
         </div>
       </div>
 
@@ -82,8 +79,12 @@
         </a>
       </p>
 
+      <!--Projects-->
+      <h2 style="text-align:center; margin-bottom:8px;" data-i18n="projectsHeading">Projetos</h2>
+      <p style="text-align:center; color: #aaaaaa; margin-bottom:18px;" data-i18n="projectsPreviewHint">Passe o mouse sobre um projeto para ver o preview.</p>
+
       <!-- PC/Console -->
-      <h3 style="text-align:center; margin: 16px 0 6px;">PC/Console</h3>
+      <h3 style="text-align:center; margin: 16px 0 6px;" data-i18n="pcConsoleTitle">PC/Console</h3>
       <div class="projects-grid fade-in">
         <a class="project" href="projects/unbinary.html">
           <img src="assets/projects/Unbinary/LogoArt.png" alt="Unbinary">
@@ -140,7 +141,7 @@
 
       <!-- WebGL Games (hidden until "Mostrar Mais") -->
       <div id="webgl-group" style="display:none;">
-        <h3 style="text-align:center; margin: 18px 0 6px;">WebGL Games</h3>
+        <h3 style="text-align:center; margin: 18px 0 6px;" data-i18n="webglTitle">WebGL Games</h3>
         <div class="projects-grid fade-in">
           <a class="project" href="projects/war.html">
             <img src="assets/projects/War/Screenshot_1.png" alt="War">
@@ -157,8 +158,8 @@
 
       <!-- Mobile (hidden until "Mostrar Mais") -->
       <div id="mobile-group" style="display:none;">
-        <h3 style="text-align:center; margin: 18px 0 6px;">Mobile</h3>
-        <div class="projects-grid fade-in">
+        <h3 style="text-align:center; margin: 18px 0 6px;" data-i18n="mobileTitle">Mobile</h3>
+      <div class="projects-grid fade-in">
           <a class="project" href="projects/aquabitz.html">
             <img src="assets/projects/Aquabitz/Screenshot_1.png" alt="Aquabitz">
             <div class="title-overlay"><div class="title-overlay-inner">Aquabitz</div></div>

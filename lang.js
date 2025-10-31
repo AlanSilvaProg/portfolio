@@ -18,6 +18,18 @@
       // Index
       projectsHeading: 'Projetos',
       projectsPreviewHint: 'Passe o mouse sobre um projeto para ver o preview.',
+      // About section
+      aboutIntroTitle: 'Introdução',
+      aboutIntroP1: 'Graduado em Game Design pela Universidade Anhembi Morumbi (São Paulo, Brasil), sou apaixonado por desenvolvimento de jogos desde 2014. Atuei em um amplo espectro de projetos — de mobile a PC/console, de títulos casuais a produções de maior escala.',
+      aboutIntroP2: 'Meu principal stack é Unity Engine com C#, onde concentro a maior parte da minha experiência profissional. Também tenho sólida experiência com JavaScript, Lua e C++, com uma afinidade especial por C++. Profissionalmente, minhas contribuições foram predominantemente em Unity e C#.',
+      aboutIntroP3: 'Trabalho com jogos desde meados de 2019, somando mais de 6 anos de experiência prática entregando gameplay, sistemas, ferramentas e experiências de usuário bem polidas.',
+      aboutExperienceTitle: 'Experiência',
+      skillsTitle: 'Habilidades',
+      certCaption: 'Profissional Certificado Unity: Programador (2023–2026)',
+      // Platform section titles
+      pcConsoleTitle: 'PC/Console',
+      webglTitle: 'Jogos WebGL',
+      mobileTitle: 'Mobile',
       // Generic sections
       appIcon: 'Ícone do App',
       appScreenshots: 'Screenshots do App',
@@ -60,6 +72,18 @@
       // Index
       projectsHeading: 'Projects',
       projectsPreviewHint: 'Hover a project to see the preview.',
+      // About section
+      aboutIntroTitle: 'Introduction',
+      aboutIntroP1: 'Graduated in Game Design from Anhembi Morumbi University (São Paulo, Brazil), I’m a game development enthusiast who has been building and studying games since 2014. I’ve worked across a wide spectrum of projects—from mobile to PC/console, from casual titles to larger-scale productions.',
+      aboutIntroP2: 'My primary stack is Unity Engine with C#, where I’ve focused most of my professional experience. I also have solid experience with JavaScript, Lua, and C++, with a special affinity for C++. Professionally, my contributions have predominantly been in Unity and C#.',
+      aboutIntroP3: 'I’ve been working in games since mid‑2019, with 6+ years of hands‑on experience delivering gameplay, systems, tools, and polished user experiences.',
+      aboutExperienceTitle: 'Experience',
+      skillsTitle: 'Skills',
+      certCaption: 'Unity Certified Professional: Programmer (2023–2026)',
+      // Platform section titles
+      pcConsoleTitle: 'PC/Console',
+      webglTitle: 'WebGL Games',
+      mobileTitle: 'Mobile',
       // Generic sections
       appIcon: 'App Icon',
       appScreenshots: 'App Screenshots',
