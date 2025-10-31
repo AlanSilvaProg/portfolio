@@ -6,6 +6,17 @@
   <title>Portfólio — Alan Silva</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="lang.js"></script>
+  <style>
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 18px 0 26px; align-items: start; }
+    .about-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 18px; }
+    .about-card h3 { margin: 0 0 8px; font-weight: 700; }
+    .about-card h4 { margin: 16px 0 8px; font-weight: 700; }
+    .about-card p { color: #cccccc; line-height: 1.6; }
+    .about-list { margin: 0; padding-left: 18px; }
+    .about-list li { color: #cccccc; line-height: 1.6; margin-bottom: 4px; }
+    .cert-badge { display:block; margin: 8px auto 22px; width: 180px; max-width: 60vw; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.35); transition: transform 180ms ease, box-shadow 180ms ease; }
+    .cert-badge:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.45); }
+  </style>
 </head>
 <body>
   <!-- language toggle (fixed) -->
@@ -20,6 +31,56 @@
     <section class="fade-in">
       <h2 style="text-align:center; margin-bottom:8px;" data-i18n="projectsHeading">Projetos</h2>
       <p style="text-align:center; color: #aaaaaa; margin-bottom:18px;" data-i18n="projectsPreviewHint">Passe o mouse sobre um projeto para ver o preview.</p>
+
+      <!-- About Me: Introduction & Experience -->
+      <div class="about-grid fade-in">
+        <div class="about-card">
+          <h3>Introduction</h3>
+          <p>
+            Graduated in Game Design from Anhembi Morumbi University (São Paulo, Brazil), I’m a game development enthusiast who has been building and studying games since 2014. I’ve worked across a wide spectrum of projects—from mobile to PC/console, from casual titles to larger-scale productions.
+          </p>
+          <p>
+            My primary stack is Unity Engine with C#, where I’ve focused most of my professional experience. I also have solid experience with JavaScript, Lua, and C++, with a special affinity for C++. Professionally, my contributions have predominantly been in Unity and C#.
+          </p>
+          <p>
+            I’ve been working in games since mid‑2019, with 6+ years of hands‑on experience delivering gameplay, systems, tools, and polished user experiences.
+          </p>
+        </div>
+        <div class="about-card">
+          <h3>Experience</h3>
+          <ul class="about-list">
+            <li>2019 — Unity Game Engineer — Arch Works (Intern)</li>
+            <li>2019–2020 — Unity Game Engineer — Eludica (Intern)</li>
+            <li>2020 — Unity Game Engineer — K‑Interativa</li>
+            <li>2021–2022 — Unity Game Engineer — Eludica</li>
+            <li>2021–2022 — Unity Game Engineer — EPRA Games</li>
+            <li>2022 — Unity App Engineer — Kids Company (Freelancer)</li>
+            <li>2023 — Unity Game Engineer — Afil Games (Freelancer)</li>
+            <li>2023–2025 — Unity Game Engineer — Aurecas (Freelancer)</li>
+            <li>2022 — Unity Game Engineer — Pipa Studios (Current)</li>
+          </ul>
+
+          <h4>Skills</h4>
+          <ul class="about-list">
+            <li>Unity Engine</li>
+            <li>Cocos Creator</li>
+            <li>Custom Engines</li>
+            <li>.NET C#, C++ — Advanced</li>
+            <li>PHP, Lua, JavaScript — Basic/Intermediate</li>
+            <li>Git and platforms like Plastic SCM</li>
+            <li>Game Design / Level Design</li>
+          </ul>
+
+          <p style="margin-top:8px;">Unity Certified Professional: Programmer (2023–2026)</p>
+        </div>
+      </div>
+
+      <!-- Certification Badge -->
+      <p style="text-align:center;">
+        <a href="https://www.credly.com/badges/572a1fe7-e41d-4cd3-9402-c6c8d7563bbc" target="_blank" rel="noopener noreferrer">
+          <img class="cert-badge fade-in" src="assets/certification-badges-professional-programmer-600x600-7c2f42.png" alt="Unity Certified Professional: Programmer badge">
+        </a>
+      </p>
 
       <!-- PC/Console -->
       <h3 style="text-align:center; margin: 16px 0 6px;">PC/Console</h3>
