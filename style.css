@@ -236,3 +236,10 @@ footer { opacity:0.7; font-size:0.95rem; margin-top:60px; }
   .lang-toggle { top:12px; right:12px; padding:7px 9px; font-size:16px; }
   .menu-toggle { top:12px; left:12px; padding:7px 9px; }
 }
+
+/* ===== Centered Skills Column ===== */
+.skills-center { max-width: 720px; margin: 0 auto 26px; }
+.skills-center .about-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 18px; }
+.skills-center .about-card h4 { margin: 0 0 8px; font-weight: 700; }
+.skills-center .about-list { margin: 0; padding-left: 18px; }
+.skills-center .about-list li { color: #cccccc; line-height: 1.6; margin-bottom: 4px; }
