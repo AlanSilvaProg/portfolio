@@ -169,7 +169,7 @@ main { max-width:1200px; margin:0 auto; padding:40px 20px; }
 .show-more:hover { background:#2b2b2b; }
 
 /* ===== Project page ===== */
-.project-page { text-align:center; padding:40px 20px; max-width:1000px; margin:0 auto; }
+.project-page { text-align:center; padding:40px 20px; max-width:900px; margin:0 auto; }
 .project-page h1 { font-size:2rem; margin-bottom:10px; }
 .project-page p { max-width:900px; margin:0 auto 28px; opacity:0.85; line-height:1.6; }
 
