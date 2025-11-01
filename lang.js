@@ -464,7 +464,6 @@
 (function(){
   const PROJECTS = [
     { title: 'Unbinary - Ludact', url: 'projects/unbinary.html' },
-    { title: 'Stickman Vs Zombies - Aurecas', url: 'projects/stickman-vs-zombies.html' },
     { title: 'Nebula Garden', url: 'projects/ng.html' },
     { title: 'Harbinger', url: 'projects/harbinger.html' },
     { title: 'Locomotiva5', url: 'projects/locomotiva5.html' },
@@ -473,6 +472,7 @@
     { title: 'Ziggy', url: 'projects/ziggy.html' },
     { title: 'War', url: 'projects/war.html' },
     { title: 'GameBanBanBan', url: 'projects/gamebanbanban.html' },
+    { title: 'Stickman Vs Zombies - Aurecas', url: 'projects/stickman-vs-zombies.html' },
     { title: 'Aquabitz', url: 'projects/aquabitz.html' },
     { title: 'IceRage', url: 'projects/icerage.html' },
     { title: 'Minute Bomb', url: 'projects/minutebomb.html' },
