@@ -15,6 +15,7 @@
       showLess: 'Mostrar Menos',
       footer: '© 2025 Alan Silva — Todos os direitos reservados.',
       back: '← Voltar',
+      linkedinTooltip: 'Ver perfil',
       // Index
       projectsHeading: 'Projetos',
       projectsPreviewHint: 'Passe o mouse sobre um projeto para ver o preview.',
@@ -78,6 +79,7 @@
       showLess: 'Show Less',
       footer: '© 2025 Alan Silva — All rights reserved.',
       back: '← Back',
+      linkedinTooltip: 'View profile',
       // Index
       projectsHeading: 'Projects',
       projectsPreviewHint: 'Hover over a project to see the preview.',
