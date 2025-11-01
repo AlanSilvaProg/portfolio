@@ -113,7 +113,7 @@
       gameplayFeatures: 'Gameplay Features',
       
       // Stickman vs Zombies project translations
-      stickmanTitle: 'Stickman vs Zombies',
+      stickmanTitle: 'Stickman vs Zombies - Aurecas',
       stickmanSub: 'Run from zombie attacks. Impressive Parkour moves: climb platforms and hang on high places!',
       stickmanHeading: 'Participation',
       stickmanDescription: 'Reduction of critical ANRs and crashes. Performance improvement, SDK updates, addition of ADS providers and intermediaries. Enhancement of Asset Bundle loading and unloading, implementation of Seasons system and dynamic content download.',
@@ -463,7 +463,8 @@
 // --- Global Hamburger Menu ---
 (function(){
   const PROJECTS = [
-    { title: 'Unbinary', url: 'projects/unbinary.html' },
+    { title: 'Unbinary - Ludact', url: 'projects/unbinary.html' },
+    { title: 'Stickman Vs Zombies - Aurecas', url: 'projects/stickman-vs-zombies.html' },
     { title: 'Nebula Garden', url: 'projects/ng.html' },
     { title: 'Harbinger', url: 'projects/harbinger.html' },
     { title: 'Locomotiva5', url: 'projects/locomotiva5.html' },
