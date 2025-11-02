@@ -16,6 +16,7 @@
       footer: '© 2025 Alan Silva — Todos os direitos reservados.',
       back: '← Voltar',
       linkedinTooltip: 'Ver perfil',
+      githubTooltip: 'Ver GitHub',
       // Index
       projectsHeading: 'Projetos',
       projectsPreviewHint: 'Passe o mouse sobre um projeto para ver o preview.',
@@ -80,6 +81,7 @@
       footer: '© 2025 Alan Silva — All rights reserved.',
       back: '← Back',
       linkedinTooltip: 'View profile',
+      githubTooltip: 'View GitHub',
       // Index
       projectsHeading: 'Projects',
       projectsPreviewHint: 'Hover over a project to see the preview.',
@@ -145,6 +147,11 @@
     document.querySelectorAll('[data-i18n]').forEach(e => {
       const key = e.getAttribute('data-i18n');
       if (key && t[key]) e.textContent = t[key];
+    });
+    // support title tooltips via data-i18n-title
+    document.querySelectorAll('[data-i18n-title]').forEach(e => {
+      const key = e.getAttribute('data-i18n-title');
+      if (key && t[key]) e.setAttribute('title', t[key]);
     });
     // show-more buttons
     document.querySelectorAll('.show-more').forEach(b => {

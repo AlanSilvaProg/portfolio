@@ -58,10 +58,34 @@ header p { font-size:1rem; opacity:0.75; }
   box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
-.linkedin-icon:hover {
-  background: rgba(10,102,194,0.8);
-  transform: scale(1.05);
-}
+ .linkedin-icon:hover {
+   background: rgba(10,102,194,0.8);
+   transform: scale(1.05);
+ }
+
+ /* GitHub icon */
+ .github-icon {
+   position: fixed;
+   top: 120px;
+   right: 18px;
+   z-index: 99999;
+   background: #121212;
+   border: 1px solid rgba(255,255,255,0.04);
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+ }
+ 
+ .github-icon:hover {
+   background: rgba(36,41,46,0.85);
+   transform: scale(1.05);
+ }
 
 /* ===== Hamburger Menu Toggle ===== */
 .menu-toggle {
