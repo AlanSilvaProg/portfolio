@@ -317,27 +317,46 @@
   }
 
   // --- show more logic (works without requiring project script) ---
-  const INITIAL_VISIBLE = 3;
+  const INITIAL_VISIBLE = 3; // valor legacy, não usado para cálculo por grid
   let showingAll = false;
   window.__SHOWING_ALL_PROJECTS = false;
 
+  // Calcula número de colunas visíveis atuais do grid baseado no CSS
+  function getVisibleColumns(grid){
+    const style = getComputedStyle(grid);
+    const gapX = parseFloat(style.columnGap || style.gap) || 24;
+    const w = grid.clientWidth;
+    // mede a largura real do primeiro card para refletir max-width:360px
+    const firstItem = grid.querySelector(':scope > .project');
+    let itemW = firstItem ? firstItem.offsetWidth : 300;
+    // segurança: se 0 (layout não resolvido ainda), usa 360px como aproximação
+    if (!itemW || itemW < 1) itemW = 360;
+    // calcula colunas que cabem de fato
+    const cols = Math.max(1, Math.floor((w + gapX) / (itemW + gapX)));
+    return cols;
+  }
+
   function updateProjectsVisibility() {
-    const projects = Array.from(document.querySelectorAll('.project'));
-    projects.forEach((p, i) => {
-      if (!showingAll && i >= INITIAL_VISIBLE) {
-        p.classList.add('hidden');
-        p.style.pointerEvents = 'none';
-      } else {
-        p.classList.remove('hidden');
-        p.style.pointerEvents = '';
-      }
+    const grids = Array.from(document.querySelectorAll('.projects-grid'));
+    grids.forEach(grid => {
+      const items = Array.from(grid.querySelectorAll(':scope > .project'));
+      const visibleCount = showingAll ? items.length : getVisibleColumns(grid);
+      items.forEach((p, i) => {
+        if (!showingAll && i >= visibleCount) {
+          p.classList.add('hidden');
+          p.style.pointerEvents = 'none';
+        } else {
+          p.classList.remove('hidden');
+          p.style.pointerEvents = '';
+        }
+      });
     });
-    // Also control optional groups visibility on index
+    // Também controla visibilidade dos grupos opcionais no index
     const webgl = document.getElementById('webgl-group');
     const mobile = document.getElementById('mobile-group');
     if (webgl) webgl.style.display = showingAll ? 'block' : 'none';
     if (mobile) mobile.style.display = showingAll ? 'block' : 'none';
-    // update button label
+    // atualiza rótulo do botão
     applyTranslations(showingAll);
     window.__SHOWING_ALL_PROJECTS = showingAll;
   }
@@ -702,6 +721,14 @@
     initProjectHoverGifs();
     initShowMoreButtons();
     updateProjectsVisibility();
+    // Atualiza dinamicamente em resize (debounced)
+    let _resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(_resizeTimer);
+      _resizeTimer = setTimeout(() => {
+        updateProjectsVisibility();
+      }, 150);
+    });
     if (window.initMenuPanel) window.initMenuPanel();
     // If landing on index with a hash to optional groups, auto-expand and scroll
     const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';

@@ -13,9 +13,21 @@ header, footer { text-align:center; padding:40px 20px; position:relative; }
 header h1 { font-size:2.2rem; margin-bottom:8px; }
 header p { font-size:1rem; opacity:0.75; }
 
+/* ===== Certification Badge ===== */
+/* Aumenta em 50% a exibição do certificado Unity */
+img.cert-badge {
+  display: inline-block;
+  transform: scale(1.5);
+  transform-origin: center;
+  will-change: transform;
+}
+
 /* ===== Title Spacing ===== */
 .section-title { text-align:center; margin:28px 0 10px; }
 .subsection-title { text-align:center; margin:18px 0 8px; }
+
+/* Aumenta o título "Projetos" em 75% (h2 default ~2em → 3.5em) */
+#projects.section-title { font-size: 3.5em; }
 
 /* Lang toggle (fix) */
 .lang-toggle {
@@ -207,7 +219,7 @@ main { max-width:1200px; margin:0 auto; padding:40px 20px; }
 .project:hover .title-overlay { opacity:0; }
 
 /* hidden (for "mostrar mais") */
-.project.hidden { display:block; opacity:0; height:0; pointer-events:none; }
+.project.hidden { display:none !important; opacity:0; height:0; pointer-events:none; }
 
 /* show-more button */
 .show-more {
@@ -322,7 +334,7 @@ footer { opacity:0.7; font-size:0.95rem; margin-top:60px; }
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
   opacity: 0; transition: opacity .8s ease;
-  filter: brightness(0.5) saturate(1.0);
+  filter: brightness(0.75) saturate(1.0);
   will-change: opacity;
 }
 .page-top-bg-rotator::after {
