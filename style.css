@@ -298,12 +298,12 @@ main { max-width:1200px; margin:0 auto; padding:40px 20px; }
 .lightbox-section { color:#fff; margin: 6px 0 12px; font-weight:700; font-size:1rem; opacity:0.9; }
 
 /* ===== Footer ===== */
-footer { opacity:0.7; font-size:0.95rem; margin-top:60px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; }
+footer { opacity:0.7; font-size:0.95rem; margin-top:0; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; background: rgba(255,255,255,0.06); }
 
 /* ===== Contact Section ===== */
 .contact-band {
   background: rgba(255,255,255,0.06);
-  padding: 28px 0;
+  padding: 20px 0;
   margin-top: 40px;
 }
 .contact-section {
