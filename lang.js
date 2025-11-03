@@ -516,6 +516,25 @@
         'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-1-1e969b.gif',
         'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-2-ce4e95.gif',
         'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-9db702.gif'
+      ],
+      'editora-salve-a-piramede.html': [
+        'assets/projects/EditoraBrasil/SalveAPiramede/ezgif.com-optimize.gif',
+        'assets/projects/EditoraBrasil/SalveAPiramede/ezgif.com-video-to-gif.gif',
+        'assets/projects/EditoraBrasil/SalveAPiramede/ezgif.com-video-to-gif (1).gif'
+      ],
+      'editora-show-do-monstro.html': [
+        'assets/projects/EditoraBrasil/ShowDoMonstrֶo/ezgif.com-optimize.gif',
+        'assets/projects/EditoraBrasil/ShowDoMonstrֶo/ezgif.com-video-to-gif.gif'
+      ],
+      'editora-zumbis-desorganizados.html': [
+        'assets/projects/EditoraBrasil/ZumbisDesorganizados/ezgif.com-optimize.gif',
+        'assets/projects/EditoraBrasil/ZumbisDesorganizados/ezgif.com-optimize (1).gif',
+        'assets/projects/EditoraBrasil/ZumbisDesorganizados/ezgif.com-optimize (2).gif',
+        'assets/projects/EditoraBrasil/ZumbisDesorganizados/ezgif.com-optimize (3).gif',
+        'assets/projects/EditoraBrasil/ZumbisDesorganizados/ezgif.com-video-to-gif.gif'
+      ],
+      'jujus-kitchen.html': [
+        "assets/projects/Juju'sKitchen/Gifs/ezgif.com-gif-maker.gif"
       ]
     };
 
@@ -540,6 +559,40 @@
         'assets/projects/MinuteBomb/Screenshots/Screenshot_6.png',
         'assets/projects/MinuteBomb/Screenshots/Screenshot_7.png',
         'assets/projects/MinuteBomb/Screenshots/Screenshot_8.png'
+      ],
+      'stickman-vs-zombies.html': [
+        'assets/projects/StickmanVsZombie/com.aurecas.stickmanzombieshooter-screenshots-0.png',
+        'assets/projects/StickmanVsZombie/com.aurecas.stickmanzombieshooter-screenshots-1.png',
+        'assets/projects/StickmanVsZombie/com.aurecas.stickmanzombieshooter-screenshots-2.png',
+        'assets/projects/StickmanVsZombie/com.aurecas.stickmanzombieshooter-screenshots-4.png',
+        'assets/projects/StickmanVsZombie/stickman-vs-zombies-31366-4.jpg',
+        'assets/projects/StickmanVsZombie/stickman-vs-zombies-31366-5.jpg',
+        'assets/projects/StickmanVsZombie/stickman-vs-zombies-31366-9.jpg',
+        'assets/projects/StickmanVsZombie/stickman-vs-zombies-31366-10.jpg',
+        'assets/projects/StickmanVsZombie/hq720.jpg',
+        'assets/projects/StickmanVsZombie/maxresdefault.jpg'
+      ],
+      'jujus-kitchen.html': [
+        "assets/projects/Juju'sKitchen/Screenshots/Screenshot_1.png",
+        "assets/projects/Juju'sKitchen/Screenshots/Screenshot_2.png",
+        "assets/projects/Juju'sKitchen/Screenshots/Screenshot_3.png",
+        "assets/projects/Juju'sKitchen/Screenshots/Screenshot_4.png",
+        "assets/projects/Juju'sKitchen/Screenshots/Screenshot_5.png",
+        "assets/projects/Juju'sKitchen/Screenshots/Screenshot_6.png",
+        "assets/projects/Juju'sKitchen/Screenshots/Screenshot_7.png",
+        "assets/projects/Juju'sKitchen/Screenshots/Screenshot_8.png"
+      ],
+      'tanamesa.html': [
+        'assets/projects/Ta Na Mesa/1.jpg',
+        'assets/projects/Ta Na Mesa/2.jpg',
+        'assets/projects/Ta Na Mesa/3.jpg',
+        'assets/projects/Ta Na Mesa/4.jpg',
+        'assets/projects/Ta Na Mesa/5.jpg',
+        'assets/projects/Ta Na Mesa/6.jpg',
+        'assets/projects/Ta Na Mesa/7.jpg',
+        'assets/projects/Ta Na Mesa/8.jpg',
+        'assets/projects/Ta Na Mesa/9.jpg',
+        'assets/projects/Ta Na Mesa/10.jpg'
       ]
     };
 
