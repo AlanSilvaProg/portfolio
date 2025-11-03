@@ -314,12 +314,90 @@
     });
   }
 
+  // --- project hover gif randomizer ---
+  function initProjectHoverGifs() {
+    const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
+    if (!onIndex) return;
+    
+    // Map projects to their available GIFs
+    const projectGifs = {
+      'repair-the-kraken.html': [
+        'assets/projects/RepairTheKraken/gifs/w1000-1239880CwGrG5Ix.gif',
+        'assets/projects/RepairTheKraken/gifs/w1000-12398802ZEY1C19.gif',
+        'assets/projects/RepairTheKraken/gifs/w1000-1239880OwKuOURJ.gif',
+        'assets/projects/RepairTheKraken/gifs/w1000-1239880hOw0oeUQ.gif',
+        'assets/projects/RepairTheKraken/gifs/w1000-1239880ka5vl6si.gif',
+        'assets/projects/RepairTheKraken/gifs/w1000-1239880n13lXFv9.gif',
+        'assets/projects/RepairTheKraken/gifs/w1000-1239880w289g7VE.gif'
+      ],
+      'locomotiva5.html': [
+        'assets/projects/Locomotiva5/gifs/w1000-12398800dPagLnB.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-12398804bKBl9zI.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-12398809SdYe69O.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-1239880AXuDcO18.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-1239880EDTj51sl.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-1239880M5C4ZhiN.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-1239880Mf91oYx6.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-1239880NGc9oXEX.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-1239880NRWTREV6.gif',
+        'assets/projects/Locomotiva5/gifs/w1000-1239880OBaykSjO.gif'
+      ],
+      'ziggy.html': [
+        'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-1-3b077e.gif',
+        'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-2-2b07de.gif',
+        'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-3-cbf0df.gif',
+        'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-4-980be6.gif',
+        'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-5-25c297.gif',
+        'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-6-5c4ab3.gif',
+        'assets/projects/Ziggy/gif/w1000-gif-3-walking-1bfea3.gif',
+        'assets/projects/Ziggy/gif/w1000-gif1resized-walljump--1bfea3.gif'
+      ]
+    };
+
+    // Setup hover effects for projects with GIFs
+    document.querySelectorAll('.project').forEach(projectLink => {
+      const href = projectLink.getAttribute('href');
+      if (!href) return;
+      
+      const projectFile = href.replace('projects/', '');
+      const gifs = projectGifs[projectFile];
+      if (!gifs || !gifs.length) return;
+      
+      const img = projectLink.querySelector('img');
+      if (!img) return;
+      
+      const originalSrc = img.src;
+      let hoverInterval = null;
+      
+      projectLink.addEventListener('mouseenter', () => {
+        // Start randomizing GIFs every 800ms
+        hoverInterval = setInterval(() => {
+          const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+          img.src = randomGif;
+        }, 800);
+        // Set first random GIF immediately
+        const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+        img.src = randomGif;
+      });
+      
+      projectLink.addEventListener('mouseleave', () => {
+        // Stop randomizing and restore original
+        if (hoverInterval) {
+          clearInterval(hoverInterval);
+          hoverInterval = null;
+        }
+        img.src = originalSrc;
+      });
+    });
+  }
+
   // --- init (safe DOM ready) ---
   function init() {
     attachLangToggleHandlers();
     applyTranslations(showingAll);
     observeFadeIns();
     initTopBgRotator();
+    initProjectHoverGifs();
     initShowMoreButtons();
     updateProjectsVisibility();
     if (window.initMenuPanel) window.initMenuPanel();
