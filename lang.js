@@ -358,6 +358,49 @@
     });
   }
 
+  // --- GIF duration calculator ---
+  function getGifDuration(gifUrl) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = function() {
+        // Create a canvas to analyze the GIF
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = this.width;
+        canvas.height = this.height;
+        
+        // For GIFs, we'll estimate duration based on file size and complexity
+        // This is an approximation since we can't easily get exact frame count in browser
+        fetch(gifUrl, { method: 'HEAD' })
+          .then(response => {
+            const contentLength = response.headers.get('content-length');
+            const fileSizeKB = contentLength ? parseInt(contentLength) / 1024 : 500; // default 500KB
+            
+            // Estimate duration based on file size (rough approximation)
+            // Smaller GIFs tend to be shorter, larger ones longer
+            let estimatedDuration;
+            if (fileSizeKB < 200) {
+              estimatedDuration = 1500; // 1.5 seconds for small GIFs
+            } else if (fileSizeKB < 500) {
+              estimatedDuration = 2500; // 2.5 seconds for medium GIFs
+            } else if (fileSizeKB < 1000) {
+              estimatedDuration = 4000; // 4 seconds for large GIFs
+            } else {
+              estimatedDuration = 6000; // 6 seconds for very large GIFs
+            }
+            
+            resolve(estimatedDuration);
+          })
+          .catch(() => {
+            // Fallback to default duration if fetch fails
+            resolve(3000); // 3 seconds default
+          });
+      };
+      img.onerror = () => resolve(3000); // 3 seconds default on error
+      img.src = gifUrl;
+    });
+  }
+
   // --- project hover gif randomizer ---
   function initProjectHoverGifs() {
     const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
@@ -520,16 +563,33 @@
       
       // Prefer GIFs over screenshots
       const mediaArray = gifs && gifs.length ? gifs : screenshots;
+      const isUsingGifs = gifs && gifs.length > 0;
       
-      projectLink.addEventListener('mouseenter', () => {
-        // Start randomizing media every 800ms
-        hoverInterval = setInterval(() => {
-          const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-          img.src = randomMedia;
-        }, 800);
+      projectLink.addEventListener('mouseenter', async () => {
         // Set first random media immediately
         const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
         img.src = randomMedia;
+        
+        // Calculate interval based on media type
+        let interval = 800; // default for screenshots
+        
+        if (isUsingGifs) {
+          try {
+            // Get duration of the current GIF and use 40% of it
+            const gifDuration = await getGifDuration(randomMedia);
+            interval = Math.max(600, Math.floor(gifDuration * 0.4)); // minimum 600ms, 40% of GIF duration
+            console.log(`🎬 GIF duration: ${gifDuration}ms, hover interval: ${interval}ms`);
+          } catch (error) {
+            console.warn('Failed to get GIF duration, using default interval:', error);
+            interval = 1200; // fallback for GIFs
+          }
+        }
+        
+        // Start randomizing media with calculated interval
+        hoverInterval = setInterval(() => {
+          const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
+          img.src = randomMedia;
+        }, interval);
       });
       
       projectLink.addEventListener('mouseleave', () => {
