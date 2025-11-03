@@ -185,6 +185,13 @@ main { max-width:1200px; margin:0 auto; padding:40px 20px; }
   transition: transform .45s ease, filter .45s ease;
 }
 
+/* Ajuste para imagens em formato portrait */
+.project img.portrait {
+  object-fit: contain;
+  background-color: #0a0a0a;
+  padding: 8px 0;
+}
+
 .project .title-overlay {
   position:absolute;
   left:0; right:0; bottom:0;

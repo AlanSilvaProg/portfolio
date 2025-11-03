@@ -400,6 +400,25 @@
       img.src = gifUrl;
     });
   }
+  
+  // Function to check if an image is portrait and apply appropriate class
+  function checkIfPortrait(img) {
+    if (img.complete) {
+      if (img.naturalHeight > img.naturalWidth) {
+        img.classList.add('portrait');
+      } else {
+        img.classList.remove('portrait');
+      }
+    } else {
+      img.onload = () => {
+        if (img.naturalHeight > img.naturalWidth) {
+          img.classList.add('portrait');
+        } else {
+          img.classList.remove('portrait');
+        }
+      };
+    }
+  }
 
   // --- project hover gif randomizer ---
   function initProjectHoverGifs() {
@@ -611,6 +630,9 @@
       const img = projectLink.querySelector('img');
       if (!img) return;
       
+      // Verifica se a imagem inicial é portrait
+      checkIfPortrait(img);
+      
       const originalSrc = img.src;
       let hoverInterval = null;
       
@@ -622,6 +644,11 @@
         // Set first random media immediately
         const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
         img.src = randomMedia;
+        
+        // Verifica se a imagem é portrait e aplica a classe apropriada
+        setTimeout(() => {
+          checkIfPortrait(img);
+        }, 100);
         
         // Calculate interval based on media type
         let interval = 800; // default for screenshots
@@ -642,6 +669,11 @@
         hoverInterval = setInterval(() => {
           const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
           img.src = randomMedia;
+          
+          // Verifica se a nova imagem é portrait
+          setTimeout(() => {
+            checkIfPortrait(img);
+          }, 100);
         }, interval);
       });
       
