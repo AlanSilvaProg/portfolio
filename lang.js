@@ -32,6 +32,11 @@
       pcConsoleTitle: 'PC/Console',
       webglTitle: 'Jogos WebGL',
       mobileTitle: 'Mobile',
+      // Contact section
+      contactHeading: 'Entre em contato',
+      contactSub: 'Estou disponível para oportunidades e parcerias. Vamos conversar!',
+      contactEmailLabel: 'Enviar e-mail',
+      contactLinkedInLabel: 'LinkedIn',
       // Generic sections
       appIcon: 'Ícone do App',
       appScreenshots: 'Screenshots do App',
@@ -97,6 +102,11 @@
       pcConsoleTitle: 'PC/Console',
       webglTitle: 'WebGL Games',
       mobileTitle: 'Mobile',
+      // Contact section
+      contactHeading: 'Get in touch',
+      contactSub: 'I’m available for opportunities and collaborations. Let’s talk!',
+      contactEmailLabel: 'Send email',
+      contactLinkedInLabel: 'LinkedIn',
       // Generic sections
       appIcon: 'App Icon',
       appScreenshots: 'App Screenshots',
