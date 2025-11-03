@@ -301,3 +301,27 @@ footer { opacity:0.7; font-size:0.95rem; margin-top:60px; }
 .skills-center .about-card h4 { margin: 0 0 8px; font-weight: 700; }
 .skills-center .about-list { margin: 0; padding-left: 18px; }
 .skills-center .about-list li { color: #cccccc; line-height: 1.6; margin-bottom: 4px; }
+
+/* ===== Page Top Background GIF Rotator ===== */
+.page-top-bg-rotator {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.page-top-bg-rotator .bg-frame {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity .8s ease;
+  filter: brightness(0.5) saturate(1.0);
+  will-change: opacity;
+}
+.page-top-bg-rotator::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.92) 100%);
+}
+/* ensure content stacks above the fixed bg */
+header, main { position: relative; z-index: 1; }

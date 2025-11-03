@@ -208,6 +208,70 @@
     });
   }
 
+  // --- Page top background GIF rotator (fixed at top) ---
+  function initTopBgRotator() {
+    // only on index/home
+    const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
+    if (!onIndex) return;
+    console.log('🎬 Iniciando rotador de GIFs de fundo...');
+    const rot = document.createElement('div');
+    rot.className = 'page-top-bg-rotator';
+    rot.innerHTML = '<div class="bg-frame"></div><div class="bg-frame"></div>';
+    // insert as first child of body so it sits behind header/home
+    document.body.insertBefore(rot, document.body.firstChild);
+    const frames = rot.querySelectorAll('.bg-frame');
+    const gifs = [
+      // Repair The Kraken — confirmed in index and project page
+      'assets/projects/RepairTheKraken/gifs/w1000-1239880CwGrG5Ix.gif',
+      'assets/projects/RepairTheKraken/gifs/w1000-12398802ZEY1C19.gif',
+      'assets/projects/RepairTheKraken/gifs/w1000-1239880OwKuOURJ.gif',
+      'assets/projects/RepairTheKraken/gifs/w1000-1239880hOw0oeUQ.gif',
+      'assets/projects/RepairTheKraken/gifs/w1000-1239880ka5vl6si.gif',
+      'assets/projects/RepairTheKraken/gifs/w1000-1239880n13lXFv9.gif',
+      'assets/projects/RepairTheKraken/gifs/w1000-1239880w289g7VE.gif',
+      // Locomotiva5 — multiple GIFs present
+      'assets/projects/Locomotiva5/gifs/w1000-12398800dPagLnB.gif',
+      'assets/projects/Locomotiva5/gifs/w1000-12398804bKBl9zI.gif',
+      'assets/projects/Locomotiva5/gifs/w1000-12398809SdYe69O.gif',
+      // Ziggy — confirmed GIFs (note: folder is 'gif' not 'gifs')
+      'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-1-3b077e.gif',
+      'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-4-980be6.gif',
+      'assets/projects/Ziggy/gif/w1000-gif-3-walking-1bfea3.gif'
+    ];
+    if (!gifs.length) return;
+    console.log(`🎬 ${gifs.length} GIFs carregados para rotação`);
+    let current = 0;
+    const pick = () => gifs[Math.floor(Math.random() * gifs.length)];
+    const setFrame = (el, url) => { 
+      el.style.backgroundImage = `url('${url}')`;
+      console.log(`🖼️ Definindo frame: ${url}`);
+    };
+    setFrame(frames[0], pick());
+    setFrame(frames[1], pick());
+    frames[0].style.opacity = '1';
+    frames[1].style.opacity = '0';
+    console.log('🎬 Rotador inicializado com sucesso!');
+    function next(){
+      const prev = current;
+      const nxt = 1 - current;
+      setFrame(frames[nxt], pick());
+      frames[nxt].style.opacity = '1';
+      frames[prev].style.opacity = '0';
+      current = nxt;
+    }
+    const timer = setInterval(next, 8000);
+    // fade based on scroll position
+    const threshold = 220;
+    function onScroll(){
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const opacity = Math.max(0, 1 - y / threshold);
+      rot.style.opacity = String(opacity);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.__topBgRotator = { next, stop: () => clearInterval(timer) };
+  }
+
   // --- show more logic (works without requiring project script) ---
   const INITIAL_VISIBLE = 3;
   let showingAll = false;
@@ -255,6 +319,7 @@
     attachLangToggleHandlers();
     applyTranslations(showingAll);
     observeFadeIns();
+    initTopBgRotator();
     initShowMoreButtons();
     updateProjectsVisibility();
     if (window.initMenuPanel) window.initMenuPanel();
