@@ -684,6 +684,11 @@
           hoverInterval = null;
         }
         img.src = originalSrc;
+        
+        // Verifica se a imagem original é portrait
+        setTimeout(() => {
+          checkIfPortrait(img);
+        }, 100);
       });
     });
   }
