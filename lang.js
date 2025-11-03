@@ -233,10 +233,54 @@
       'assets/projects/Locomotiva5/gifs/w1000-12398800dPagLnB.gif',
       'assets/projects/Locomotiva5/gifs/w1000-12398804bKBl9zI.gif',
       'assets/projects/Locomotiva5/gifs/w1000-12398809SdYe69O.gif',
+      'assets/projects/Locomotiva5/gifs/w1000-1239880AXuDcO18.gif',
+      'assets/projects/Locomotiva5/gifs/w1000-1239880EDTj51sl.gif',
+      'assets/projects/Locomotiva5/gifs/w1000-1239880M5C4ZhiN.gif',
       // Ziggy — confirmed GIFs (note: folder is 'gif' not 'gifs')
       'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-1-3b077e.gif',
       'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-4-980be6.gif',
-      'assets/projects/Ziggy/gif/w1000-gif-3-walking-1bfea3.gif'
+      'assets/projects/Ziggy/gif/w1000-gif-3-walking-1bfea3.gif',
+      'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-2-2b07de.gif',
+      'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-5-25c297.gif',
+      // Unbinary — multiple GIFs available
+      'assets/projects/Unbinary/Gif/Inventory.gif',
+      'assets/projects/Unbinary/Gif/RecognizeGreen.gif',
+      'assets/projects/Unbinary/Gif/YellowBot.gif',
+      'assets/projects/Unbinary/Gif/ezgif.com-gif-maker.gif',
+      'assets/projects/Unbinary/Gif/greenBattery.gif',
+      // NG (Nebula Garden) — multiple GIFs available
+      'assets/projects/NG/Gifs/CaveCollectGIF.gif',
+      'assets/projects/NG/Gifs/FirstCicleGIF.gif',
+      'assets/projects/NG/Gifs/FirstPlantGIF.gif',
+      'assets/projects/NG/Gifs/InventoryGIF.gif',
+      'assets/projects/NG/Gifs/MenuGIF.gif',
+      'assets/projects/NG/Gifs/ConstructionGIF.gif',
+      // Harbinger — multiple GIFs available
+      'assets/projects/Harbinger/APOLO.gif',
+      'assets/projects/Harbinger/Cerberus.gif',
+      'assets/projects/Harbinger/Enemy_Dialogo_Death.gif',
+      'assets/projects/Harbinger/Scan Gif.gif',
+      // War — multiple GIFs available
+      'assets/projects/War/ezgif.com-gif-maker.gif',
+      'assets/projects/War/ezgif.com-gif-maker (2).gif',
+      'assets/projects/War/ezgif.com-gif-maker (4).gif',
+      // GameBanBanBan — multiple GIFs available
+      'assets/projects/GameBanBanBan/gifs/w1000-1239880A3PGOPQ6.gif',
+      'assets/projects/GameBanBanBan/gifs/w1000-1239880BfZa78KX.gif',
+      'assets/projects/GameBanBanBan/gifs/w1000-1239880U5xo96An.gif',
+      'assets/projects/GameBanBanBan/gifs/w1000-1239880X18R9Rfl.gif',
+      // Aquabitz — GIFs available
+      'assets/projects/Aquabitz/ezgif.com-video-to-gif.gif',
+      'assets/projects/Aquabitz/ezgif.com-video-to-gif (1).gif',
+      // IceRage — multiple GIFs available
+      'assets/projects/IceRage/Gif\'s/Bear.gif',
+      'assets/projects/IceRage/Gif\'s/Dragon1.gif',
+      'assets/projects/IceRage/Gif\'s/Enemies.gif',
+      'assets/projects/IceRage/Gif\'s/Yeti.gif',
+      // Sokolab — multiple GIFs available
+      'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-1-1e969b.gif',
+      'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-2-ce4e95.gif',
+      'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-9db702.gif'
     ];
     if (!gifs.length) return;
     console.log(`🎬 ${gifs.length} GIFs carregados para rotação`);
@@ -351,17 +395,122 @@
         'assets/projects/Ziggy/gif/w1000-ezgifcom-video-to-gif-6-5c4ab3.gif',
         'assets/projects/Ziggy/gif/w1000-gif-3-walking-1bfea3.gif',
         'assets/projects/Ziggy/gif/w1000-gif1resized-walljump--1bfea3.gif'
+      ],
+      'unbinary.html': [
+        'assets/projects/Unbinary/Gif/Inventory.gif',
+        'assets/projects/Unbinary/Gif/RecognizeGreen.gif',
+        'assets/projects/Unbinary/Gif/YellowBot.gif',
+        'assets/projects/Unbinary/Gif/ezgif.com-gif-maker (1).gif',
+        'assets/projects/Unbinary/Gif/ezgif.com-gif-maker (2).gif',
+        'assets/projects/Unbinary/Gif/ezgif.com-gif-maker (3).gif',
+        'assets/projects/Unbinary/Gif/ezgif.com-gif-maker (4).gif',
+        'assets/projects/Unbinary/Gif/ezgif.com-gif-maker (5).gif',
+        'assets/projects/Unbinary/Gif/ezgif.com-gif-maker.gif',
+        'assets/projects/Unbinary/Gif/greenBattery.gif'
+      ],
+      'ng.html': [
+        'assets/projects/NG/Gifs/CaveCollectGIF.gif',
+        'assets/projects/NG/Gifs/CaveDeathGif.gif',
+        'assets/projects/NG/Gifs/CaveGoGIF.gif',
+        'assets/projects/NG/Gifs/CleanGif.gif',
+        'assets/projects/NG/Gifs/ColmeiaGIF.gif',
+        'assets/projects/NG/Gifs/ConstructionGIF.gif',
+        'assets/projects/NG/Gifs/CustomSceneGif.gif',
+        'assets/projects/NG/Gifs/DestroyConstructionGIF.gif',
+        'assets/projects/NG/Gifs/DialogueGIF.gif',
+        'assets/projects/NG/Gifs/FirstCicleGIF.gif',
+        'assets/projects/NG/Gifs/FirstCollectGIF.gif',
+        'assets/projects/NG/Gifs/FirstPlantGIF.gif',
+        'assets/projects/NG/Gifs/FirstTuto.gif',
+        'assets/projects/NG/Gifs/InventoryGIF.gif',
+        'assets/projects/NG/Gifs/MenuGIF.gif',
+        'assets/projects/NG/Gifs/MutantCollectGIF.gif',
+        'assets/projects/NG/Gifs/SellBoxGIF.gif',
+        'assets/projects/NG/Gifs/SellerManGIF.gif'
+      ],
+      'harbinger.html': [
+        'assets/projects/Harbinger/APOLO.gif',
+        'assets/projects/Harbinger/Cerberus.gif',
+        'assets/projects/Harbinger/Creditos Gif.gif',
+        'assets/projects/Harbinger/Enemy_Dialogo_Death.gif',
+        'assets/projects/Harbinger/Gif inimigo 1.gif',
+        'assets/projects/Harbinger/Scan Gif.gif',
+        'assets/projects/Harbinger/TimeWarp_Death.gif'
+      ],
+      'war.html': [
+        'assets/projects/War/ezgif.com-gif-maker (1).gif',
+        'assets/projects/War/ezgif.com-gif-maker (2).gif',
+        'assets/projects/War/ezgif.com-gif-maker (3).gif',
+        'assets/projects/War/ezgif.com-gif-maker (4).gif',
+        'assets/projects/War/ezgif.com-gif-maker (5).gif',
+        'assets/projects/War/ezgif.com-gif-maker (6).gif',
+        'assets/projects/War/ezgif.com-gif-maker.gif'
+      ],
+      'gamebanbanban.html': [
+        'assets/projects/GameBanBanBan/gifs/w1000-1239880A3PGOPQ6.gif',
+        'assets/projects/GameBanBanBan/gifs/w1000-1239880BfZa78KX.gif',
+        'assets/projects/GameBanBanBan/gifs/w1000-1239880IfXQKy7N.gif',
+        'assets/projects/GameBanBanBan/gifs/w1000-1239880U5xo96An.gif',
+        'assets/projects/GameBanBanBan/gifs/w1000-1239880Vtq1Juth.gif',
+        'assets/projects/GameBanBanBan/gifs/w1000-1239880X18R9Rfl.gif',
+        'assets/projects/GameBanBanBan/gifs/w1000-1239880elN2AjDA.gif',
+        'assets/projects/GameBanBanBan/gifs/w1000-1239880kcDftXLN.gif'
+      ],
+      'aquabitz.html': [
+        'assets/projects/Aquabitz/ezgif.com-video-to-gif (1).gif',
+        'assets/projects/Aquabitz/ezgif.com-video-to-gif (2).gif',
+        'assets/projects/Aquabitz/ezgif.com-video-to-gif.gif'
+      ],
+      'icerage.html': [
+        'assets/projects/IceRage/Gif\'s/Bear.gif',
+        'assets/projects/IceRage/Gif\'s/Dragon1.gif',
+        'assets/projects/IceRage/Gif\'s/Dragon2.gif',
+        'assets/projects/IceRage/Gif\'s/Enemies.gif',
+        'assets/projects/IceRage/Gif\'s/GreenShark.gif',
+        'assets/projects/IceRage/Gif\'s/Yeti.gif'
+      ],
+      'sokolab.html': [
+        'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-1-1e969b.gif',
+        'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-2-ce4e95.gif',
+        'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-9db702.gif'
       ]
     };
 
-    // Setup hover effects for projects with GIFs
+    // Map projects to their available screenshots (for projects without GIFs)
+    const projectScreenshots = {
+      'fill-the-bus.html': [
+        'assets/projects/Fill The Bus/screenshots/w1000-unnamed-1-48458e.png',
+        'assets/projects/Fill The Bus/screenshots/w1000-unnamed-2-83e556.png',
+        'assets/projects/Fill The Bus/screenshots/w1000-unnamed-3-a30962.png',
+        'assets/projects/Fill The Bus/screenshots/w1000-unnamed-4-af1794.png',
+        'assets/projects/Fill The Bus/screenshots/w1000-unnamed-5-07dd92.png',
+        'assets/projects/Fill The Bus/screenshots/w1000-unnamed-6-9a3cfc.png',
+        'assets/projects/Fill The Bus/screenshots/w1000-unnamed-7-a1ec00.png',
+        'assets/projects/Fill The Bus/screenshots/w1000-unnamed-e1404f.png'
+      ],
+      'minutebomb.html': [
+        'assets/projects/MinuteBomb/Screenshots/Screenshot_1.png',
+        'assets/projects/MinuteBomb/Screenshots/Screenshot_2.png',
+        'assets/projects/MinuteBomb/Screenshots/Screenshot_3.png',
+        'assets/projects/MinuteBomb/Screenshots/Screenshot_4.png',
+        'assets/projects/MinuteBomb/Screenshots/Screenshot_5.png',
+        'assets/projects/MinuteBomb/Screenshots/Screenshot_6.png',
+        'assets/projects/MinuteBomb/Screenshots/Screenshot_7.png',
+        'assets/projects/MinuteBomb/Screenshots/Screenshot_8.png'
+      ]
+    };
+
+    // Setup hover effects for projects
     document.querySelectorAll('.project').forEach(projectLink => {
       const href = projectLink.getAttribute('href');
       if (!href) return;
       
       const projectFile = href.replace('projects/', '');
       const gifs = projectGifs[projectFile];
-      if (!gifs || !gifs.length) return;
+      const screenshots = projectScreenshots[projectFile];
+      
+      // Skip if no media available
+      if ((!gifs || !gifs.length) && (!screenshots || !screenshots.length)) return;
       
       const img = projectLink.querySelector('img');
       if (!img) return;
@@ -369,15 +518,18 @@
       const originalSrc = img.src;
       let hoverInterval = null;
       
+      // Prefer GIFs over screenshots
+      const mediaArray = gifs && gifs.length ? gifs : screenshots;
+      
       projectLink.addEventListener('mouseenter', () => {
-        // Start randomizing GIFs every 800ms
+        // Start randomizing media every 800ms
         hoverInterval = setInterval(() => {
-          const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
-          img.src = randomGif;
+          const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
+          img.src = randomMedia;
         }, 800);
-        // Set first random GIF immediately
-        const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
-        img.src = randomGif;
+        // Set first random media immediately
+        const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
+        img.src = randomMedia;
       });
       
       projectLink.addEventListener('mouseleave', () => {
