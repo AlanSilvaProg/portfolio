@@ -973,7 +973,7 @@
   ];
 
   const INDEX_SECTIONS = [
-    { id: 'home', label: 'Home' },
+    { id: '', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'certification', label: 'Certification' },
     { id: 'projects', label: 'Projects' },
