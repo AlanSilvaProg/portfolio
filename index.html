@@ -11,7 +11,7 @@
       // Se a página foi aberta em /portfolio/ (sem hash), força #home e caminho index.html
       if (!location.hash) {
         var base = location.pathname.endsWith('/') ? (location.pathname + 'index.html') : location.pathname;
-        var target = base + (location.search || '') + '#home';
+        var target = base + (location.search || '');
         // Atualiza a URL sem recarregar a página
         history.replaceState(null, '', target);
       }
