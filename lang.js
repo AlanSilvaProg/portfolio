@@ -470,6 +470,28 @@
         // noop
       }
     }
+    // High-priority preload hint for the currently viewed preview
+    const __preloadLinks = new Set();
+    function preloadWithHighPriority(url) {
+      if (!url || __preloaded.has(url) || __preloadLinks.has(url)) {
+        // still ensure basic preload
+        preloadImage(url);
+        return;
+      }
+      try {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = url;
+        // chromium hint
+        link.fetchPriority = 'high';
+        document.head.appendChild(link);
+        __preloadLinks.add(url);
+      } catch (_) {
+        // fallback
+      }
+      preloadImage(url);
+    }
     // Intersection-based preloading for items near viewport
     let viewportObserver = null;
     if ('IntersectionObserver' in window) {
@@ -490,12 +512,20 @@
     // Idle prefetch: preload a small subset to warm the cache
     function scheduleIdlePrefetch(prefetchList) {
       const run = () => {
-        for (const url of prefetchList) preloadImage(url);
+        let i = 0;
+        const step = () => {
+          if (i >= prefetchList.length) return;
+          const url = prefetchList[i++];
+          preloadImage(url);
+          // pequeno espaçamento para evitar pico de banda
+          setTimeout(step, 150);
+        };
+        step();
       };
       if ('requestIdleCallback' in window) {
-        try { requestIdleCallback(run, { timeout: 1500 }); } catch (_) { setTimeout(run, 500); }
+        try { requestIdleCallback(run, { timeout: 1500 }); } catch (_) { setTimeout(run, 300); }
       } else {
-        setTimeout(run, 500);
+        setTimeout(run, 300);
       }
     }
     
@@ -689,15 +719,12 @@
       ]
     };
 
-    // Build a global prefetch list with the first media per project (limited)
-    const globalPrefetch = [];
-    Object.values(projectGifs).forEach(arr => { if (arr && arr.length) globalPrefetch.push(arr[0]); });
-    Object.values(projectScreenshots).forEach(arr => { if (arr && arr.length) globalPrefetch.push(arr[0]); });
-    // Limit global prefetch to avoid network burst
-    scheduleIdlePrefetch(globalPrefetch.slice(0, 12));
+    // Lista ordenada por DOM: priorizar 1 asset por projeto na ordem do grid
+    const orderedPrimaryPrefetch = [];
 
     // Setup hover effects for projects
-    document.querySelectorAll('.project').forEach(projectLink => {
+    const projectNodes = Array.from(document.querySelectorAll('.projects-grid .project, .project'));
+    projectNodes.forEach(projectLink => {
       const href = projectLink.getAttribute('href');
       if (!href) return;
       
@@ -720,6 +747,7 @@
       // Prefer GIFs over screenshots
       const mediaArray = gifs && gifs.length ? gifs : screenshots;
       const isUsingGifs = gifs && gifs.length > 0;
+      const primaryMedia = mediaArray[0];
 
       // Attach media array for viewport-based preloading
       projectLink.__mediaArray = mediaArray;
@@ -727,15 +755,22 @@
         viewportObserver.observe(projectLink);
       } else {
         // Fallback: preload at least the first media for items initially visible
-        preloadImage(mediaArray[0]);
+        preloadImage(primaryMedia);
       }
+      // adicionar à fila ordenada de prefetch (apenas 1 por projeto)
+      if (primaryMedia) orderedPrimaryPrefetch.push(primaryMedia);
       
       projectLink.addEventListener('mouseenter', async () => {
+        // Priorizar o asset atual em alta prioridade e exibir primeiro o primário
+        preloadWithHighPriority(primaryMedia);
+        if ('fetchPriority' in img) { try { img.fetchPriority = 'high'; } catch(_) {} }
+        if ('loading' in img) { try { img.loading = 'eager'; } catch(_) {} }
+        img.src = primaryMedia;
+
         // Set first random media immediately
         const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-        // Ensure the picked media is preloaded to reduce first-switch latency
-        preloadImage(randomMedia);
-        img.src = randomMedia;
+        // Em seguida, começar a rotacionar; garantir preload prioritário do próximo
+        preloadWithHighPriority(randomMedia);
         
         // Verifica se a imagem é portrait e aplica a classe apropriada
         setTimeout(() => {
@@ -760,7 +795,8 @@
         // Start randomizing media with calculated interval
         hoverInterval = setInterval(() => {
           const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-          preloadImage(randomMedia);
+          // manter prioridade para o asset que será exibido
+          preloadWithHighPriority(randomMedia);
           img.src = randomMedia;
           
           // Verifica se a nova imagem é portrait
@@ -777,6 +813,8 @@
           hoverInterval = null;
         }
         img.src = originalSrc;
+        // Voltar prioridade ao normal
+        if ('fetchPriority' in img) { try { img.fetchPriority = 'auto'; } catch(_) {} }
         
         // Verifica se a imagem original é portrait
         setTimeout(() => {
@@ -784,6 +822,11 @@
         }, 100);
       });
     });
+
+    // Disparar o prefetch ordenado e sequencial após montar os nós
+    if (orderedPrimaryPrefetch.length) {
+      scheduleIdlePrefetch(orderedPrimaryPrefetch);
+    }
   }
 
   // --- init (safe DOM ready) ---
