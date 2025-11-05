@@ -688,73 +688,86 @@
       
       const originalSrc = img.src;
       let hoverInterval = null;
+      let hoverActive = false;
+      let activationTimer = null;
       
       // Prefer GIFs (otimizados) sobre screenshots
       const isUsingGifs = gifs && gifs.length > 0;
       const optimizedGifs = isUsingGifs ? gifs.map(toOptimizedGifPath) : [];
       const mediaArray = optimizedGifs.length ? optimizedGifs : screenshots;
       
-      projectLink.addEventListener('mouseenter', async () => {
-        // Set first random media immediately
-        const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-        if (optimizedGifs.length) {
-          const idx = optimizedGifs.indexOf(randomMedia);
-          const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
-          setSrcWithFallback(img, randomMedia, originalCandidate);
-        } else {
-          img.src = randomMedia;
-        }
-        
-        // Verifica se a imagem é portrait e aplica a classe apropriada
-        setTimeout(() => {
-          checkIfPortrait(img);
-        }, 100);
-        
-        // Calculate interval based on media type
-        let interval = 800; // default for screenshots
-        
-        if (isUsingGifs) {
-          try {
-            // Get duration of the current GIF and use 40% of it
-            const gifDuration = await getGifDuration(randomMedia);
-            interval = Math.max(600, Math.floor(gifDuration * 0.4)); // minimum 600ms, 40% of GIF duration
-            console.log(`🎬 GIF duration: ${gifDuration}ms, hover interval: ${interval}ms`);
-          } catch (error) {
-            console.warn('Failed to get GIF duration, using default interval:', error);
-            interval = 1200; // fallback for GIFs
-          }
-        }
-        
-        // Start randomizing media with calculated interval
-        hoverInterval = setInterval(() => {
-          const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-          if (optimizedGifs.length) {
-            const idx = optimizedGifs.indexOf(randomMedia);
-            const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
-            setSrcWithFallback(img, randomMedia, originalCandidate);
-          } else {
-            img.src = randomMedia;
-          }
-          
-          // Verifica se a nova imagem é portrait
-          setTimeout(() => {
-            checkIfPortrait(img);
-          }, 100);
-        }, interval);
-      });
-      
-      projectLink.addEventListener('mouseleave', () => {
-        // Stop randomizing and restore original
+      projectLink.addEventListener('mouseenter', () => {
+        // Cancel any previous timers/intervals and mark hover active
         if (hoverInterval) {
           clearInterval(hoverInterval);
           hoverInterval = null;
         }
+        if (activationTimer) {
+          clearTimeout(activationTimer);
+          activationTimer = null;
+        }
+        hoverActive = true;
+
+        // Debounce activation to avoid "previews mortos" quando sai rápido
+        activationTimer = setTimeout(async () => {
+          if (!hoverActive) return;
+
+          // Choose first media and apply
+          const firstMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
+          if (optimizedGifs.length) {
+            const idx = optimizedGifs.indexOf(firstMedia);
+            const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
+            setSrcWithFallback(img, firstMedia, originalCandidate);
+          } else {
+            img.src = firstMedia;
+          }
+
+          // Verifica retrato/paisagem
+          setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
+
+          // Intervalo baseado no tipo de mídia
+          let interval = 800;
+          if (isUsingGifs) {
+            try {
+              const gifDuration = await getGifDuration(firstMedia);
+              interval = Math.max(600, Math.floor(gifDuration * 0.4));
+              console.log(`🎬 GIF duration: ${gifDuration}ms, hover interval: ${interval}ms`);
+            } catch (error) {
+              console.warn('Failed to get GIF duration, using default interval:', error);
+              interval = 1200;
+            }
+          }
+
+          if (!hoverActive) return;
+          hoverInterval = setInterval(() => {
+            if (!hoverActive) return;
+            const nextMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
+            if (optimizedGifs.length) {
+              const idx = optimizedGifs.indexOf(nextMedia);
+              const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
+              setSrcWithFallback(img, nextMedia, originalCandidate);
+            } else {
+              img.src = nextMedia;
+            }
+            setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
+          }, interval);
+        }, 150); // pequena demora para evitar ativação quando o usuário sai muito rápido
+      });
+      
+      projectLink.addEventListener('mouseleave', () => {
+        // Cancel activation and any running intervals
+        hoverActive = false;
+        if (activationTimer) {
+          clearTimeout(activationTimer);
+          activationTimer = null;
+        }
+        if (hoverInterval) {
+          clearInterval(hoverInterval);
+          hoverInterval = null;
+        }
+        // Restore original image
         img.src = originalSrc;
-        
-        // Verifica se a imagem original é portrait
-        setTimeout(() => {
-          checkIfPortrait(img);
-        }, 100);
+        setTimeout(() => { checkIfPortrait(img); }, 100);
       });
     });
   }
