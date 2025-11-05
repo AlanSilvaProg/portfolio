@@ -745,32 +745,59 @@
       let hoverInterval = null;
       
       // Prefer GIFs over screenshots
-      const mediaArray = gifs && gifs.length ? gifs : screenshots;
       const isUsingGifs = gifs && gifs.length > 0;
-      const primaryMedia = mediaArray[0];
+      const hasScreenshots = screenshots && screenshots.length > 0;
+      const primaryGif = isUsingGifs ? gifs[0] : null;
+      const primaryScreenshot = hasScreenshots ? screenshots[0] : null;
+      // Track GIFs that are fully loaded and ready
+      const readyGifs = new Set();
+      function prepareGif(url, highPriority = false){
+        if (!url) return;
+        if (highPriority) preloadWithHighPriority(url); else preloadImage(url);
+        try {
+          const probe = new Image();
+          if ('decoding' in probe) probe.decoding = 'async';
+          if ('loading' in probe) probe.loading = 'eager';
+          probe.onload = () => { readyGifs.add(url); };
+          probe.src = url;
+        } catch(_) {}
+      }
 
       // Attach media array for viewport-based preloading
-      projectLink.__mediaArray = mediaArray;
+      projectLink.__mediaArray = isUsingGifs ? gifs : screenshots;
       if (viewportObserver) {
         viewportObserver.observe(projectLink);
       } else {
         // Fallback: preload at least the first media for items initially visible
-        preloadImage(primaryMedia);
+        preloadImage(primaryGif || primaryScreenshot);
       }
       // adicionar à fila ordenada de prefetch (apenas 1 por projeto)
-      if (primaryMedia) orderedPrimaryPrefetch.push(primaryMedia);
+      if (primaryGif || primaryScreenshot) orderedPrimaryPrefetch.push(primaryGif || primaryScreenshot);
+      // Prepare a few GIFs early so they become ready soon
+      if (isUsingGifs) {
+        const early = gifs.slice(0, Math.min(3, gifs.length));
+        early.forEach(url => prepareGif(url, false));
+      }
       
       projectLink.addEventListener('mouseenter', async () => {
-        // Priorizar o asset atual em alta prioridade e exibir primeiro o primário
-        preloadWithHighPriority(primaryMedia);
+        // Acelerar preparação de todos os GIFs deste projeto
+        if (isUsingGifs) gifs.forEach(url => prepareGif(url, true));
         if ('fetchPriority' in img) { try { img.fetchPriority = 'high'; } catch(_) {} }
         if ('loading' in img) { try { img.loading = 'eager'; } catch(_) {} }
-        img.src = primaryMedia;
 
-        // Set first random media immediately
-        const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-        // Em seguida, começar a rotacionar; garantir preload prioritário do próximo
-        preloadWithHighPriority(randomMedia);
+        // Escolher mídia inicial: usar GIF pronto se houver, senão screenshot
+        let firstMedia = null;
+        if (isUsingGifs && readyGifs.size > 0) {
+          const arr = Array.from(readyGifs);
+          firstMedia = arr[Math.floor(Math.random() * arr.length)];
+        } else if (hasScreenshots) {
+          firstMedia = screenshots[Math.floor(Math.random() * screenshots.length)];
+        } else if (isUsingGifs) {
+          // Sem screenshots; usar o primário de GIF (pode levar um pouco)
+          firstMedia = primaryGif;
+        }
+        preloadWithHighPriority(firstMedia);
+        img.src = firstMedia;
         
         // Verifica se a imagem é portrait e aplica a classe apropriada
         setTimeout(() => {
@@ -778,25 +805,28 @@
         }, 100);
         
         // Calculate interval based on media type
-        let interval = 800; // default for screenshots
-        
-        if (isUsingGifs) {
+        let interval = 800; // default para screenshots
+        if (isUsingGifs && readyGifs.size > 0 && firstMedia && gifs.includes(firstMedia)) {
           try {
-            // Get duration of the current GIF and use 40% of it
-            const gifDuration = await getGifDuration(randomMedia);
-            interval = Math.max(600, Math.floor(gifDuration * 0.4)); // minimum 600ms, 40% of GIF duration
-            console.log(`🎬 GIF duration: ${gifDuration}ms, hover interval: ${interval}ms`);
-          } catch (error) {
-            console.warn('Failed to get GIF duration, using default interval:', error);
-            interval = 1200; // fallback for GIFs
+            const gifDuration = await getGifDuration(firstMedia);
+            interval = Math.max(600, Math.floor(gifDuration * 0.4));
+          } catch (_) {
+            interval = 1200;
           }
         }
         
         // Start randomizing media with calculated interval
         hoverInterval = setInterval(() => {
-          const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-          // manter prioridade para o asset que será exibido
-          preloadWithHighPriority(randomMedia);
+          let nextMedia;
+          if (isUsingGifs && readyGifs.size > 0) {
+            const arr = Array.from(readyGifs);
+            nextMedia = arr[Math.floor(Math.random() * arr.length)];
+          } else if (hasScreenshots) {
+            nextMedia = screenshots[Math.floor(Math.random() * screenshots.length)];
+          } else if (isUsingGifs) {
+            nextMedia = gifs[Math.floor(Math.random() * gifs.length)];
+          }
+          preloadWithHighPriority(nextMedia);
           img.src = randomMedia;
           
           // Verifica se a nova imagem é portrait
