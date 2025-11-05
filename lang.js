@@ -745,6 +745,10 @@
     if (onIndex && (location.hash === '#webgl-group' || location.hash === '#mobile-group')) {
       if (window.__projectsVisibility && window.__projectsVisibility.setShowAll) {
         window.__projectsVisibility.setShowAll(true);
+      } else {
+        // Fallback: expand immediately before globals are exposed
+        showingAll = true;
+        updateProjectsVisibility();
       }
       const target = document.getElementById(location.hash.slice(1));
       if (target) target.scrollIntoView({ behavior: 'smooth' });
