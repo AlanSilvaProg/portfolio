@@ -454,6 +454,51 @@
     const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
     if (!onIndex) return;
     
+    // Lightweight preloading cache
+    const __preloaded = new Set();
+    function preloadImage(url) {
+      if (!url || __preloaded.has(url)) return;
+      try {
+        const img = new Image();
+        // Hint to decode asynchronously
+        if ('decoding' in img) img.decoding = 'async';
+        // Eager to prioritize preview readiness
+        if ('loading' in img) img.loading = 'eager';
+        img.src = url;
+        __preloaded.add(url);
+      } catch (_) {
+        // noop
+      }
+    }
+    // Intersection-based preloading for items near viewport
+    let viewportObserver = null;
+    if ('IntersectionObserver' in window) {
+      viewportObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const anchor = entry.target;
+            const mediaArray = anchor.__mediaArray;
+            if (mediaArray && mediaArray.length) {
+              const subset = mediaArray.slice(0, Math.min(3, mediaArray.length));
+              subset.forEach(preloadImage);
+            }
+            viewportObserver.unobserve(anchor);
+          }
+        });
+      }, { rootMargin: '200px' });
+    }
+    // Idle prefetch: preload a small subset to warm the cache
+    function scheduleIdlePrefetch(prefetchList) {
+      const run = () => {
+        for (const url of prefetchList) preloadImage(url);
+      };
+      if ('requestIdleCallback' in window) {
+        try { requestIdleCallback(run, { timeout: 1500 }); } catch (_) { setTimeout(run, 500); }
+      } else {
+        setTimeout(run, 500);
+      }
+    }
+    
     // Map projects to their available GIFs
     const projectGifs = {
       'repair-the-kraken.html': [
@@ -644,6 +689,13 @@
       ]
     };
 
+    // Build a global prefetch list with the first media per project (limited)
+    const globalPrefetch = [];
+    Object.values(projectGifs).forEach(arr => { if (arr && arr.length) globalPrefetch.push(arr[0]); });
+    Object.values(projectScreenshots).forEach(arr => { if (arr && arr.length) globalPrefetch.push(arr[0]); });
+    // Limit global prefetch to avoid network burst
+    scheduleIdlePrefetch(globalPrefetch.slice(0, 12));
+
     // Setup hover effects for projects
     document.querySelectorAll('.project').forEach(projectLink => {
       const href = projectLink.getAttribute('href');
@@ -668,10 +720,21 @@
       // Prefer GIFs over screenshots
       const mediaArray = gifs && gifs.length ? gifs : screenshots;
       const isUsingGifs = gifs && gifs.length > 0;
+
+      // Attach media array for viewport-based preloading
+      projectLink.__mediaArray = mediaArray;
+      if (viewportObserver) {
+        viewportObserver.observe(projectLink);
+      } else {
+        // Fallback: preload at least the first media for items initially visible
+        preloadImage(mediaArray[0]);
+      }
       
       projectLink.addEventListener('mouseenter', async () => {
         // Set first random media immediately
         const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
+        // Ensure the picked media is preloaded to reduce first-switch latency
+        preloadImage(randomMedia);
         img.src = randomMedia;
         
         // Verifica se a imagem é portrait e aplica a classe apropriada
@@ -697,6 +760,7 @@
         // Start randomizing media with calculated interval
         hoverInterval = setInterval(() => {
           const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
+          preloadImage(randomMedia);
           img.src = randomMedia;
           
           // Verifica se a nova imagem é portrait
@@ -745,6 +809,10 @@
     if (onIndex && (location.hash === '#webgl-group' || location.hash === '#mobile-group')) {
       if (window.__projectsVisibility && window.__projectsVisibility.setShowAll) {
         window.__projectsVisibility.setShowAll(true);
+      } else {
+        // Fallback: expand immediately before globals are exposed
+        showingAll = true;
+        updateProjectsVisibility();
       }
       const target = document.getElementById(location.hash.slice(1));
       if (target) target.scrollIntoView({ behavior: 'smooth' });
