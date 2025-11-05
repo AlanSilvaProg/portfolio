@@ -779,26 +779,9 @@
         early.forEach(url => prepareGif(url, false));
       }
       
-      // Preload assíncrono em fila (evita travamentos)
-      function preloadGifQueue(urls) {
-        let i = 0;
-        const step = () => {
-          if (i >= urls.length) return;
-          const url = urls[i++];
-          prepareGif(url, false);
-          setTimeout(step, 200);
-        };
-        step();
-      }
-
       projectLink.addEventListener('mouseenter', async () => {
-        // Priorizar só alguns GIFs imediatamente; o restante entra em fila assíncrona
-        if (isUsingGifs) {
-          const burst = gifs.slice(0, Math.min(2, gifs.length));
-          burst.forEach(url => prepareGif(url, true));
-          const rest = gifs.slice(burst.length);
-          if (rest.length) preloadGifQueue(rest);
-        }
+        // Acelerar preparação de todos os GIFs deste projeto
+        if (isUsingGifs) gifs.forEach(url => prepareGif(url, true));
         if ('fetchPriority' in img) { try { img.fetchPriority = 'high'; } catch(_) {} }
         if ('loading' in img) { try { img.loading = 'eager'; } catch(_) {} }
 
@@ -844,7 +827,7 @@
             nextMedia = gifs[Math.floor(Math.random() * gifs.length)];
           }
           preloadWithHighPriority(nextMedia);
-          img.src = nextMedia;
+          img.src = randomMedia;
           
           // Verifica se a nova imagem é portrait
           setTimeout(() => {
