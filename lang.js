@@ -454,6 +454,30 @@
     const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
     if (!onIndex) return;
     
+    // Utilitários para usar GIFs otimizados com fallback para original
+    function toOptimizedGifPath(gifUrl) {
+      try {
+        const m = gifUrl.match(/assets\/projects\/([^\/]+)/);
+        if (!m) return gifUrl;
+        const project = m[1];
+        const basename = gifUrl.split('/').pop();
+        return `assets/projects/${project}/OptimizedGifs/${basename}`;
+      } catch (_) {
+        return gifUrl;
+      }
+    }
+    function setSrcWithFallback(img, optimizedUrl, originalUrl) {
+      let handled = false;
+      const onError = () => {
+        if (handled) return;
+        handled = true;
+        img.onerror = null;
+        img.src = originalUrl;
+      };
+      img.onerror = onError;
+      img.src = optimizedUrl;
+    }
+    
     // Map projects to their available GIFs
     const projectGifs = {
       'repair-the-kraken.html': [
@@ -665,14 +689,21 @@
       const originalSrc = img.src;
       let hoverInterval = null;
       
-      // Prefer GIFs over screenshots
-      const mediaArray = gifs && gifs.length ? gifs : screenshots;
+      // Prefer GIFs (otimizados) sobre screenshots
       const isUsingGifs = gifs && gifs.length > 0;
+      const optimizedGifs = isUsingGifs ? gifs.map(toOptimizedGifPath) : [];
+      const mediaArray = optimizedGifs.length ? optimizedGifs : screenshots;
       
       projectLink.addEventListener('mouseenter', async () => {
         // Set first random media immediately
         const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-        img.src = randomMedia;
+        if (optimizedGifs.length) {
+          const idx = optimizedGifs.indexOf(randomMedia);
+          const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
+          setSrcWithFallback(img, randomMedia, originalCandidate);
+        } else {
+          img.src = randomMedia;
+        }
         
         // Verifica se a imagem é portrait e aplica a classe apropriada
         setTimeout(() => {
@@ -697,7 +728,13 @@
         // Start randomizing media with calculated interval
         hoverInterval = setInterval(() => {
           const randomMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-          img.src = randomMedia;
+          if (optimizedGifs.length) {
+            const idx = optimizedGifs.indexOf(randomMedia);
+            const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
+            setSrcWithFallback(img, randomMedia, originalCandidate);
+          } else {
+            img.src = randomMedia;
+          }
           
           // Verifica se a nova imagem é portrait
           setTimeout(() => {
