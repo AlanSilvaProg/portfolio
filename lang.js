@@ -290,7 +290,21 @@
       // Sokolab — multiple GIFs available
       'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-1-1e969b.gif',
       'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-2-ce4e95.gif',
-      'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-9db702.gif'
+      'assets/projects/Sokolab/w1000-ezgifcom-video-to-gif-9db702.gif',
+      // Book Of Wolves — adicionar à rotação de BG
+      'assets/projects/BookOfWolves/Gifs/image11.gif',
+      'assets/projects/BookOfWolves/Gifs/image12.gif',
+      'assets/projects/BookOfWolves/Gifs/image17.gif',
+      'assets/projects/BookOfWolves/Gifs/image21.gif',
+      'assets/projects/BookOfWolves/Gifs/image22.gif',
+      'assets/projects/BookOfWolves/Gifs/image23.gif',
+      'assets/projects/BookOfWolves/Gifs/image29.gif',
+      'assets/projects/BookOfWolves/Gifs/image52.gif',
+      'assets/projects/BookOfWolves/Gifs/image58.gif',
+      'assets/projects/BookOfWolves/Gifs/image59.gif',
+      'assets/projects/BookOfWolves/Gifs/image62.gif',
+      'assets/projects/BookOfWolves/Gifs/image63.gif',
+      'assets/projects/BookOfWolves/Gifs/image64.gif'
     ];
     if (!gifs.length) return;
     console.log(`🎬 ${gifs.length} GIFs carregados para rotação`);
@@ -501,6 +515,21 @@
         'assets/projects/NG/Gifs/MutantCollectGIF.gif',
         'assets/projects/NG/Gifs/SellBoxGIF.gif',
         'assets/projects/NG/Gifs/SellerManGIF.gif'
+      ],
+      'book-of-wolves.html': [
+        'assets/projects/BookOfWolves/Gifs/image11.gif',
+        'assets/projects/BookOfWolves/Gifs/image12.gif',
+        'assets/projects/BookOfWolves/Gifs/image17.gif',
+        'assets/projects/BookOfWolves/Gifs/image21.gif',
+        'assets/projects/BookOfWolves/Gifs/image22.gif',
+        'assets/projects/BookOfWolves/Gifs/image23.gif',
+        'assets/projects/BookOfWolves/Gifs/image29.gif',
+        'assets/projects/BookOfWolves/Gifs/image52.gif',
+        'assets/projects/BookOfWolves/Gifs/image58.gif',
+        'assets/projects/BookOfWolves/Gifs/image59.gif',
+        'assets/projects/BookOfWolves/Gifs/image62.gif',
+        'assets/projects/BookOfWolves/Gifs/image63.gif',
+        'assets/projects/BookOfWolves/Gifs/image64.gif'
       ],
       'harbinger.html': [
         'assets/projects/Harbinger/APOLO.gif',
