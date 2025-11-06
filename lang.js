@@ -86,7 +86,8 @@
       innovationPrize: 'Prêmio de Inovação',
       // Project descriptions
       fillTheBusSub: 'Jogo com screenshots e ícone.',
-      ziggySub: 'Projeto com GIFs, screenshots e ícone.',
+      ziggySub: 'Ziggy é um Precision Platformer desafiador sobre um pequeno raio tentando voltar para casa. Seu objetivo é deslizar por armadilhas, dar dash por entre flechas e chegar ao final. Você consegue?',
+      ziggyContribution: 'Fui responsável por todo o desenvolvimento de jogo, sendo o único desenvolvedor do projeto. Criei do zero sistemas de movimentação, plataformas e elementos de puzzle para a progressão entre mapas, além do sistema de input e conquistas para diferentes plataformas. Porting para console.',
       gamebanbanbanSub: 'Projeto com GIFs de gameplay.',
       repairKrakenSub: 'Jogo desenvolvido durante a Global Game Jam, com tempo total de produção de 48 horas. Repair the Kraken foi criado com base no tema do evento: “Repair”. O jogo acompanha um mergulhador preso dentro de um submarino com a estrutura comprometida. O objetivo é impedir que a água inunde todas as salas reparando os buracos conforme eles aparecem. A jogabilidade inclui mecânicas como andar, subir escadas, abrir e fechar portas, consertar vazamentos e acionar descargas para drenar a água local.',
       locomotiva5Sub: 'Jogo de terror 3D. Durante a reabertura de uma antiga linha férrea, uma repórter se depara com eventos estranhos que podem significar um avanço em sua carreira — ou um terrível fim.',
@@ -99,7 +100,19 @@
       // Nebula Garden (NG) project translations
       ngTitle: 'Nebula Garden',
       ngSub: 'Em Nebula Garden, cuide de uma fazenda dentro de uma estação espacial, conheça sua tripulação e vivencie uma ampla gama de possibilidades para expandir, explorar e transformar o mundo ao seu redor. Nebula Garden é um Farming RPG, gênero de jogos originado por Harvest Moon (Natsume Inc.). Esses jogos colocam o jogador no papel de alguém responsável por administrar uma fazenda, criando um ciclo de gameplay centrado nesses afazeres. O jogador passa seus dias cuidando da fazenda, cultivando plantas e criando animais, enquanto aproveita tudo que envolve esse ambiente. NPCs, dungeons e muitas outras mecânicas são pensadas para complementar — nunca substituir — a fazenda. Este jogo foi desenvolvido como trabalho de conclusão de curso (TCC) de Game Design na Universidade Anhembi Morumbi, em 2020.',
-      ngContribution: 'Como programador, fui responsável por grande parte dos sistemas, mais especificamente pelos sistemas de plantação, limpeza, movimentação, dungeons, NPCs e ciclos de estações (seasons). Atuei em todos os sistemas de forma direta ou indireta, garantindo que todas as mecânicas atendessem às definições iniciais do GDD. Jogo desenvolvido na Unity Engine, em C#, utilizando Shader Graph e Articy Draft.'
+      ngContribution: 'Como programador, fui responsável por grande parte dos sistemas, mais especificamente pelos sistemas de plantação, limpeza, movimentação, dungeons, NPCs e ciclos de estações (seasons). Atuei em todos os sistemas de forma direta ou indireta, garantindo que todas as mecânicas atendessem às definições iniciais do GDD. Jogo desenvolvido na Unity Engine, em C#, utilizando Shader Graph e Articy Draft.',
+      // War project translations
+      warTitle: 'War',
+      warSub: 'Os jogadores assumem o papel de generais para conquistar territórios e dominar o mundo, cada um com um objetivo secreto a cumprir. Para isso, é preciso planejar ataques e defender seus territórios, usando dados para resolver os combates e cartas para receber tropas extras. A partida termina quando um jogador cumpre sua missão.',
+      warHeading: 'War',
+      warDescription: 'Estratégia por territórios baseada no clássico War: objetivos secretos, dados, cartas e domínio do mapa.',
+      warContribution: 'War é um jogo no qual tive a oportunidade de trabalhar durante meu período na Black Willow (K-Interativa), empresa atualmente responsável pelo desenvolvimento do War da GrowGames. Contribuí na manutenção de diversos sistemas e mecânicas de gameplay, incluindo funcionalidades de multiplayer e compras dentro do aplicativo. Uma parte significativa da minha contribuição foi dedicada ao desenvolvimento de War Romano, uma variante do War clássico, que inclui novas mecânicas, sistemas e um mapa e arte totalmente novos.',
+       // Sokolab project translations
+      sokolabTitle: 'Sokolab',
+      sokolabSub: 'Sokolab é um jogo Sokoban onde você joga como um robô fofo! Empurre os blocos para o objetivo para chegar ao final do nível, novas mecânicas são introduzidas ao longo do jogo, adicionando camadas de complexidade aos quebra-cabeças! Você consegue alcançar o último nível?',
+      sokolabHeading: 'Sokolab',
+      sokolabDescription: 'Puzzle inspirado em Sokoban com novas mecânicas, mapas e desafios progressivos.',
+      sokolabContribution: 'Fui responsável por todo o desenvolvimento de jogo, sendo o único desenvolvedor do projeto. Criei do zero sistemas de geração de mapa, elementos de composição dos puzzles e progressão. Jogo desenvolvido na Unity Engine.'
     },
     en: {
       headerTitle: 'Alan Silva',
@@ -179,7 +192,8 @@
       innovationPrize: 'Innovation Prize',
       // Project descriptions
       fillTheBusSub: 'Game with screenshots and icon.',
-      ziggySub: 'Project with gameplay GIFs, screenshots, and icon.',
+      ziggySub: 'Ziggy is a challenging precision platformer about a little lightning bolt trying to go back home. Your main objective is to slide past all traps, dash through arrows and get to the end. Can you do it?',
+      ziggyContribution: 'I was responsible for the entire game development as the sole developer. I built movement systems, platforming and puzzle elements for progression between maps from scratch, as well as input and achievements systems for different platforms. Console porting.',
       gamebanbanbanSub: 'Project with gameplay GIFs.',
       repairKrakenSub: 'Game developed during the Global Game Jam, with a total production time of 48 hours. Repair the Kraken was created based on the event’s theme: “Repair.” The game follows a diver trapped inside a submarine with a compromised structure. The objective is to prevent water from flooding all the rooms by repairing holes as they appear. The gameplay includes mechanics such as walking, climbing ladders, opening and closing doors, fixing leaks, and flushing toilets to drain local water.',
       locomotiva5Sub: '3D Horror Game. During the reopening of an old railway line, a reporter encounters strange events that could mean a breakthrough in her career — or a terrible end.',
@@ -192,7 +206,21 @@
       // Nebula Garden (NG) project translations
       ngTitle: 'Nebula Garden',
       ngSub: 'In Nebula Garden, take care of a farm inside a space station, meet its crew, and experience a wide range of possibilities to expand, explore, and reshape the world around you. Nebula Garden is a Farming RPG, a genre originating from Harvest Moon by Natsume Inc. These games put the player in the role of someone responsible for running a farm, creating a gameplay loop centered around those duties. The player spends their days tending the farm, growing crops and raising animals, while enjoying everything surrounding that environment. NPCs, dungeons, and many other mechanics are designed to complement — never replace — the farm. This game was developed as the final thesis project for the Game Design course at Anhembi Morumbi University in 2020.',
-      ngContribution: 'As a programmer, I was responsible for most systems, specifically the farming, cleaning, movement, dungeon, NPC, and season cycle systems. I worked across all systems directly and indirectly, ensuring every mechanic met the initial GDD definitions. Built with Unity Engine and C#, using Shader Graph and Articy Draft.'
+      ngContribution: 'As a programmer, I was responsible for most systems, specifically the farming, cleaning, movement, dungeon, NPC, and season cycle systems. I worked across all systems directly and indirectly, ensuring every mechanic met the initial GDD definitions. Built with Unity Engine and C#, using Shader Graph and Articy Draft.',
+
+      // Sokolab project translations
+      sokolabTitle: 'Sokolab',
+      sokolabSub: 'SokoLab is a Sokoban game where you play as a cute robot! Push blocks to the objective to reach the end of the level. New mechanics are introduced throughout the game, adding layers of complexity to the puzzles! Can you reach the last level?',
+      sokolabHeading: 'Sokolab',
+      sokolabDescription: 'Sokoban-inspired puzzle with new mechanics, map generation and progressive challenges.',
+      sokolabContribution: 'I was responsible for the entire game development as the sole developer. I built map generation systems from scratch, puzzle composition elements and progression. Developed with Unity Engine.',
+
+      // War project translations
+      warTitle: 'War',
+      warSub: 'Players take the role of generals to conquer territories and dominate the world, each with a secret objective to fulfill. Plan attacks and defend your territories, use dice to resolve battles and cards to receive extra troops. The match ends when a player completes their mission.',
+      warHeading: 'War',
+      warDescription: 'Territory-based strategy inspired by the classic War: secret goals, dice, cards and map domination.',
+      warContribution: 'War is a game I had the opportunity to work on during my time at Black Willow (K-Interativa), the company currently responsible for the development of the War game by GrowGames. I was involved in maintaining various gameplay systems and mechanics, including multiplayer functionality and in-app purchasing. A significant part of my contribution focused on the development of War Romano, a variant of the classic War, featuring new mechanics, systems, and entirely new map and art assets.'
     }
   };
 
