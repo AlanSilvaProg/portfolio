@@ -668,7 +668,7 @@
       ]
     };
 
-    // Cache e utilitários para escolher e pré-carregar o maior GIF por projeto
+    // Cache do maior GIF por projeto
     const largestGifCache = new Map();
 
     async function getContentLength(url) {
@@ -683,6 +683,7 @@
     }
 
     async function pickLargestGif(gifList) {
+      // Escolhe o maior GIF; prefere versão otimizada se existir
       let best = { optimized: null, original: null, size: -1 };
       for (const original of gifList) {
         const opt = toOptimizedGifPath(original);
@@ -699,60 +700,6 @@
         }
       }
       return best;
-    }
-
-    function initPreviewGifPreload() {
-      const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
-      if (!onIndex) return;
-      const ril = window.requestIdleCallback || function(fn){ setTimeout(fn, 0); };
-      const links = Array.from(document.querySelectorAll('.project'));
-      const entries = links.map(link => {
-        const href = link.getAttribute('href');
-        if (!href) return null;
-        const projectFile = href.replace('projects/', '');
-        const gifs = projectGifs[projectFile];
-        return (gifs && gifs.length) ? { projectFile, gifs } : null;
-      }).filter(Boolean);
-
-      let i = 0;
-      function processNext(){
-        if (i >= entries.length) return;
-        const { projectFile, gifs } = entries[i++];
-        ril(async () => {
-          try {
-            let best = largestGifCache.get(projectFile);
-            if (!best) {
-              best = await pickLargestGif(gifs);
-              largestGifCache.set(projectFile, best);
-            }
-            const url = best.optimized || best.original;
-            if (!url) { processNext(); return; }
-            // Preload hint
-            try {
-              const link = document.createElement('link');
-              link.rel = 'preload';
-              link.as = 'image';
-              link.href = url;
-              link.crossOrigin = 'anonymous';
-              link.fetchPriority = 'low';
-              document.head.appendChild(link);
-            } catch (_) {}
-            // Warm cache via Image
-            try {
-              const img = new Image();
-              img.loading = 'eager';
-              img.fetchPriority = 'low';
-              img.decoding = 'async';
-              img.src = url;
-              window.__preloadedGifs = window.__preloadedGifs || {};
-              window.__preloadedGifs[projectFile] = { url, img };
-            } catch (_) {}
-          } finally {
-            setTimeout(processNext, 120);
-          }
-        }, { timeout: 1000 });
-      }
-      processNext();
     }
 
     // Setup hover effects for projects
@@ -868,8 +815,6 @@
     applyTranslations(showingAll);
     observeFadeIns();
     initTopBgRotator();
-    // Pré-carrega GIFs de preview (maior por projeto) antes de configurar os hovers
-    initPreviewGifPreload();
     initProjectHoverGifs();
     initShowMoreButtons();
     updateProjectsVisibility();
