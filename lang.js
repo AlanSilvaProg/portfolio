@@ -44,6 +44,22 @@
       promotionalImage: 'Imagem Promocional',
       gameTrailer: 'Trailer do Jogo',
       gameplayClips: 'Clipes de Gameplay',
+      // Generic project page sections
+      projectDescription: 'Descrição do Projeto',
+      myContribution: 'Minha participação',
+      downloadLink: 'Link de Download',
+      // Book Of Wolves subtitle (full description)
+      bookWolvesSub: 'Na pele de Andrei Ulric, um amaldiçoado caçador de vampiros, cace e elimine o legado de Nosferatu, que aterroriza a pequena cidade de Wisborg. Fazendo o uso de diversas ferramentas, assim como os traços da maldição do lobisomem, o jogador deve atravessar o vilarejo de Wisborg, agora consumido pela praga e loucura trazido pelo vampiro que o domina, Ellen Hutter. Com a ajuda do professor Bulwer e as ferramentas e dicas dadas por ele, o jogador deve percorrer o vilarejo podendo usar de brutalidade e criatividade para enfrentar o que encontrar no seu caminho, podendo também se valer de sua engenhosidade para fazer o uso de soluções não-violentas que vão desde guiar inimigos e distraí-los até o uso de rotas alternativas descobertas explorando o mundo. Caso o combate seja desejado ou inevitável, Andrei não hesita em usar seu arsenal.',
+      // Generic project page sections
+      projectDescription: 'Descrição do Projeto',
+      myContribution: 'Minha participação',
+      downloadLink: 'Link de Download',
+      // Book Of Wolves description
+      bookWolvesP1: 'Na pele de Andrei Ulric, um amaldiçoado caçador de vampiros, cace e elimine o legado de Nosferatu, que aterroriza a pequena cidade de Wisborg.',
+      bookWolvesP2: 'Fazendo o uso de diversas ferramentas, assim como os traços da maldição do lobisomem, o jogador deve atravessar o vilarejo de Wisborg, agora consumido pela praga e loucura trazido pelo vampiro que o domina, Ellen Hutter.',
+      bookWolvesP3: 'Com a ajuda do professor Bulwer e as ferramentas e dicas dadas por ele, o jogador deve percorrer o vilarejo podendo usar de brutalidade e criatividade para enfrentar o que encontrar no seu caminho, podendo também se valer de sua engenhosidade para fazer o uso de soluções não-violentas que vão desde guiar inimigos e distraí-los até o uso de rotas alternativas descobertas explorando o mundo.',
+      bookWolvesP4: 'Caso o combate seja desejado ou inevitável, Andrei não hesita em usar seu arsenal.',
+      bookWolvesContribution: 'Jogo feito durante o 6º semestre do curso de Graduação em Game Design pela Faculdade Anhembi Morumbi, em aproximadamente 3 meses de desenvolvimento. Utilizando a Unity Engine e C#, fui o único programador do projeto, responsável por todos os sistemas e mecânicas do jogo, assim como integração de SDKs e plugins de terceiros.',
       // Unbinary project translations
       unbinaryTitle: 'Unbinary - Ludact',
       unbinarySub: 'UNBINARY é um jogo em realidade virtual de aventura e quebra-cabeça, totalmente pintado à mão. Conheça Webby, uma super IA feita a partir de dados coletados do comportamento humano e candidata para governar o planeta Terra. Será que ela está mesmo pronta para cumprir seu propósito?',
@@ -114,6 +130,22 @@
       promotionalImage: 'Promotional Image',
       gameTrailer: 'Game Trailer',
       gameplayClips: 'Gameplay Clips',
+      // Generic project page sections
+      projectDescription: 'Project Description',
+      myContribution: 'My contribution',
+      downloadLink: 'Download Link',
+      // Book Of Wolves subtitle (full description)
+      bookWolvesSub: 'In the role of Andrei Ulric, a cursed vampire hunter, hunt and eliminate the legacy of Nosferatu, who terrorizes the small town of Wisborg. Using various tools as well as the traits of the werewolf curse, the player must traverse the village of Wisborg, now consumed by the plague and madness brought by the vampire who dominates it, Ellen Hutter. With the help of Professor Bulwer and the tools and tips he provides, the player must traverse the village using brutality and creativity to face whatever lies ahead, and can also rely on ingenuity to use non-violent solutions ranging from guiding and distracting enemies to alternative routes discovered by exploring the world. If combat is desired or inevitable, Andrei does not hesitate to use his arsenal.',
+      // Generic project page sections
+      projectDescription: 'Project Description',
+      myContribution: 'My contribution',
+      downloadLink: 'Download Link',
+      // Book Of Wolves description
+      bookWolvesP1: 'In the role of Andrei Ulric, a cursed vampire hunter, hunt and eliminate the legacy of Nosferatu, who terrorizes the small town of Wisborg.',
+      bookWolvesP2: 'Using various tools as well as the traits of the werewolf curse, the player must traverse the village of Wisborg, now consumed by the plague and madness brought by the vampire who dominates it, Ellen Hutter.',
+      bookWolvesP3: 'With the help of Professor Bulwer and the tools and tips he provides, the player must traverse the village using brutality and creativity to face whatever lies ahead, and can also rely on ingenuity to use non-violent solutions ranging from guiding and distracting enemies to alternative routes discovered by exploring the world.',
+      bookWolvesP4: 'If combat is desired or inevitable, Andrei does not hesitate to use his arsenal.',
+      bookWolvesContribution: 'Game made during the 6th semester of the Game Design degree at Anhembi Morumbi University, in approximately 3 months of development. Using Unity Engine and C#, I was the sole programmer on the project, responsible for all game systems and mechanics, as well as integrating third-party SDKs and plugins.',
       // Unbinary project translations
       unbinaryTitle: 'Unbinary - Ludact',
       unbinarySub: 'UNBINARY is a hand-painted virtual reality adventure puzzle game. Meet Webby, a super AI built from collected human behavior data and a candidate to govern planet Earth. Is she really ready to fulfill her purpose?',
@@ -978,26 +1010,27 @@
   if (document.querySelector('.project-page')) initLightbox();
 })();
 
-// --- Global Hamburger Menu ---
-(function(){
-  const PROJECTS = [
-    { title: 'Unbinary - Ludact', url: 'projects/unbinary.html' },
-    { title: 'Nebula Garden', url: 'projects/ng.html' },
-    { title: 'Harbinger', url: 'projects/harbinger.html' },
-    { title: 'Locomotiva5', url: 'projects/locomotiva5.html' },
-    { title: 'Repair The Kraken', url: 'projects/repair-the-kraken.html' },
-    { title: 'Sokolab', url: 'projects/sokolab.html' },
-    { title: 'Ziggy', url: 'projects/ziggy.html' },
-    { title: 'War', url: 'projects/war.html' },
-    { title: 'GameBanBanBan', url: 'projects/gamebanbanban.html' },
-    { title: 'Stickman Vs Zombies - Aurecas', url: 'projects/stickman-vs-zombies.html' },
-    { title: 'Aquabitz', url: 'projects/aquabitz.html' },
-    { title: 'IceRage', url: 'projects/icerage.html' },
-    { title: 'Minute Bomb', url: 'projects/minutebomb.html' },
-    { title: "Juju's Kitchen", url: 'projects/jujus-kitchen.html' },
-    { title: 'Fill The Bus', url: 'projects/fill-the-bus.html' },
-    { title: 'Ta Na Mesa', url: 'projects/tanamesa.html' }
-  ];
+  // --- Global Hamburger Menu ---
+  (function(){
+    const PROJECTS = [
+      { title: 'Unbinary - Ludact', url: 'projects/unbinary.html' },
+      { title: 'Nebula Garden', url: 'projects/ng.html' },
+      { title: 'Harbinger', url: 'projects/harbinger.html' },
+      { title: 'Locomotiva5', url: 'projects/locomotiva5.html' },
+      { title: 'Repair The Kraken', url: 'projects/repair-the-kraken.html' },
+      { title: 'Book Of Wolves', url: 'projects/book-of-wolves.html' },
+      { title: 'Sokolab', url: 'projects/sokolab.html' },
+      { title: 'Ziggy', url: 'projects/ziggy.html' },
+      { title: 'War', url: 'projects/war.html' },
+      { title: 'GameBanBanBan', url: 'projects/gamebanbanban.html' },
+      { title: 'Stickman Vs Zombies - Aurecas', url: 'projects/stickman-vs-zombies.html' },
+      { title: 'Aquabitz', url: 'projects/aquabitz.html' },
+      { title: 'IceRage', url: 'projects/icerage.html' },
+      { title: 'Minute Bomb', url: 'projects/minutebomb.html' },
+      { title: "Juju's Kitchen", url: 'projects/jujus-kitchen.html' },
+      { title: 'Fill The Bus', url: 'projects/fill-the-bus.html' },
+      { title: 'Ta Na Mesa', url: 'projects/tanamesa.html' }
+    ];
 
   const INDEX_SECTIONS = [
     { id: '', label: 'Home' },
