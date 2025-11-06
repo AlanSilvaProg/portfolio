@@ -93,6 +93,11 @@
       salvePiramideSub: 'Projeto da EditoraBrasil com GIFs e screenshots.',
       showMonstroSub: 'Projeto da EditoraBrasil com GIFs e screenshots.',
       harbingerSub: 'Projeto com trailer, clipes de gameplay, GIFs e screenshots.'
+      ,
+      // Nebula Garden (NG) project translations
+      ngTitle: 'Nebula Garden',
+      ngSub: 'Em Nebula Garden, cuide de uma fazenda dentro de uma estação espacial, conheça sua tripulação e vivencie uma ampla gama de possibilidades para expandir, explorar e transformar o mundo ao seu redor. Nebula Garden é um Farming RPG, gênero de jogos originado por Harvest Moon (Natsume Inc.). Esses jogos colocam o jogador no papel de alguém responsável por administrar uma fazenda, criando um ciclo de gameplay centrado nesses afazeres. O jogador passa seus dias cuidando da fazenda, cultivando plantas e criando animais, enquanto aproveita tudo que envolve esse ambiente. NPCs, dungeons e muitas outras mecânicas são pensadas para complementar — nunca substituir — a fazenda. Este jogo foi desenvolvido como trabalho de conclusão de curso (TCC) de Game Design na Universidade Anhembi Morumbi, em 2020.',
+      ngContribution: 'Como programador, fui responsável por grande parte dos sistemas, mais especificamente pelos sistemas de plantação, limpeza, movimentação, dungeons, NPCs e ciclos de estações (seasons). Atuei em todos os sistemas de forma direta ou indireta, garantindo que todas as mecânicas atendessem às definições iniciais do GDD. Jogo desenvolvido na Unity Engine, em C#, utilizando Shader Graph e Articy Draft.'
     },
     en: {
       headerTitle: 'Alan Silva',
@@ -179,6 +184,11 @@
       salvePiramideSub: 'EditoraBrasil project with GIFs and screenshots.',
       showMonstroSub: 'EditoraBrasil project with GIFs and screenshots.',
       harbingerSub: 'Project with trailer, gameplay clips, GIFs, and screenshots.'
+      ,
+      // Nebula Garden (NG) project translations
+      ngTitle: 'Nebula Garden',
+      ngSub: 'In Nebula Garden, take care of a farm inside a space station, meet its crew, and experience a wide range of possibilities to expand, explore, and reshape the world around you. Nebula Garden is a Farming RPG, a genre originating from Harvest Moon by Natsume Inc. These games put the player in the role of someone responsible for running a farm, creating a gameplay loop centered around those duties. The player spends their days tending the farm, growing crops and raising animals, while enjoying everything surrounding that environment. NPCs, dungeons, and many other mechanics are designed to complement — never replace — the farm. This game was developed as the final thesis project for the Game Design course at Anhembi Morumbi University in 2020.',
+      ngContribution: 'As a programmer, I was responsible for most systems, specifically the farming, cleaning, movement, dungeon, NPC, and season cycle systems. I worked across all systems directly and indirectly, ensuring every mechanic met the initial GDD definitions. Built with Unity Engine and C#, using Shader Graph and Articy Draft.'
     }
   };
 
