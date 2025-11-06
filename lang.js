@@ -745,17 +745,23 @@
           // Verifica retrato/paisagem
           setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
 
-          // Não alterna GIFs: deixar tocar inteiro; para screenshots, manter alternância
-          if (!isUsingGifs) {
+          // Alterna mídia continuamente: para GIFs alterna de forma suave; para screenshots mantém alternância rápida
+          if (!hoverActive) return;
+          const interval = isUsingGifs ? 4500 : 800;
+          let currentIndex = Math.max(0, mediaArray.indexOf(firstMedia));
+          hoverInterval = setInterval(() => {
             if (!hoverActive) return;
-            const interval = 800;
-            hoverInterval = setInterval(() => {
-              if (!hoverActive) return;
-              const nextMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
+            currentIndex = (currentIndex + 1) % mediaArray.length;
+            const nextMedia = mediaArray[currentIndex];
+            if (optimizedGifs.length) {
+              const idx = optimizedGifs.indexOf(nextMedia);
+              const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
+              setSrcWithFallback(img, nextMedia, originalCandidate);
+            } else {
               img.src = nextMedia;
-              setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
-            }, interval);
-          }
+            }
+            setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
+          }, interval);
         }, 150); // pequena demora para evitar ativação quando o usuário sai muito rápido
       });
       
