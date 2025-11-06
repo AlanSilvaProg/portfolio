@@ -663,10 +663,44 @@
         'assets/projects/Ta Na Mesa/6.jpg',
         'assets/projects/Ta Na Mesa/7.jpg',
         'assets/projects/Ta Na Mesa/8.jpg',
-        'assets/projects/Ta Na Mesa/9.jpg',
-        'assets/projects/Ta Na Mesa/10.jpg'
+      'assets/projects/Ta Na Mesa/9.jpg',
+      'assets/projects/Ta Na Mesa/10.jpg'
       ]
     };
+
+    // Cache do maior GIF por projeto
+    const largestGifCache = new Map();
+
+    async function getContentLength(url) {
+      try {
+        const res = await fetch(url, { method: 'HEAD' });
+        if (!res.ok) return 0;
+        const len = res.headers.get('content-length');
+        return len ? parseInt(len, 10) : 0;
+      } catch (_) {
+        return 0;
+      }
+    }
+
+    async function pickLargestGif(gifList) {
+      // Escolhe o maior GIF; prefere versão otimizada se existir
+      let best = { optimized: null, original: null, size: -1 };
+      for (const original of gifList) {
+        const opt = toOptimizedGifPath(original);
+        let size = await getContentLength(opt);
+        let chosenOptimized = null;
+        let chosenOriginal = original;
+        if (size <= 0) {
+          size = await getContentLength(original);
+        } else {
+          chosenOptimized = opt;
+        }
+        if (size > best.size) {
+          best = { optimized: chosenOptimized, original: chosenOriginal, size };
+        }
+      }
+      return best;
+    }
 
     // Setup hover effects for projects
     document.querySelectorAll('.project').forEach(projectLink => {
@@ -691,10 +725,19 @@
       let hoverActive = false;
       let activationTimer = null;
       
-      // Prefer GIFs (otimizados) sobre screenshots
+      // Para GIFs: usar apenas o MAIOR; para projetos sem GIFs, usar screenshots
       const isUsingGifs = gifs && gifs.length > 0;
-      const optimizedGifs = isUsingGifs ? gifs.map(toOptimizedGifPath) : [];
-      const mediaArray = optimizedGifs.length ? optimizedGifs : screenshots;
+      const mediaArrayScreenshots = (!isUsingGifs && screenshots) ? screenshots : [];
+      let chosenGifOptimized = null;
+      let chosenGifOriginal = null;
+      if (isUsingGifs) {
+        if (!largestGifCache.has(projectFile)) {
+          // Prepara cache de forma assíncrona
+          pickLargestGif(gifs).then(best => {
+            largestGifCache.set(projectFile, best);
+          });
+        }
+      }
       
       projectLink.addEventListener('mouseenter', () => {
         // Cancel any previous timers/intervals and mark hover active
@@ -712,45 +755,39 @@
         activationTimer = setTimeout(async () => {
           if (!hoverActive) return;
 
-          // Choose first media and apply
-          const firstMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-          if (optimizedGifs.length) {
-            const idx = optimizedGifs.indexOf(firstMedia);
-            const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
-            setSrcWithFallback(img, firstMedia, originalCandidate);
+          let interval = 800;
+          if (isUsingGifs) {
+            // Resolve maior GIF (otimizado se existir; fallback para original)
+            let best = largestGifCache.get(projectFile);
+            if (!best) {
+              best = await pickLargestGif(gifs);
+              largestGifCache.set(projectFile, best);
+            }
+            chosenGifOptimized = best.optimized;
+            chosenGifOriginal = best.original;
+            const firstMedia = chosenGifOptimized || chosenGifOriginal;
+            setSrcWithFallback(img, firstMedia, chosenGifOriginal);
+            // Não alterna GIFs: preview usa apenas o maior
+            interval = 0;
           } else {
+            // Sem GIFs: usar screenshots e alternar como antes
+            const firstMedia = mediaArrayScreenshots[Math.floor(Math.random() * mediaArrayScreenshots.length)];
             img.src = firstMedia;
           }
 
           // Verifica retrato/paisagem
           setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
 
-          // Intervalo baseado no tipo de mídia
-          let interval = 800;
-          if (isUsingGifs) {
-            try {
-              const gifDuration = await getGifDuration(firstMedia);
-              interval = Math.max(600, Math.floor(gifDuration * 0.4));
-              console.log(`🎬 GIF duration: ${gifDuration}ms, hover interval: ${interval}ms`);
-            } catch (error) {
-              console.warn('Failed to get GIF duration, using default interval:', error);
-              interval = 1200;
-            }
-          }
-
-          if (!hoverActive) return;
-          hoverInterval = setInterval(() => {
+          // Para GIFs: sem alternância. Para screenshots: manter alternância.
+          if (!isUsingGifs) {
             if (!hoverActive) return;
-            const nextMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-            if (optimizedGifs.length) {
-              const idx = optimizedGifs.indexOf(nextMedia);
-              const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
-              setSrcWithFallback(img, nextMedia, originalCandidate);
-            } else {
+            hoverInterval = setInterval(() => {
+              if (!hoverActive) return;
+              const nextMedia = mediaArrayScreenshots[Math.floor(Math.random() * mediaArrayScreenshots.length)];
               img.src = nextMedia;
-            }
-            setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
-          }, interval);
+              setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
+            }, interval);
+          }
         }, 150); // pequena demora para evitar ativação quando o usuário sai muito rápido
       });
       
