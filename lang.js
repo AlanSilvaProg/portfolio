@@ -387,48 +387,7 @@
     });
   }
 
-  // --- GIF duration calculator ---
-  function getGifDuration(gifUrl) {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = function() {
-        // Create a canvas to analyze the GIF
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = this.width;
-        canvas.height = this.height;
-        
-        // For GIFs, we'll estimate duration based on file size and complexity
-        // This is an approximation since we can't easily get exact frame count in browser
-        fetch(gifUrl, { method: 'HEAD' })
-          .then(response => {
-            const contentLength = response.headers.get('content-length');
-            const fileSizeKB = contentLength ? parseInt(contentLength) / 1024 : 500; // default 500KB
-            
-            // Estimate duration based on file size (rough approximation)
-            // Smaller GIFs tend to be shorter, larger ones longer
-            let estimatedDuration;
-            if (fileSizeKB < 200) {
-              estimatedDuration = 1500; // 1.5 seconds for small GIFs
-            } else if (fileSizeKB < 500) {
-              estimatedDuration = 2500; // 2.5 seconds for medium GIFs
-            } else if (fileSizeKB < 1000) {
-              estimatedDuration = 4000; // 4 seconds for large GIFs
-            } else {
-              estimatedDuration = 6000; // 6 seconds for very large GIFs
-            }
-            
-            resolve(estimatedDuration);
-          })
-          .catch(() => {
-            // Fallback to default duration if fetch fails
-            resolve(3000); // 3 seconds default
-          });
-      };
-      img.onerror = () => resolve(3000); // 3 seconds default on error
-      img.src = gifUrl;
-    });
-  }
+  // (removido) cálculo de duração de GIF – deixar tocar inteiro sem interromper
   
   // Function to check if an image is portrait and apply appropriate class
   function checkIfPortrait(img) {
@@ -725,32 +684,17 @@
           // Verifica retrato/paisagem
           setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
 
-          // Intervalo baseado no tipo de mídia
-          let interval = 800;
-          if (isUsingGifs) {
-            try {
-              const gifDuration = await getGifDuration(firstMedia);
-              interval = Math.max(600, Math.floor(gifDuration * 0.4));
-              console.log(`🎬 GIF duration: ${gifDuration}ms, hover interval: ${interval}ms`);
-            } catch (error) {
-              console.warn('Failed to get GIF duration, using default interval:', error);
-              interval = 1200;
-            }
-          }
-
-          if (!hoverActive) return;
-          hoverInterval = setInterval(() => {
+          // Não alterna GIFs: deixar tocar inteiro; para screenshots, manter alternância
+          if (!isUsingGifs) {
             if (!hoverActive) return;
-            const nextMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
-            if (optimizedGifs.length) {
-              const idx = optimizedGifs.indexOf(nextMedia);
-              const originalCandidate = idx >= 0 ? gifs[idx] : (gifs && gifs[0]);
-              setSrcWithFallback(img, nextMedia, originalCandidate);
-            } else {
+            const interval = 800;
+            hoverInterval = setInterval(() => {
+              if (!hoverActive) return;
+              const nextMedia = mediaArray[Math.floor(Math.random() * mediaArray.length)];
               img.src = nextMedia;
-            }
-            setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
-          }, interval);
+              setTimeout(() => { if (hoverActive) checkIfPortrait(img); }, 100);
+            }, interval);
+          }
         }, 150); // pequena demora para evitar ativação quando o usuário sai muito rápido
       });
       
