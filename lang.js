@@ -108,6 +108,21 @@
       iceRageHeading: 'Ice Rage',
       iceRageDescription: 'Ação casual em um reino de gelo: derrote criaturas e proteja sua tribo.',
       iceRageContribution: 'Desenvolvi uma parte significativa da programação de Ice Rage, além da montagem de cenas, criação de ferramentas, implementação de assets e design de UI, durante meu período na EPRAGames, com um tempo de desenvolvimento de aproximadamente 3 meses até o momento.',
+      // Juju's Kitchen project translations
+      jujusKitchenTitle: 'Juju\'s Kitchen',
+      jujusKitchenSub: 'Veja se consegue lembrar e cumprir todos os pedidos, testando sua memória enquanto corre contra o relógio. Ajude a Juju, uma adorável cachorrinha, a cuidar do seu restaurante. Um jogo de culinária divertido onde você prepara pratos deliciosos em uma cozinha animada.',
+      jujusKitchenHeading: 'Juju\'s Kitchen',
+      jujusKitchenContribution: 'Desenvolvi toda a programação de Juju\'s Kitchen, além da montagem de cenas, implementação de assets e design de UI, durante meu período na EPRAGames, com um período de desenvolvimento de aproximadamente 1,5 meses.',
+      // Fill The Bus project translations
+      fillTheBusTitle: 'Fill The Bus',
+      fillTheBusSub: '"Fill the Bus" é um jogo de quebra-cabeça onde você precisa preencher o ônibus com passageiros da maneira mais eficiente possível para alcançar a maior pontuação e progredir no jogo, desbloqueando novo conteúdo. Mas cuidado — você precisa fazer isso antes que os passageiros fiquem irritados!',
+      fillTheBusContribution: 'Jogo casual desenvolvido em C# usando a Unity Engine como o único desenvolvedor do jogo.',
+      // Ta Na Mesa project translations
+      taNaMesaTitle: 'Ta Na Mesa',
+      taNaMesaSub: 'Jogo sério mobile desenvolvido durante minha graduação em Game Design, este jogo trata de uma interação social entre dois jogadores usando o mesmo dispositivo para trocar informações sobre ele, coletando e descobrindo novas receitas para usar em sua vida real como um guia (é uma possibilidade). Um aplicativo para facilitar pedidos em restaurantes, melhorando a experiência tanto para clientes quanto para estabelecimentos.',
+      taNaMesaHeading: 'Ta Na Mesa',
+      taNaMesaContribution: 'Fui responsável por toda a programação, como desenvolvedor único no projeto. Desenvolvido com C# na Unity Engine.',
+      taNaMesaLinks: 'Jogo não publicado.',
       // Minute Bomb project translations
       minuteBombTitle: 'Minute Bomb',
       minuteBombSub: 'Minute Bomb é um jogo casual onde o jogador precisa encontrar e memorizar as coordenadas corretas para desativar uma bomba.',
@@ -231,6 +246,21 @@
       iceRageHeading: 'Ice Rage',
       iceRageDescription: 'Casual action in an icy realm: defeat creatures and protect your tribe.',
       iceRageContribution: 'I developed a significant portion of the programming for Ice Rage, as well as scene setup, tool creation, asset implementations, and UI design, during my time at EPRAGames, with a development period of approximately 3 months to date.',
+      // Juju's Kitchen project translations
+      jujusKitchenTitle: 'Juju\'s Kitchen',
+      jujusKitchenSub: 'See if you can remember and fulfill all the orders, testing your memory while racing against the clock. Help Juju, an adorable puppy, take care of her restaurant. A fun cooking game where you prepare delicious dishes in a lively kitchen.',
+      jujusKitchenHeading: 'Juju\'s Kitchen',
+      jujusKitchenContribution: 'I developed all of Juju\'s Kitchen programming, as well as scene assembly, asset implementation, and UI design, during my time at EPRAGames, with a development period of approximately 1.5 months.',
+      // Fill The Bus project translations
+      fillTheBusTitle: 'Fill The Bus',
+      fillTheBusSub: '\"Fill the Bus\" is a puzzle game where you need to fill the bus with passengers as efficiently as possible to achieve the highest score and progress in the game, unlocking new content. But be careful — you need to do this before the passengers get annoyed!',
+      fillTheBusContribution: 'Casual game developed in C# using the Unity Engine as the sole developer of the game.',
+      // Ta Na Mesa project translations
+      taNaMesaTitle: 'Ta Na Mesa',
+      taNaMesaSub: 'A serious mobile game developed during my Game Design graduation, this game deals with social interaction between two players using the same device to exchange information about it, collecting and discovering new recipes to use in their real life as a guide (it\'s a possibility). An app to facilitate ordering in restaurants, improving the experience for both customers and establishments.',
+      taNaMesaHeading: 'Ta Na Mesa',
+      taNaMesaContribution: 'I was responsible for all the programming, as the sole developer on the project. Developed with C# in Unity Engine.',
+      taNaMesaLinks: 'Game not published.',
       // Minute Bomb project translations
       minuteBombTitle: 'Minute Bomb',
       minuteBombSub: 'Minute Bomb is a casual game where the player needs to find and memorize the correct coordinates to deactivate a bomb.',
