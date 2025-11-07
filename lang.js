@@ -71,6 +71,7 @@
       website: 'Website',
       stores: 'Lojas',
       gameplayFeatures: 'Características de Jogabilidade',
+      gameplayShorts: 'Shorts de Gameplay',
       
       // Stickman vs Zombies project translations
       stickmanTitle: 'Stickman vs Zombies',
@@ -101,6 +102,18 @@
       harbingerContribution: 'Este jogo foi feito durante o curso de Graduação em Game Design na Anhembi Morumbi e levou cerca de 3 meses de desenvolvimento. Atuei como Programador de Jogos usando Unity e fui responsável por todo o desenvolvimento do projeto na Unity e por sua arquitetura.',
       locomotiva5Contribution: 'Projeto interdisciplinar realizado durante o 5º semestre do curso de Game Design na Universidade Anhembi Morumbi. Atuei como Programador Líder no projeto e fui responsável por todo o código.',
       repairKrakenContribution: 'Contribuí para o projeto realizando toda a programação do jogo, junto a mais cinco membros da equipe — incluindo dois outros programadores.',
+      // Ice Rage project translations
+      iceRageTitle: 'Ice Rage',
+      iceRageSub: 'Ice Rage: Icerealm Fury é um jogo casual singleplayer onde o jogador controla um guerreiro bárbaro que corre em múltiplas direções para derrotar monstros em sua terra natal e proteger sua tribo.',
+      iceRageHeading: 'Ice Rage',
+      iceRageDescription: 'Ação casual em um reino de gelo: derrote criaturas e proteja sua tribo.',
+      iceRageContribution: 'Desenvolvi uma parte significativa da programação de Ice Rage, além da montagem de cenas, criação de ferramentas, implementação de assets e design de UI, durante meu período na EPRAGames, com um tempo de desenvolvimento de aproximadamente 3 meses até o momento.',
+      // Minute Bomb project translations
+      minuteBombTitle: 'Minute Bomb',
+      minuteBombSub: 'Minute Bomb é um jogo casual onde o jogador precisa encontrar e memorizar as coordenadas corretas para desativar uma bomba.',
+      minuteBombHeading: 'Minute Bomb',
+      minuteBombDescription: 'Ação rápida onde cada segundo conta para desarmar bombas e completar desafios.',
+      minuteBombContribution: 'Desenvolvi toda a programação de Minute Bomb, além da montagem de cenas, implementação de assets e design de UI, durante meu período na EPRAGames, com tempo de desenvolvimento de aproximadamente 2 meses.',
       // Nebula Garden (NG) project translations
       ngTitle: 'Nebula Garden',
       ngSub: 'Em Nebula Garden, cuide de uma fazenda dentro de uma estação espacial, conheça sua tripulação e vivencie uma ampla gama de possibilidades para expandir, explorar e transformar o mundo ao seu redor. Nebula Garden é um Farming RPG, gênero de jogos originado por Harvest Moon (Natsume Inc.). Esses jogos colocam o jogador no papel de alguém responsável por administrar uma fazenda, criando um ciclo de gameplay centrado nesses afazeres. O jogador passa seus dias cuidando da fazenda, cultivando plantas e criando animais, enquanto aproveita tudo que envolve esse ambiente. NPCs, dungeons e muitas outras mecânicas são pensadas para complementar — nunca substituir — a fazenda. Este jogo foi desenvolvido como trabalho de conclusão de curso (TCC) de Game Design na Universidade Anhembi Morumbi, em 2020.',
@@ -181,6 +194,7 @@
       website: 'Website',
       stores: 'Stores',
       gameplayFeatures: 'Gameplay Features',
+      gameplayShorts: 'Gameplay Shorts',
       
       // Stickman vs Zombies project translations
       stickmanTitle: 'Stickman vs Zombies - Aurecas',
@@ -211,6 +225,18 @@
       harbingerContribution: "This game was made during the Game Design course from Anhembi Morumbi degree and it development takes around 3 months to be done. I've worked as Game Programmer using Unity and I was responsible for the entire project development in Unity and its architecture.",
       locomotiva5Contribution: 'Interdisciplinary project carried out during the 5th semester of the Game Design course at Anhembi Morumbi University. I worked as the Lead Programmer on the project and was responsible for all the code within it.',
       repairKrakenContribution: 'I contributed to the project by handling all the game’s programming, alongside five other team members — including two fellow programmers.',
+      // Ice Rage project translations
+      iceRageTitle: 'Ice Rage',
+      iceRageSub: 'Ice Rage: ICEREALM FURY is a casual single-player game where the player controls a barbarian warrior who runs in multiple directions to defeat monsters in his homeland to protect his tribe.',
+      iceRageHeading: 'Ice Rage',
+      iceRageDescription: 'Casual action in an icy realm: defeat creatures and protect your tribe.',
+      iceRageContribution: 'I developed a significant portion of the programming for Ice Rage, as well as scene setup, tool creation, asset implementations, and UI design, during my time at EPRAGames, with a development period of approximately 3 months to date.',
+      // Minute Bomb project translations
+      minuteBombTitle: 'Minute Bomb',
+      minuteBombSub: 'Minute Bomb is a casual game where the player needs to find and memorize the correct coordinates to deactivate a bomb.',
+      minuteBombHeading: 'Minute Bomb',
+      minuteBombDescription: 'Fast-paced action where every second counts to defuse bombs and complete challenges.',
+      minuteBombContribution: 'I developed all the programming for Minute Bomb, as well as scene setup, asset implementations, and UI design, during my time at EPRAGames, with a development period of approximately 2 months.',
       // Nebula Garden (NG) project translations
       ngTitle: 'Nebula Garden',
       ngSub: 'In Nebula Garden, take care of a farm inside a space station, meet its crew, and experience a wide range of possibilities to expand, explore, and reshape the world around you. Nebula Garden is a Farming RPG, a genre originating from Harvest Moon by Natsume Inc. These games put the player in the role of someone responsible for running a farm, creating a gameplay loop centered around those duties. The player spends their days tending the farm, growing crops and raising animals, while enjoying everything surrounding that environment. NPCs, dungeons, and many other mechanics are designed to complement — never replace — the farm. This game was developed as the final thesis project for the Game Design course at Anhembi Morumbi University in 2020.',
@@ -838,6 +864,14 @@
     attachLangToggleHandlers();
     applyTranslations(showingAll);
     observeFadeIns();
+    // Ensure first project content block is visible immediately on project pages
+    try {
+      const firstSection = document.querySelector('.project-page section.fade-in');
+      if (firstSection) {
+        firstSection.classList.add('visible');
+        firstSection.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+      }
+    } catch (e) { /* no-op */ }
     initTopBgRotator();
     initProjectHoverGifs();
     initShowMoreButtons();
