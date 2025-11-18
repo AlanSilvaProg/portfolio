@@ -186,6 +186,7 @@ main { max-width:1200px; margin:0 auto; padding:40px 20px; }
   cursor:pointer;
   position:relative;
   transition: transform .28s ease, box-shadow .28s ease;
+  text-decoration: none;
 }
 .project:hover { transform: translateY(-6px); box-shadow:0 14px 40px rgba(0,0,0,0.6); }
 
@@ -195,6 +196,21 @@ main { max-width:1200px; margin:0 auto; padding:40px 20px; }
   height:220px;
   object-fit:cover;
   transition: transform .45s ease, filter .45s ease;
+}
+
+.project-info { padding:16px 14px 18px; }
+.project-title { font-size:1.25rem; font-weight:800; color:#ffffff; }
+.project-duration { margin-top:6px; color:#bdbdbd; font-weight:600; text-decoration: none; }
+.project-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.badge {
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:8px;
+  background:#2f66d0;
+  color:#fff;
+  font-weight:700;
+  font-size:.85rem;
+  text-decoration: none;
 }
 
 /* Ajuste para imagens em formato portrait */
