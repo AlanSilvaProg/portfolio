@@ -145,7 +145,11 @@
       sokolabSub: 'Sokolab é um jogo Sokoban onde você joga como um robô fofo! Empurre os blocos para o objetivo para chegar ao final do nível, novas mecânicas são introduzidas ao longo do jogo, adicionando camadas de complexidade aos quebra-cabeças! Você consegue alcançar o último nível?',
       sokolabHeading: 'Sokolab',
       sokolabDescription: 'Puzzle inspirado em Sokoban com novas mecânicas, mapas e desafios progressivos.',
-      sokolabContribution: 'Fui responsável por todo o desenvolvimento de jogo, sendo o único desenvolvedor do projeto. Criei do zero sistemas de geração de mapa, elementos de composição dos puzzles e progressão. Jogo desenvolvido na Unity Engine.'
+      sokolabContribution: 'Fui responsável por todo o desenvolvimento de jogo, sendo o único desenvolvedor do projeto. Criei do zero sistemas de geração de mapa, elementos de composição dos puzzles e progressão. Jogo desenvolvido na Unity Engine.',
+      // Bingo Rex project translations
+      bingoRexTitle: 'Bingo Rex',
+      bingoRexSub: 'Bingo Rex é um jogo mobile de bingo social desenvolvido pela Pipa Studios. Ele apresenta modalidades como bingo de 75 e 90 bolas, com salas temáticas e sistemas de progressão. Os jogadores completam missões diárias, desbloqueiam conteúdos e interagem com o mascote Rex para ganhar recompensas. O foco é entretenimento casual, sem apostas com dinheiro real.',
+      bingoRexContribution: 'O jogo foi desenvolvido utilizando a Unity Engine, C# e backend em Java. Fui um dos responsáveis de implementar novas features, integrações com o backend, novos jogos de bingo e manutenção dos jogos já existentes.'
     },
     en: {
       headerTitle: 'Alan Silva',
@@ -280,6 +284,10 @@
       sokolabHeading: 'Sokolab',
       sokolabDescription: 'Sokoban-inspired puzzle with new mechanics, map generation and progressive challenges.',
       sokolabContribution: 'I was responsible for the entire game development as the sole developer. I built map generation systems from scratch, puzzle composition elements and progression. Developed with Unity Engine.',
+      // Bingo Rex project translations
+      bingoRexTitle: 'Bingo Rex',
+      bingoRexSub: 'Bingo Rex is a mobile social bingo game developed by Pipa Studios. It features 75-ball and 90-ball bingo modes, themed rooms, and progression systems. Players complete daily missions, unlock new content, and interact with the mascot Rex to earn rewards. The focus is on casual entertainment, with no real-money gambling involved.',
+      bingoRexContribution: 'The game was developed using the Unity Engine with C# on the client side and a Java-based backend. I was one of the developers responsible for implementing new features, integrating backend services, developing new bingo games, and maintaining existing ones.',
 
       // War project translations
       warTitle: 'War',
