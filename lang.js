@@ -430,6 +430,10 @@
       // Aquabitz — GIFs available
       'assets/projects/Aquabitz/ezgif.com-video-to-gif.gif',
       'assets/projects/Aquabitz/ezgif.com-video-to-gif (1).gif',
+      // Bingo Rex — GIFs available
+      'assets/projects/BingoRex/Gifs/rex-store-pt-ezgif.com-video-to-gif-converter.gif',
+      'assets/projects/BingoRex/Gifs/rex-store-pt-ezgif.com-video-to-gif-converter (1).gif',
+      'assets/projects/BingoRex/Gifs/rex-store-pt-ezgif.com-video-to-gif-converter (2).gif',
       // IceRage — multiple GIFs available
       'assets/projects/IceRage/Gif\'s/Bear.gif',
       'assets/projects/IceRage/Gif\'s/Dragon1.gif',
@@ -743,6 +747,11 @@
       ],
       'jujus-kitchen.html': [
         "assets/projects/Juju'sKitchen/Gifs/ezgif.com-gif-maker.gif"
+      ],
+      'bingo-rex.html': [
+        'assets/projects/BingoRex/Gifs/rex-store-pt-ezgif.com-video-to-gif-converter.gif',
+        'assets/projects/BingoRex/Gifs/rex-store-pt-ezgif.com-video-to-gif-converter (1).gif',
+        'assets/projects/BingoRex/Gifs/rex-store-pt-ezgif.com-video-to-gif-converter (2).gif'
       ]
     };
 
