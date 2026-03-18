@@ -149,7 +149,11 @@
       // Bingo Rex project translations
       bingoRexTitle: 'Bingo Rex',
       bingoRexSub: 'Bingo Rex é um jogo mobile de bingo social desenvolvido pela Pipa Studios. Ele apresenta modalidades como bingo de 75 e 90 bolas, com salas temáticas e sistemas de progressão. Os jogadores completam missões diárias, desbloqueiam conteúdos e interagem com o mascote Rex para ganhar recompensas. O foco é entretenimento casual, sem apostas com dinheiro real.',
-      bingoRexContribution: 'O jogo foi desenvolvido utilizando a Unity Engine, C# e backend em Java. Fui um dos responsáveis de implementar novas features, integrações com o backend, novos jogos de bingo e manutenção dos jogos já existentes.'
+      bingoRexContribution: 'O jogo foi desenvolvido utilizando a Unity Engine, C# e backend em Java. Fui um dos responsáveis de implementar novas features, integrações com o backend, novos jogos de bingo e manutenção dos jogos já existentes.',
+      // Praia Bingo Show project translations
+      praiaBingoShowTitle: 'Praia Bingo Show',
+      praiaBingoShowSub: 'Jogo de bingo 75 bolas multiplayer Web-Mobile First. Bingo com Lives ao vivo com apresentadores da Pipa Studios e liveops in game como mini games, quizes e daily missions.',
+      praiaBingoShowContribution: 'Atuei desde a prototipação até o lançamento do jogo, implementando features, mocks para validações de mecânicas e participação direta na modelagem de dados que seria trafegada entre front e backend. Fui o responsável pela implementação e criação de todas as mecânicas e features do jogo, dentre elas, daily mission, sorteio de bolas, lógica de jogo e identificação de padrões, entre outros. Durante o desenvolvimento foi construido um framework chamado Bingo Maker o qual é usado até os dias atuais em novos projetos Unity. Fui responsável pela construção da maior parte dos recursos presentes no framework em relação a gameplay, sendo o PraiaShow, uma POC desse framework. Atualmente o jogo foi descontinuado, mas o framework segue sendo utilizado em novos projetos.'
     },
     en: {
       headerTitle: 'Alan Silva',
@@ -288,6 +292,10 @@
       bingoRexTitle: 'Bingo Rex',
       bingoRexSub: 'Bingo Rex is a mobile social bingo game developed by Pipa Studios. It features 75-ball and 90-ball bingo modes, themed rooms, and progression systems. Players complete daily missions, unlock new content, and interact with the mascot Rex to earn rewards. The focus is on casual entertainment, with no real-money gambling involved.',
       bingoRexContribution: 'The game was developed using the Unity Engine with C# on the client side and a Java-based backend. I was one of the developers responsible for implementing new features, integrating backend services, developing new bingo games, and maintaining existing ones.',
+      // Praia Bingo Show project translations
+      praiaBingoShowTitle: 'Praia Bingo Show',
+      praiaBingoShowSub: '75-ball multiplayer bingo game with Web-Mobile First approach. Features live streams with Pipa Studios hosts and in-game liveops including mini games, quizzes, and daily missions.',
+      praiaBingoShowContribution: 'I worked from prototyping to game launch, implementing features, creating mocks for mechanics validation, and directly participating in data modeling for front-end and back-end communication. I was responsible for implementing and creating all game mechanics and features, including daily missions, ball drawing, game logic, and pattern identification, among others. During development, a framework called Bingo Maker was built, which is still used today in new Unity projects. I was responsible for building most of the gameplay-related resources in the framework, with PraiaShow being a POC of this framework. The game has been discontinued, but the framework continues to be used in new projects.',
 
       // War project translations
       warTitle: 'War',
@@ -810,6 +818,29 @@
         'assets/projects/Ta Na Mesa/8.jpg',
         'assets/projects/Ta Na Mesa/9.jpg',
         'assets/projects/Ta Na Mesa/10.jpg'
+      ],
+      'praia-bingo-show.html': [
+        'assets/projects/Praia Bingo Show/Screenshots/1.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/2.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/3.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/4.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/5.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/6.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/7.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/8.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/9.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/10.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/11.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/12.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/13.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/Compra de cartelas.png',
+        'assets/projects/Praia Bingo Show/Screenshots/Default Card.png',
+        'assets/projects/Praia Bingo Show/Screenshots/Connected Card.png',
+        'assets/projects/Praia Bingo Show/Screenshots/Gift Card.png',
+        'assets/projects/Praia Bingo Show/Screenshots/Jackpot2.jpg',
+        'assets/projects/Praia Bingo Show/Screenshots/PostRound_ref.png',
+        'assets/projects/Praia Bingo Show/Screenshots/bigscreem_live_patternchallange_ref.png',
+        'assets/projects/Praia Bingo Show/Screenshots/bigscreen_winnerspannel_ref.png'
       ]
     };
 
@@ -1160,15 +1191,20 @@
       { title: 'Book Of Wolves', url: 'projects/book-of-wolves.html' },
       { title: 'Sokolab', url: 'projects/sokolab.html' },
       { title: 'Ziggy', url: 'projects/ziggy.html' },
+      { title: 'EditoraBrasil — Salve a Pirâmide', url: 'projects/editora-salve-a-piramede.html' },
+      { title: 'EditoraBrasil — Show do Monstro', url: 'projects/editora-show-do-monstro.html' },
+      { title: 'EditoraBrasil — Zumbis Desorganizados', url: 'projects/editora-zumbis-desorganizados.html' },
       { title: 'War', url: 'projects/war.html' },
       { title: 'GameBanBanBan', url: 'projects/gamebanbanban.html' },
       { title: 'Stickman Vs Zombies - Aurecas', url: 'projects/stickman-vs-zombies.html' },
+      { title: 'Bingo Rex', url: 'projects/bingo-rex.html' },
       { title: 'Aquabitz', url: 'projects/aquabitz.html' },
       { title: 'IceRage', url: 'projects/icerage.html' },
       { title: 'Minute Bomb', url: 'projects/minutebomb.html' },
       { title: "Juju's Kitchen", url: 'projects/jujus-kitchen.html' },
       { title: 'Fill The Bus', url: 'projects/fill-the-bus.html' },
-      { title: 'Ta Na Mesa', url: 'projects/tanamesa.html' }
+      { title: 'Ta Na Mesa', url: 'projects/tanamesa.html' },
+      { title: 'Praia Bingo Show', url: 'projects/praia-bingo-show.html' }
     ];
 
   const INDEX_SECTIONS = [
