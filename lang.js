@@ -13,7 +13,7 @@
       headerSub: 'Desenvolvedor de Jogos e Engenheiro de Software',
       showMore: 'Mostrar Mais',
       showLess: 'Mostrar Menos',
-      footer: '© 2025 Alan Silva — Todos os direitos reservados.',
+      footer: '© 2026 Alan Silva — Todos os direitos reservados.',
       back: '← Voltar',
       linkedinTooltip: 'Ver perfil',
       githubTooltip: 'Ver GitHub',
@@ -21,13 +21,24 @@
       projectsHeading: 'Projetos',
       projectsPreviewHint: 'Passe o mouse sobre um projeto para ver o preview.',
       // About section
-      aboutIntroTitle: 'Introdução',
-      aboutIntroP1: 'Graduado em Game Design pela Universidade Anhembi Morumbi (São Paulo, Brasil), sou apaixonado por desenvolvimento de jogos desde 2014. Atuei em um amplo espectro de projetos — de mobile a PC/console, de títulos casuais a produções de maior escala.',
-      aboutIntroP2: 'Meu principal stack é Unity Engine com C#, onde concentro a maior parte da minha experiência profissional. Também tenho sólida experiência com JavaScript, Lua e C++, com uma afinidade especial por C++. Profissionalmente, minhas contribuições foram predominantemente em Unity e C#.',
-      aboutIntroP3: 'Trabalho com jogos desde meados de 2019, somando mais de 6 anos de experiência prática entregando gameplay, sistemas, ferramentas e experiências de usuário bem polidas.',
+      aboutIntroTitle: 'Resumo',
+      aboutIntroP1: 'Graduado em Design de Games (UAM) e Unity Certified Professional, atuo como Senior Game Developer na Pipa Studios com 7+ anos de experiência desenvolvendo frameworks internos, jogos B2B/B2C e soluções multiplataforma — Mobile, PC, Console, WebGL e VR.',
+      aboutIntroP2: 'Especializado em otimização de performance, integrações third-party (Firebase, AWS, Unity Services, Google Play) e arquitetura de sistemas de jogo.',
+      aboutIntroP3: 'Atualmente cursando Pós Tech em Arquitetura de Sistemas .NET com Azure (FIAP+Alura), expandindo minha atuação para microsserviços, cloud computing e DevOps.',
       aboutExperienceTitle: 'Experiência',
       skillsTitle: 'Habilidades',
       certCaption: 'Profissional Certificado Unity: Programador (2023–2026)',
+      presentLabel: 'Presente',
+      // Project filters
+      filterAll: 'Todos',
+      filterPcConsole: 'PC/Console',
+      filterWebGL: 'WebGL',
+      filterMobile: 'Mobile',
+      // Skills categories
+      skillsCatEngines: 'Engines',
+      skillsCatLanguages: 'Linguagens',
+      skillsCatCloud: 'Cloud & Backend',
+      skillsCatDevOps: 'DevOps & Ferramentas',
       // Platform section titles
       pcConsoleTitle: 'PC/Console',
       webglTitle: 'Jogos WebGL',
@@ -167,7 +178,7 @@
       headerSub: 'Game Developer & Software Engineer',
       showMore: 'Show More',
       showLess: 'Show Less',
-      footer: '© 2025 Alan Silva — All rights reserved.',
+      footer: '© 2026 Alan Silva — All rights reserved.',
       back: '← Back',
       linkedinTooltip: 'View profile',
       githubTooltip: 'View GitHub',
@@ -175,13 +186,24 @@
       projectsHeading: 'Projects',
       projectsPreviewHint: 'Hover over a project to see the preview.',
       // About section
-      aboutIntroTitle: 'Introduction',
-      aboutIntroP1: 'Graduated in Game Design from Anhembi Morumbi University (São Paulo, Brazil), I\'ve been passionate about game development since 2014. I\'ve worked on a wide spectrum of projects — from mobile to PC/console, from casual titles to larger scale productions.',
-      aboutIntroP2: 'My main stack is Unity Engine with C#, where I focus most of my professional experience. I also have solid experience with JavaScript, Lua, and C++, with a special affinity for C++. Professionally, my contributions have been predominantly in Unity and C#.',
-      aboutIntroP3: 'I\'ve been working with games since mid-2019, accumulating over 6 years of practical experience delivering gameplay, systems, tools, and well-polished user experiences.',
+      aboutIntroTitle: 'Summary',
+      aboutIntroP1: 'Game Design graduate (UAM) and Unity Certified Professional, currently Senior Game Developer at Pipa Studios with 7+ years of experience building internal frameworks, B2B/B2C games, and multi-platform solutions — Mobile, PC, Console, WebGL, and VR.',
+      aboutIntroP2: 'Specialized in performance optimization, third-party integrations (Firebase, AWS, Unity Services, Google Play), and game systems architecture.',
+      aboutIntroP3: 'Currently pursuing a Post-grad in .NET Systems Architecture with Azure (FIAP+Alura), expanding into microservices, cloud computing, and DevOps.',
       aboutExperienceTitle: 'Experience',
       skillsTitle: 'Skills',
       certCaption: 'Unity Certified Professional: Programmer (2023–2026)',
+      presentLabel: 'Present',
+      // Project filters
+      filterAll: 'All',
+      filterPcConsole: 'PC/Console',
+      filterWebGL: 'WebGL',
+      filterMobile: 'Mobile',
+      // Skills categories
+      skillsCatEngines: 'Engines',
+      skillsCatLanguages: 'Languages',
+      skillsCatCloud: 'Cloud & Backend',
+      skillsCatDevOps: 'DevOps & Tools',
       // Platform section titles
       pcConsoleTitle: 'PC/Console',
       webglTitle: 'WebGL Games',
@@ -337,12 +359,15 @@
     document.querySelectorAll('.show-more').forEach(b => {
       b.textContent = showingAll ? t.showLess : t.showMore;
     });
+    // update filter count tooltips with correct language unit
+    applyFilterCountTooltips();
   }
 
   // --- language toggle handler (shared) ---
   function toggleLang() {
     lang = (lang === 'pt') ? 'en' : 'pt';
     localStorage.setItem(LANG_KEY, lang);
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
     // update all related UI strings
     applyTranslations(window.__SHOWING_ALL_PROJECTS === true);
     // update all flag buttons
@@ -536,13 +561,23 @@
     return cols;
   }
 
+  function applyFilterCountTooltips() {
+    if (!window.__filterCounts) return;
+    const unit = lang === 'pt' ? 'projetos' : 'projects';
+    document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+      const n = window.__filterCounts[btn.dataset.filter];
+      if (n > 0) btn.dataset.count = `${n} ${unit}`;
+    });
+  }
+
   function updateProjectsVisibility() {
+    const hasFilterBtns = !!document.querySelector('.filter-btn');
     const grids = Array.from(document.querySelectorAll('.projects-grid'));
     grids.forEach(grid => {
       const items = Array.from(grid.querySelectorAll(':scope > .project'));
-      const visibleCount = showingAll ? items.length : getVisibleColumns(grid);
+      const visibleCount = (showingAll || hasFilterBtns) ? items.length : getVisibleColumns(grid);
       items.forEach((p, i) => {
-        if (!showingAll && i >= visibleCount) {
+        if (!showingAll && !hasFilterBtns && i >= visibleCount) {
           p.classList.add('hidden');
           p.style.pointerEvents = 'none';
         } else {
@@ -551,14 +586,71 @@
         }
       });
     });
-    // Também controla visibilidade dos grupos opcionais no index
-    const webgl = document.getElementById('webgl-group');
-    const mobile = document.getElementById('mobile-group');
-    if (webgl) webgl.style.display = showingAll ? 'block' : 'none';
-    if (mobile) mobile.style.display = showingAll ? 'block' : 'none';
+    // Only manage webgl/mobile visibility when no filter buttons present
+    if (!hasFilterBtns) {
+      const webgl = document.getElementById('webgl-group');
+      const mobile = document.getElementById('mobile-group');
+      if (webgl) webgl.style.display = showingAll ? 'block' : 'none';
+      if (mobile) mobile.style.display = showingAll ? 'block' : 'none';
+    }
     // atualiza rótulo do botão
     applyTranslations(showingAll);
     window.__SHOWING_ALL_PROJECTS = showingAll;
+  }
+
+  function updateFilterButtons() {
+    const pcGroup = document.getElementById('pc-console-group');
+    const webglGroup = document.getElementById('webgl-group');
+    const mobileGroup = document.getElementById('mobile-group');
+    if (!pcGroup && !webglGroup && !mobileGroup) return;
+    const activeBtn = document.querySelector('.filter-btn.active');
+    const filter = activeBtn ? activeBtn.dataset.filter : 'all';
+    const show = (el) => { if (el) el.style.display = ''; };
+    const hide = (el) => { if (el) el.style.display = 'none'; };
+    if (filter === 'all') {
+      show(pcGroup); show(webglGroup); show(mobileGroup);
+    } else if (filter === 'pc') {
+      show(pcGroup); hide(webglGroup); hide(mobileGroup);
+    } else if (filter === 'webgl') {
+      hide(pcGroup); show(webglGroup); hide(mobileGroup);
+    } else if (filter === 'mobile') {
+      hide(pcGroup); hide(webglGroup); show(mobileGroup);
+    }
+  }
+
+  function initFilterButtons() {
+    const btns = document.querySelectorAll('.filter-btn');
+    if (!btns.length) return;
+    showingAll = true;
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateFilterButtons();
+      });
+    });
+    updateFilterButtons();
+    // Count projects per group and store for localized tooltip updates
+    const countIn = (id) => {
+      const el = id ? document.getElementById(id) : document;
+      return el ? el.querySelectorAll('.project').length : 0;
+    };
+    window.__filterCounts = {
+      'all': countIn(null),
+      'pc': countIn('pc-console-group'),
+      'webgl': countIn('webgl-group'),
+      'mobile': countIn('mobile-group')
+    };
+    // Initial tooltip labels (applyTranslations will keep them updated)
+    applyFilterCountTooltips();
+    // Wire up live-link badges
+    document.querySelectorAll('.project-live-badge[data-href]').forEach(badge => {
+      badge.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(badge.dataset.href, '_blank', 'noopener,noreferrer');
+      });
+    });
   }
 
   function initShowMoreButtons() {
@@ -960,6 +1052,7 @@
 
   // --- init (safe DOM ready) ---
   function init() {
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
     attachLangToggleHandlers();
     applyTranslations(showingAll);
     observeFadeIns();
@@ -974,6 +1067,7 @@
     initTopBgRotator();
     initProjectHoverGifs();
     initShowMoreButtons();
+    initFilterButtons();
     updateProjectsVisibility();
     // Atualiza dinamicamente em resize (debounced)
     let _resizeTimer;
@@ -1231,10 +1325,10 @@
     { id: '', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'certification', label: 'Certification' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'pc-console', label: 'PC/Console' },
-    { id: 'webgl-group', label: 'WebGL Games' },
-    { id: 'mobile-group', label: 'Mobile' }
+    { id: 'projects', label: 'All Projects' },
+    { id: 'pc-console', label: '↳ PC/Console' },
+    { id: 'webgl-group', label: '↳ WebGL' },
+    { id: 'mobile-group', label: '↳ Mobile' }
   ];
 
   function buildMenuMarkup(){
@@ -1274,19 +1368,29 @@
       a.textContent = sec.label;
       a.href = onIndex ? `#${sec.id}` : `${ROOT}index.html#${sec.id}`;
       a.addEventListener('click', (e) => {
-        // smooth scroll and ensure optional sections are visible when on index
         if (onIndex) {
           e.preventDefault();
-          // Expand all projects globally so previews show
-          if (window.__projectsVisibility && window.__projectsVisibility.setShowAll) {
-            window.__projectsVisibility.setShowAll(true);
-          }
-          const target = document.getElementById(sec.id);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+          // Map menu section ids to filter button data-filter values
+          const filterMap = { 'pc-console': 'pc', 'webgl-group': 'webgl', 'mobile-group': 'mobile', 'projects': 'all' };
+          if (filterMap[sec.id] !== undefined) {
+            // Activate the corresponding filter button (triggers updateFilterButtons)
+            const targetFilter = filterMap[sec.id];
+            const filterBtn = document.querySelector(`.filter-btn[data-filter="${targetFilter}"]`);
+            if (filterBtn) filterBtn.click();
+            // Scroll to the projects section so filter buttons are in view
+            const projectsEl = document.getElementById('projects');
+            if (projectsEl) projectsEl.scrollIntoView({ behavior: 'smooth' });
           } else {
-            // Fallback to hash navigation if element is missing
-            location.hash = `#${sec.id}`;
+            // Non-filter sections: just scroll
+            if (window.__projectsVisibility && window.__projectsVisibility.setShowAll) {
+              window.__projectsVisibility.setShowAll(true);
+            }
+            const target = document.getElementById(sec.id);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            } else {
+              location.hash = `#${sec.id}`;
+            }
           }
         }
         closeMenu();

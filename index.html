@@ -5,6 +5,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfólio — Alan Silva</title>
+  <meta name="description" content="Portfólio de Alan Silva — Senior Game Developer com 7+ anos de experiência em Unity, C#, soluções multiplataforma (Mobile, PC, Console, WebGL, VR).">
+  <meta property="og:title" content="Portfólio — Alan Silva">
+  <meta property="og:description" content="Senior Game Developer | Unity Certified Professional | 7+ anos de experiência">
+  <meta property="og:image" content="assets/certification-badges-professional-programmer-600x600-7c2f42.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Portfólio — Alan Silva">
+  <meta name="twitter:description" content="Senior Game Developer | Unity Certified Professional | 7+ anos de experiência">
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <script>
@@ -19,63 +27,6 @@
     })();
   </script>
   <script defer src="lang.js"></script>
-  <style>
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-      margin: 18px 0 26px;
-      align-items: start;
-    }
-
-    .about-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 16px 18px;
-    }
-
-    .about-card h3 {
-      margin: 0 0 8px;
-      font-weight: 700;
-    }
-
-    .about-card h4 {
-      margin: 16px 0 8px;
-      font-weight: 700;
-    }
-
-    .about-card p {
-      color: #cccccc;
-      line-height: 1.6;
-    }
-
-    .about-list {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    .about-list li {
-      color: #cccccc;
-      line-height: 1.6;
-      margin-bottom: 4px;
-    }
-
-    .cert-badge {
-      display: block;
-      margin: 8px auto 22px;
-      width: 180px;
-      max-width: 60vw;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .cert-badge:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-    }
-  </style>
 </head>
 
 <body>
@@ -108,82 +59,210 @@
 
   <main>
     <section class="fade-in" id="home">
-      <!-- About Me: Introduction & Experience -->
-      <div class="about-grid fade-in" id="about">
-        <div class="about-card">
-          <h3 data-i18n="aboutIntroTitle">Introduction</h3>
-          <p data-i18n="aboutIntroP1">
-            Graduated in Game Design from Anhembi Morumbi University (São Paulo, Brazil), I’m a game development
-            enthusiast who has been building and studying games since 2014. I’ve worked across a wide spectrum of
-            projects—from mobile to PC/console, from casual titles to larger-scale productions.
-          </p>
-          <p data-i18n="aboutIntroP2">
-            My primary stack is Unity Engine with C#, where I’ve focused most of my professional experience. I also have
-            solid experience with JavaScript, Lua, and C++, with a special affinity for C++. Professionally, my
-            contributions have predominantly been in Unity and C#.
-          </p>
-          <p data-i18n="aboutIntroP3">
-            I’ve been working in games since mid‑2019, with 6+ years of hands‑on experience delivering gameplay,
-            systems, tools, and polished user experiences.
-          </p>
-        </div>
-        <div class="about-card">
-          <h3 data-i18n="aboutExperienceTitle">Experience</h3>
-          <ul class="about-list">
-            <li>2022 — Senior Unity Game Engineer — Pipa Studios (Current)</li>
-            <li>2023–2025 — Unity Game Engineer — Aurecas (Freelancer)</li>
-            <li>2023 — Unity Game Engineer — Afil Games (Freelancer)</li>
-            <li>2022 — Unity App Engineer — Kids Company (Freelancer)</li>
-            <li>2021–2022 — Unity Game Engineer — EPRA Games</li>
-            <li>2021–2022 — Unity Game Engineer — Eludica</li>
-            <li>2020 — Unity Game Engineer — K‑Interativa</li>
-            <li>2019–2020 — Unity Game Engineer — Eludica (Intern)</li>
-            <li>2019 — Unity Game Engineer — Arch Works (Intern)</li>
-          </ul>
-          <p style="margin-top:8px;" data-i18n="certCaption">Unity Certified Professional: Programmer (2023–2026)</p>
-        </div>
-      </div>
+      <!-- About -->
+      <div id="about" class="fade-in">
 
-      <!-- Skills (centered column) -->
-      <div class="skills-center fade-in">
-        <div class="about-card">
-          <h4 data-i18n="skillsTitle">Skills</h4>
-          <ul class="about-list">
-            <li>Unity Engine</li>
-            <li>Cocos Creator</li>
-            <li>Custom Engines</li>
-            <li>.NET C#, C++ — Advanced</li>
-            <li>PHP, Lua, JavaScript — Basic/Intermediate</li>
-            <li>Git and platforms like Plastic SCM</li>
-            <li>Game Design / Level Design</li>
-          </ul>
+        <!-- Introduction -->
+        <div class="about-intro-card">
+          <h3 data-i18n="aboutIntroTitle">Introdução</h3>
+          <p data-i18n="aboutIntroP1">Graduado em Game Design pela Universidade Anhembi Morumbi (São Paulo, Brasil), sou apaixonado por desenvolvimento de jogos desde 2014. Atuei em um amplo espectro de projetos — de mobile a PC/console, de títulos casuais a produções de maior escala.</p>
+          <p data-i18n="aboutIntroP2">Meu principal stack é Unity Engine com C#, onde concentro a maior parte da minha experiência profissional. Também tenho sólida experiência com JavaScript, Lua e C++, com uma afinidade especial por C++. Profissionalmente, minhas contribuições foram predominantemente em Unity e C#.</p>
+          <p data-i18n="aboutIntroP3">Trabalho com jogos desde meados de 2019, somando mais de 7 anos de experiência prática entregando gameplay, sistemas, ferramentas e experiências de usuário bem polidas.</p>
         </div>
+
+        <!-- Experience History -->
+        <div class="exp-section fade-in">
+          <h3 class="subsection-title" data-i18n="aboutExperienceTitle">Experiência</h3>
+          <div class="exp-grid">
+
+            <a class="exp-badge" href="http://www.archworks.com.br/inicio/" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/arch_works.png" alt="Arch Works"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                </div>
+              </div>
+              <span class="exp-company">Arch Works</span>
+              <span class="exp-duration">2019</span>
+            </a>
+
+            <a class="exp-badge" href="https://ludact.com/pt-br/" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/eludica.png" alt="Eludica"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                  <div class="exp-engine-icon"><img src="assets/icons/cocos.svg" alt="Cocos Creator" title="Cocos Creator"></div>
+                </div>
+              </div>
+              <span class="exp-company">Eludica</span>
+              <span class="exp-duration">2019 – 2020</span>
+            </a>
+
+            <a class="exp-badge" href="https://www.linkedin.com/company/k-interativa/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/k_interativa.jpg" alt="K-Interativa"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                </div>
+              </div>
+              <span class="exp-company">K-Interativa</span>
+              <span class="exp-duration">2020</span>
+            </a>
+
+            <a class="exp-badge" href="https://epragames.com/" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/epragames.jpg" alt="EPRA Games"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                </div>
+              </div>
+              <span class="exp-company">EPRA Games</span>
+              <span class="exp-duration">2021 – 2022</span>
+            </a>
+
+            <a class="exp-badge" href="https://ludact.com/pt-br/" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/eludica.png" alt="Eludica"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                  <div class="exp-engine-icon"><img src="assets/icons/cocos.svg" alt="Cocos Creator" title="Cocos Creator"></div>
+                </div>
+              </div>
+              <span class="exp-company">Eludica</span>
+              <span class="exp-duration">2021 – 2022</span>
+            </a>
+
+            <a class="exp-badge" href="https://www.kidy.com.br/" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/kidyoficial_logo.jpeg" alt="Kids Company"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                </div>
+              </div>
+              <span class="exp-company">Kids Company</span>
+              <span class="exp-duration">2022</span>
+            </a>
+
+            <a class="exp-badge" href="https://afilgames.com/" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/afil_games_logo.png" alt="Afil Games"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                </div>
+              </div>
+              <span class="exp-company">Afil Games</span>
+              <span class="exp-duration">2023</span>
+            </a>
+
+            <a class="exp-badge" href="https://aurecas.com/" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/aurecas.png" alt="Aurecas"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                </div>
+              </div>
+              <span class="exp-company">Aurecas</span>
+              <span class="exp-duration">2023 – 2025</span>
+            </a>
+
+            <a class="exp-badge exp-badge--active" href="https://www.pipastudios.com/" target="_blank" rel="noopener noreferrer">
+              <div class="exp-circle-wrap">
+                <div class="exp-circle"><img src="assets/icons/companies/pipastudios_logo.jpeg" alt="Pipa Studios"></div>
+                <div class="exp-engines">
+                  <div class="exp-engine-icon"><img src="assets/icons/unity.svg" alt="Unity" title="Unity"></div>
+                </div>
+              </div>
+              <span class="exp-company">Pipa Studios</span>
+              <span class="exp-duration">2022 – <span data-i18n="presentLabel">Presente</span></span>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="skills-section fade-in">
+          <h3 class="subsection-title" data-i18n="skillsTitle">Habilidades</h3>
+          <div class="skills-categories">
+            <div class="skills-category">
+              <span class="skills-cat-label" data-i18n="skillsCatEngines">Engines</span>
+              <div class="skills-icons-row">
+                <div class="skill-chip"><img src="assets/icons/unity.svg" alt="Unity"><span>Unity Engine</span></div>
+                <div class="skill-chip"><img src="assets/icons/cocos.svg" alt="Cocos Creator"><span>Cocos Creator</span></div>
+                <div class="skill-chip"><img src="assets/icons/custom-engine.svg" alt="Custom Engine"><span>Custom Engine</span></div>
+              </div>
+            </div>
+            <div class="skills-category">
+              <span class="skills-cat-label" data-i18n="skillsCatLanguages">Linguagens</span>
+              <div class="skills-icons-row">
+                <div class="skill-chip"><img src="assets/icons/csharp.svg" alt="C#"><span>C#</span></div>
+                <div class="skill-chip"><img src="assets/icons/cplusplus.svg" alt="C++"><span>C++</span></div>
+                <div class="skill-chip"><img src="assets/icons/javascript.svg" alt="JavaScript"><span>JavaScript</span></div>
+                <div class="skill-chip"><img src="assets/icons/lua.svg" alt="Lua"><span>Lua</span></div>
+                <div class="skill-chip"><img src="assets/icons/php.svg" alt="PHP"><span>PHP</span></div>
+              </div>
+            </div>
+            <div class="skills-category">
+              <span class="skills-cat-label" data-i18n="skillsCatCloud">Cloud & Backend</span>
+              <div class="skills-icons-row">
+                <div class="skill-chip"><img src="assets/icons/aws.svg" alt="AWS"><span>AWS</span></div>
+                <div class="skill-chip"><img src="assets/icons/postgresql.svg" alt="PostgreSQL"><span>PostgreSQL</span></div>
+                <div class="skill-chip"><img src="assets/icons/dotnet.svg" alt=".NET"><span>.NET</span></div>
+                <div class="skill-chip"><img src="assets/icons/serverless.svg" alt="Serverless"><span>Serverless</span></div>
+                <div class="skill-chip"><img src="assets/icons/redis.svg" alt="Redis"><span>Redis</span></div>
+                <div class="skill-chip"><img src="assets/icons/api.svg" alt="API"><span>API</span></div>
+                <div class="skill-chip"><img src="assets/icons/websocket.svg" alt="WebSocket"><span>WebSocket</span></div>
+                <div class="skill-chip"><img src="assets/icons/graphql.svg" alt="GraphQL"><span>GraphQL</span></div>
+              </div>
+            </div>
+            <div class="skills-category">
+              <span class="skills-cat-label" data-i18n="skillsCatDevOps">DevOps & Ferramentas</span>
+              <div class="skills-icons-row">
+                <div class="skill-chip"><img src="assets/icons/git.svg" alt="Git"><span>Git</span></div>
+                <div class="skill-chip"><img src="assets/icons/cicd.svg" alt="CI/CD"><span>CI/CD</span></div>
+                <div class="skill-chip"><img src="assets/icons/automation.svg" alt="Automation"><span>Automation</span></div>
+                <div class="skill-chip"><img src="assets/icons/game-design.svg" alt="Game Design"><span>Game Design</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Certification Badge -->
-      <p style="text-align:center;" id="certification">
+      <div style="text-align:center; margin: 28px 0 22px;" id="certification">
         <a href="https://www.credly.com/badges/572a1fe7-e41d-4cd3-9402-c6c8d7563bbc" target="_blank"
           rel="noopener noreferrer">
           <img class="cert-badge fade-in" src="assets/certification-badges-professional-programmer-600x600-7c2f42.png"
             alt="Unity Certified Professional: Programmer badge">
         </a>
-      </p>
+        <p class="cert-caption fade-in" data-i18n="certCaption">Profissional Certificado Unity: Programador (2023–2026)</p>
+      </div>
 
       <!--Projects-->
       <h2 class="section-title" id="projects" data-i18n="projectsHeading">Projetos</h2>
       <p style="text-align:center; color: #aaaaaa; margin-bottom:18px;" data-i18n="projectsPreviewHint">Passe o mouse
         sobre um projeto para ver o preview.</p>
 
+      <!-- Project Filters -->
+      <div class="project-filters" role="group" aria-label="Filtrar projetos">
+        <button class="filter-btn active" data-filter="all" data-i18n="filterAll">Todos</button>
+        <button class="filter-btn" data-filter="pc" data-i18n="filterPcConsole">PC/Console</button>
+        <button class="filter-btn" data-filter="webgl" data-i18n="filterWebGL">WebGL</button>
+        <button class="filter-btn" data-filter="mobile" data-i18n="filterMobile">Mobile</button>
+      </div>
+
       <!-- PC/Console -->
+      <div id="pc-console-group">
       <h3 class="subsection-title" id="pc-console" data-i18n="pcConsoleTitle">PC/Console</h3>
       <div class="projects-grid fade-in">
         <a class="project" href="projects/unbinary.html">
           <img src="assets/projects/Unbinary/LogoArt.png" alt="Unbinary - Ludact">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
+          <div class="project-live-badge" data-href="https://unbinary.com/" title="Live" aria-label="Live Link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
           <div class="project-info">
             <div class="project-title">Unbinary - Ludact</div>
             <div class="project-duration">01/2021 – 05/2022</div>
             <div class="project-tags">
-              <span class="badge">UNITY</span>
               <span class="badge">C#</span>
               <span class="badge">VR</span>
               <span class="badge">META QUEST</span>
@@ -192,11 +271,11 @@
         </a>
         <a class="project" href="projects/ng.html">
           <img src="assets/projects/NG/game-icon.png" alt="Nebula Garden">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
           <div class="project-info">
             <div class="project-title">Nebula Garden</div>
             <div class="project-duration">01/2020 – 12/2020</div>
             <div class="project-tags">
-              <span class="badge">UNITY</span>
               <span class="badge">C#</span>
               <span class="badge">PC</span>
               <span class="badge">FARM</span>
@@ -205,11 +284,11 @@
         </a>
         <a class="project" href="projects/book-of-wolves.html">
           <img src="assets/projects/BookOfWolves/GameIcon.png" alt="Book Of Wolves">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
           <div class="project-info">
             <div class="project-title">Book Of Wolves</div>
             <div class="project-duration">07/2019 – 12/2019</div>
             <div class="project-tags">
-              <span class="badge">UNITY</span>
               <span class="badge">C#</span>
               <span class="badge">PC</span>
               <span class="badge">ACTION</span>
@@ -218,11 +297,11 @@
         </a>
         <a class="project" href="projects/harbinger.html">
           <img src="assets/projects/Harbinger/game-icon.png" alt="Harbinger">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
           <div class="project-info">
             <div class="project-title">Harbinger</div>
             <div class="project-duration">01/2018 – 06/2018</div>
             <div class="project-tags">
-              <span class="badge">UNITY</span>
               <span class="badge">C#</span>
               <span class="badge">PC</span>
               <span class="badge">METROIDVANIA</span>
@@ -231,11 +310,11 @@
         </a>
         <a class="project" href="projects/locomotiva5.html">
           <img src="assets/projects/Locomotiva5/game-icon.png" alt="Locomotiva5">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
           <div class="project-info">
             <div class="project-title">Locomotiva5</div>
             <div class="project-duration">01/2019 – 06/2019</div>
             <div class="project-tags">
-              <span class="badge">UNITY</span>
               <span class="badge">C#</span>
               <span class="badge">PC</span>
               <span class="badge">TERROR</span>
@@ -244,11 +323,11 @@
         </a>
         <a class="project" href="projects/repair-the-kraken.html">
           <img src="assets/projects/RepairTheKraken/gifs/w1000-1239880CwGrG5Ix.gif" alt="Repair The Kraken">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
           <div class="project-info">
             <div class="project-title">Repair The Kraken</div>
             <div class="project-duration">22/01/2019 - 23/01/2019</div>
             <div class="project-tags">
-              <span class="badge">UNITY</span>
               <span class="badge">C#</span>
               <span class="badge">PC</span>
               <span class="badge">GAMEJAM-GGJ</span>
@@ -257,11 +336,12 @@
         </a>
         <a class="project" href="projects/sokolab.html">
           <img src="assets/projects/Sokolab/game-icon.jpg" alt="Sokolab">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
+          <div class="project-live-badge" data-href="https://store.steampowered.com/app/2357450" title="Steam" aria-label="Steam"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
           <div class="project-info">
             <div class="project-title">Sokolab</div>
             <div class="project-duration">02/2023 – 05/2023</div>
             <div class="project-tags">
-              <span class="badge">UNITY</span>
               <span class="badge">C#</span>
               <span class="badge">PC</span>
               <span class="badge">PLAYSTATION</span>
@@ -273,11 +353,12 @@
         </a>
         <a class="project" href="projects/ziggy.html">
           <img src="assets/projects/Ziggy/game-icon.jpg" alt="Ziggy">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
+          <div class="project-live-badge" data-href="https://store.steampowered.com/app/2190320" title="Steam" aria-label="Steam"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
           <div class="project-info">
             <div class="project-title">Ziggy</div>
             <div class="project-duration">06/2023 – 08/2023</div>
             <div class="project-tags">
-              <span class="badge">UNITY</span>
               <span class="badge">C#</span>
               <span class="badge">PC</span>
               <span class="badge">PLAYSTATION</span>
@@ -290,11 +371,11 @@
         <!-- Editora Brasil games -->
         <a class="project" href="projects/editora-salve-a-piramede.html">
           <img src="assets/projects/EditoraBrasil/SalveAPiramede/TitleGame.png" alt="Salve a Pirâmide - Ludact">
+          <div class="project-engine-badge"><img src="assets/icons/cocos.svg" alt="Cocos Creator"></div>
           <div class="project-info">
             <div class="project-title">EditoraBrasil — Salve a Pirâmide</div>
             <div class="project-duration">06/2019 – 09/2019</div>
             <div class="project-tags">
-              <span class="badge">COCOS CREATOR</span>
               <span class="badge">JAVASCRIPT</span>
               <span class="badge">PC</span>
               <span class="badge">MOBILE</span>
@@ -304,11 +385,11 @@
         </a>
         <a class="project" href="projects/editora-show-do-monstro.html">
           <img src="assets/projects/EditoraBrasil/ShowDoMonstrֶo/BG-Menu.png" alt="Show do Monstro - Ludact">
+          <div class="project-engine-badge"><img src="assets/icons/cocos.svg" alt="Cocos Creator"></div>
           <div class="project-info">
             <div class="project-title">EditoraBrasil — Show do Monstro</div>
             <div class="project-duration">06/2019 – 09/2019</div>
             <div class="project-tags">
-              <span class="badge">COCOS CREATOR</span>
               <span class="badge">JAVASCRIPT</span>
               <span class="badge">PC</span>
               <span class="badge">MOBILE</span>
@@ -319,11 +400,11 @@
         <a class="project" href="projects/editora-zumbis-desorganizados.html">
           <img src="assets/projects/EditoraBrasil/ZumbisDesorganizados/BGMenuComplete-Tab-Vinheta.png"
             alt="Zumbis Desorganizados - Ludact">
+          <div class="project-engine-badge"><img src="assets/icons/cocos.svg" alt="Cocos Creator"></div>
           <div class="project-info">
             <div class="project-title">EditoraBrasil — Zumbis Desorganizados</div>
             <div class="project-duration">06/2019 – 09/2019</div>
             <div class="project-tags">
-              <span class="badge">COCOS CREATOR</span>
               <span class="badge">JAVASCRIPT</span>
               <span class="badge">PC</span>
               <span class="badge">MOBILE</span>
@@ -332,18 +413,19 @@
           </div>
         </a>
       </div>
+      </div><!-- /#pc-console-group -->
 
-      <!-- WebGL Games (hidden until "Mostrar Mais") -->
-      <div id="webgl-group" style="display:none;">
+      <!-- WebGL Games -->
+      <div id="webgl-group">
         <h3 class="subsection-title" data-i18n="webglTitle">Jogos WebGL</h3>
         <div class="projects-grid fade-in">
           <a class="project" href="projects/praia-bingo-show.html">
             <img src="assets/projects/Praia Bingo Show/Screenshots/3.jpg" alt="Praia Bingo Show (PipaStudios)">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">Praia Bingo Show (PipaStudios)</div>
               <div class="project-duration">2023 – 2024</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">WEB</span>
                 <span class="badge">MOBILE</span>
@@ -356,11 +438,12 @@
           </a>
           <a class="project" href="projects/war.html">
             <img src="assets/projects/War/Screenshot_1.png" alt="War">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
+          <div class="project-live-badge" data-href="https://play.wargrow.com.br/" title="Play Online" aria-label="Play Online"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
             <div class="project-info">
               <div class="project-title">War</div>
               <div class="project-duration">01/2020 – 01/2021</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">SMART-FOX</span>
                 <span class="badge">WEBGL</span>
@@ -371,11 +454,11 @@
           </a>
           <a class="project" href="projects/gamebanbanban.html">
             <img src="assets/projects/GameBanBanBan/game-icon.png" alt="GameBanBanBan - Ludact">
+          <div class="project-engine-badge"><img src="assets/icons/cocos.svg" alt="Cocos Creator"></div>
             <div class="project-info">
               <div class="project-title">GameBanBanBan</div>
               <div class="project-duration">05/2022 - 08/2022</div>
               <div class="project-tags">
-                <span class="badge">COCOS CREATOR</span>
                 <span class="badge">JAVASCRIPT</span>
                 <span class="badge">WEBGL</span>
                 <span class="badge">MOBILE</span>
@@ -386,17 +469,18 @@
         </div>
       </div>
 
-      <!-- Mobile (hidden until "Mostrar Mais") -->
-      <div id="mobile-group" style="display:none;">
+      <!-- Mobile -->
+      <div id="mobile-group">
         <h3 class="subsection-title" data-i18n="mobileTitle">Mobile</h3>
         <div class="projects-grid fade-in">
           <a class="project" href="projects/stickman-vs-zombies.html">
             <img src="assets/projects/StickmanVsZombie/maxresdefault.jpg" alt="Stickman vs Zombies - Aurecas">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
+          <div class="project-live-badge" data-href="https://play.google.com/store/apps/details?id=com.aurecas.stickmanzombieshooter" title="Google Play" aria-label="Google Play"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
             <div class="project-info">
               <div class="project-title">Stickman vs Zombies - Aurecas</div>
               <div class="project-duration">02/2023 – 05/2025</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">MOBILE</span>
                 <span class="badge">ADVENTURE</span>
@@ -405,11 +489,11 @@
           </a>
           <a class="project" href="projects/bingo-rex.html">
             <img src="assets/projects/BingoRex/Icon.jpg" alt="Bingo Rex (PipaStudios)">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">Bingo Rex (PipaStudios)</div>
               <div class="project-duration">2022 – 2023</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">ASSETBUNDLES</span>
                 <span class="badge">MYSQL</span>
@@ -420,11 +504,11 @@
           </a>
           <a class="project" href="projects/bingotopia.html">
             <img src="assets/projects/Bingotopia/icon.jpg" alt="Bingotopia (PipaStudios)">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">Bingotopia (PipaStudios)</div>
               <div class="project-duration">2022 – 2023</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">ADDRESSABLES</span>
                 <span class="badge">ANDROID</span>
@@ -435,11 +519,11 @@
           </a>
           <a class="project" href="projects/aquabitz.html">
             <img src="assets/projects/Aquabitz/Screenshot_1.png" alt="Aquabitz - Ludact">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">Aquabitz</div>
               <div class="project-duration">06/2019 – 08/2019</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">MOBILE</span>
                 <span class="badge">CASUAL</span>
@@ -448,11 +532,11 @@
           </a>
           <a class="project" href="projects/icerage.html">
             <img src="assets/projects/IceRage/Icone 1024.png" alt="IceRage">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">IceRage</div>
               <div class="project-duration">09/2021 – 01-2022</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">MOBILE</span>
                 <span class="badge">CASUAL</span>
@@ -461,11 +545,11 @@
           </a>
           <a class="project" href="projects/minutebomb.html">
             <img src="assets/projects/MinuteBomb/game-icon.png" alt="Minute Bomb">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">Minute Bomb</div>
               <div class="project-duration">04/2021 – 08-2021</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">MOBILE</span>
                 <span class="badge">CASUAL</span>
@@ -474,11 +558,11 @@
           </a>
           <a class="project" href="projects/jujus-kitchen.html">
             <img src="assets/projects/Juju'sKitchen/icone-game512.png" alt="Juju's Kitchen">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">Juju's Kitchen</div>
               <div class="project-duration">08/2021 – 10-2021</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">MOBILE</span>
                 <span class="badge">CASUAL</span>
@@ -487,11 +571,11 @@
           </a>
           <a class="project" href="projects/fill-the-bus.html">
             <img src="assets/projects/Fill The Bus/game-icon.jpg" alt="Fill The Bus">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">Fill The Bus</div>
               <div class="project-duration">02/2022 – 04-2022</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">MOBILE</span>
                 <span class="badge">CASUAL</span>
@@ -500,11 +584,11 @@
           </a>
           <a class="project" href="projects/tanamesa.html">
             <img src="assets/projects/Ta Na Mesa/game_Icon.png" alt="Ta Na Mesa">
+          <div class="project-engine-badge"><img src="assets/icons/unity.svg" alt="Unity"></div>
             <div class="project-info">
               <div class="project-title">Ta Na Mesa</div>
               <div class="project-duration">07/2018 - 12/2018</div>
               <div class="project-tags">
-                <span class="badge">UNITY</span>
                 <span class="badge">C#</span>
                 <span class="badge">MOBILE</span>
                 <span class="badge">CASUAL</span>
@@ -514,21 +598,6 @@
         </div>
       </div>
 
-      <button class="show-more">Mostrar Mais</button>
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const btn = document.querySelector('.show-more');
-          const webgl = document.getElementById('webgl-group');
-          const mobile = document.getElementById('mobile-group');
-          let expanded = false;
-          btn.addEventListener('click', () => {
-            expanded = !expanded;
-            webgl.style.display = expanded ? 'block' : 'none';
-            mobile.style.display = expanded ? 'block' : 'none';
-            btn.textContent = expanded ? 'Mostrar Menos' : 'Mostrar Mais';
-          });
-        });
-      </script>
     </section>
   </main>
 

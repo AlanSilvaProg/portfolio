@@ -14,12 +14,29 @@ header h1 { font-size:2.2rem; margin-bottom:8px; }
 header p { font-size:1rem; opacity:0.75; }
 
 /* ===== Certification Badge ===== */
-/* Aumenta em 50% a exibição do certificado Unity */
-img.cert-badge {
-  display: inline-block;
+.cert-badge {
+  display: block;
+  margin: 8px auto 0;
+  width: 180px;
+  max-width: 60vw;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   transform: scale(1.5);
   transform-origin: center;
+  transition: transform 180ms ease, box-shadow 180ms ease;
   will-change: transform;
+}
+
+.cert-badge:hover {
+  transform: scale(1.55);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.cert-caption {
+  margin-top: 36px;
+  font-size: 0.82rem;
+  color: #aaaaaa;
+  display: block;
 }
 
 /* ===== Title Spacing ===== */
@@ -213,6 +230,29 @@ main { max-width:1200px; margin:0 auto; padding:40px 20px; }
   text-decoration: none;
 }
 
+/* ===== Engine icon badge (top-right of project card) ===== */
+.project-engine-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.project-engine-badge img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
 /* Ajuste para imagens em formato portrait */
 .project img.portrait {
   object-fit: contain;
@@ -353,18 +393,313 @@ footer { opacity:0.7; font-size:0.95rem; margin-top:0; border-top: 1px solid rgb
   .menu-toggle { top:12px; left:12px; padding:7px 9px; }
 }
 
-/* ===== Centered Skills Column ===== */
-.skills-center { max-width: 720px; margin: 0 auto 26px; }
-.skills-center .about-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 18px; }
-.skills-center .about-card h4 { margin: 0 0 8px; font-weight: 700; }
-.skills-center .about-list { margin: 0; padding-left: 18px; }
-.skills-center .about-list li { color: #cccccc; line-height: 1.6; margin-bottom: 4px; }
-/* ===== Centered Skills Column ===== */
-.skills-center { max-width: 720px; margin: 12px auto 28px; }
-.skills-center .about-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 18px; }
-.skills-center .about-card h4 { margin: 0 0 8px; font-weight: 700; }
-.skills-center .about-list { margin: 0; padding-left: 18px; }
-.skills-center .about-list li { color: #cccccc; line-height: 1.6; margin-bottom: 4px; }
+/* ===== About Intro Card ===== */
+.about-intro-card {
+  max-width: 780px;
+  margin: 0 auto 28px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.about-intro-card h3 {
+  margin: 0 0 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.about-intro-card p {
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.about-intro-card p:last-child { margin-bottom: 0; }
+
+/* ===== Experience Grid ===== */
+.exp-section { margin: 0 0 28px; }
+
+.exp-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin: 14px 0;
+  position: relative;
+}
+
+.exp-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.exp-circle-wrap {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 8px;
+}
+
+.exp-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.exp-circle img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+.exp-badge:hover .exp-circle {
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+  transform: translateY(-3px);
+}
+
+.exp-engines {
+  position: absolute;
+  bottom: 2px;
+  right: -6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.exp-engine-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #141414;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.exp-engine-icon img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.exp-company {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #eaeaea;
+  line-height: 1.3;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.exp-duration {
+  font-size: 0.72rem;
+  color: #9fbfff;
+  display: block;
+}
+
+/* Active badge (current employer) */
+.exp-badge--active .exp-circle {
+  border-color: rgba(72, 199, 120, 0.55);
+  box-shadow: 0 0 0 3px rgba(72, 199, 120, 0.15);
+}
+
+.exp-badge--active .exp-company::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #48c778;
+  border-radius: 50%;
+  margin-left: 5px;
+  vertical-align: middle;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
+}
+
+/* Experience timeline connector */
+.exp-section { position: relative; }
+
+.exp-grid::before {
+  content: '';
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 15%, rgba(255,255,255,0.1) 85%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Project filter buttons */
+.project-filters {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 24px;
+}
+
+.filter-btn {
+  padding: 7px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: #cccccc;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.22);
+  color: #fff;
+}
+
+.filter-btn.active {
+  background: #2f66d0;
+  border-color: #2f66d0;
+  color: #fff;
+}
+
+.filter-btn[data-count] {
+  position: relative;
+}
+
+.filter-btn[data-count]::after {
+  content: attr(data-count);
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(12, 12, 12, 0.92);
+  color: #cccccc;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 20;
+}
+
+.filter-btn[data-count]:hover::after {
+  opacity: 1;
+}
+
+/* Live link badge (external link on project cards) */
+.project-live-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.72);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-live-badge:hover {
+  background: rgba(47, 102, 208, 0.85);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+
+/* ===== Skills Icon Row ===== */
+.skills-section { margin: 0 0 28px; }
+
+.skills-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.skills-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.skills-cat-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a9fff;
+  opacity: 0.85;
+}
+
+.skills-icons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  padding: 7px 14px 7px 10px;
+  cursor: default;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-chip:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-2px);
+}
+
+.skill-chip img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.skill-chip span {
+  font-size: 0.87rem;
+  color: #eaeaea;
+  font-weight: 600;
+}
 
 /* ===== Page Top Background GIF Rotator ===== */
 .page-top-bg-rotator {
