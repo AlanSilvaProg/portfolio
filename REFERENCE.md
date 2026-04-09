@@ -157,7 +157,7 @@ Each `projects/*.html` follows this layout:
 | `sokolab.html` | Sokolab |
 | `ziggy.html` | Ziggy |
 | `salve-a-piramide.html` | Salve a Pirâmide |
-| `show-do-monstro.html` | Show do Monstro |
+| `show-do-monstro.html` | Show do Monstrão |
 | `zumbis-desorganizados.html` | Zumbis Desorganizados |
 
 ### WebGL Games (3 projects)
