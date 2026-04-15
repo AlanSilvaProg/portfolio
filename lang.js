@@ -423,6 +423,18 @@
     });
   }
 
+  // Força visibilidade imediata de elementos fade-in que já estão na viewport
+  // (resolve o bug mobile onde o IntersectionObserver pode não disparar no load inicial)
+  function forceVisibleInViewport() {
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      // Se o elemento está parcialmente na viewport ou já passou por ela
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
   // --- Page top background GIF rotator (fixed at top) ---
   function initTopBgRotator() {
     // only on index/home
@@ -637,6 +649,11 @@
         btns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         updateFilterButtons();
+        // Re-força visibilidade após mudança de filtro (importante no mobile)
+        requestAnimationFrame(() => {
+          observeFadeIns();
+          forceVisibleInViewport();
+        });
       });
     });
     updateFilterButtons();
@@ -660,6 +677,15 @@
         e.stopPropagation();
         window.open(badge.dataset.href, '_blank', 'noopener,noreferrer');
       });
+    });
+    // Garante que as projects-grids estejam visíveis imediatamente após init
+    // (resolve bug mobile onde fade-in não é triggerado pelo IntersectionObserver no load)
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.projects-grid').forEach(grid => {
+        grid.classList.add('visible');
+      });
+      observeFadeIns();
+      forceVisibleInViewport();
     });
   }
 
@@ -1083,14 +1109,26 @@
     initShowMoreButtons();
     initFilterButtons();
     updateProjectsVisibility();
+    // Força verificação de visibilidade com pequeno delay para garantir layout resolvido
+    setTimeout(() => {
+      forceVisibleInViewport();
+      observeFadeIns();
+    }, 100);
     // Atualiza dinamicamente em resize (debounced)
     let _resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(_resizeTimer);
       _resizeTimer = setTimeout(() => {
         updateProjectsVisibility();
+        forceVisibleInViewport();
       }, 150);
     });
+    // Listener de scroll para forçar visibilidade no primeiro scroll (importante no mobile)
+    const onFirstScroll = () => {
+      forceVisibleInViewport();
+      window.removeEventListener('scroll', onFirstScroll);
+    };
+    window.addEventListener('scroll', onFirstScroll, { passive: true });
     if (window.initMenuPanel) window.initMenuPanel();
     // If landing on index with a hash to optional groups, auto-expand and scroll
     const onIndex = /\/index\.html$/.test(location.pathname) || location.pathname === '/' || location.pathname === '';
