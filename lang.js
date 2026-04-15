@@ -1109,11 +1109,19 @@
     initShowMoreButtons();
     initFilterButtons();
     updateProjectsVisibility();
-    // Força verificação de visibilidade com pequeno delay para garantir layout resolvido
-    setTimeout(() => {
-      forceVisibleInViewport();
+    // Força visibilidade imediata dos elementos já na viewport.
+    // Chamamos em múltiplos momentos porque o layout mobile pode demorar a ser computado.
+    forceVisibleInViewport(); // tentativa imediata (síncrona)
+    requestAnimationFrame(() => {
+      forceVisibleInViewport(); // após primeiro frame pintado
       observeFadeIns();
-    }, 100);
+      setTimeout(() => {
+        forceVisibleInViewport(); // ~200ms — layout geralmente resolvido aqui
+        setTimeout(() => {
+          forceVisibleInViewport(); // ~500ms — fallback final para dispositivos lentos
+        }, 300);
+      }, 200);
+    });
     // Atualiza dinamicamente em resize (debounced)
     let _resizeTimer;
     window.addEventListener('resize', () => {
@@ -1364,6 +1372,7 @@
       { title: 'Stickman Vs Zombies - Aurecas', url: 'projects/stickman-vs-zombies.html' },
       { title: 'Bingo Rex (PipaStudios)', url: 'projects/bingo-rex.html' },
       { title: 'Bingotopia', url: 'projects/bingotopia.html' },
+      { title: 'Match3 Playable Ads', url: 'projects/match3-playable-ads.html' },
       { title: 'Aquabitz', url: 'projects/aquabitz.html' },
       { title: 'IceRage', url: 'projects/icerage.html' },
       { title: 'Minute Bomb', url: 'projects/minutebomb.html' },
