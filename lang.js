@@ -527,7 +527,10 @@
       'assets/projects/BookOfWolves/Gifs/image59.gif',
       'assets/projects/BookOfWolves/Gifs/image62.gif',
       'assets/projects/BookOfWolves/Gifs/image63.gif',
-      'assets/projects/BookOfWolves/Gifs/image64.gif'
+      'assets/projects/BookOfWolves/Gifs/image64.gif',
+      // Match3 Playable Ads — GIFs de gameplay
+      'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.29.50-ezgif.com-video-to-gif-converter.gif',
+      'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.30.36-ezgif.com-video-to-gif-converter.gif'
     ];
     if (!gifs.length) return;
     console.log(`🎬 ${gifs.length} GIFs carregados para rotação`);
