@@ -172,7 +172,11 @@
       // Praia Bingo Show project translations
       praiaBingoShowTitle: 'Praia Bingo Show (PipaStudios)',
       praiaBingoShowSub: 'Jogo de bingo 75 bolas multiplayer Web-Mobile First. Bingo com Lives ao vivo com apresentadores da Pipa Studios e liveops in game como mini games, quizes e daily missions.',
-      praiaBingoShowContribution: 'Atuei desde a prototipação até o lançamento do jogo, implementando features, mocks para validações de mecânicas e participação direta na modelagem de dados que seria trafegada entre front e backend. Fui o responsável pela implementação e criação de todas as mecânicas e features do jogo, dentre elas, daily mission, sorteio de bolas, lógica de jogo e identificação de padrões, entre outros. Durante o desenvolvimento foi construido um framework chamado Bingo Maker o qual é usado até os dias atuais em novos projetos Unity. Fui responsável pela construção da maior parte dos recursos presentes no framework em relação a gameplay, sendo o PraiaShow, uma POC desse framework. Atualmente o jogo foi descontinuado, mas o framework segue sendo utilizado em novos projetos.'
+      praiaBingoShowContribution: 'Atuei desde a prototipação até o lançamento do jogo, implementando features, mocks para validações de mecânicas e participação direta na modelagem de dados que seria trafegada entre front e backend. Fui o responsável pela implementação e criação de todas as mecânicas e features do jogo, dentre elas, daily mission, sorteio de bolas, lógica de jogo e identificação de padrões, entre outros. Durante o desenvolvimento foi construido um framework chamado Bingo Maker o qual é usado até os dias atuais em novos projetos Unity. Fui responsável pela construção da maior parte dos recursos presentes no framework em relação a gameplay, sendo o PraiaShow, uma POC desse framework. Atualmente o jogo foi descontinuado, mas o framework segue sendo utilizado em novos projetos.',
+      // Match3 Playable Ads project translations
+      match3Title: 'Match3 Playable Ads',
+      match3Sub: 'Projeto criado como teste técnico para atuar como PlayableAds Developer, utilizando Cocos Creator e TypeScript. Desenvolvido em 2 dias.',
+      match3Contribution: 'Projeto criado como teste técnico para atuar como PlayableAds Developer. Desenvolvido com Cocos Creator e TypeScript em 2 dias, o projeto conta com toda a lógica de gameplay de match-3 — detecção de combinações, sistema de queda de peças e animações — exportado como Playable Ad interativo em HTML5.'
     },
     en: {
       headerTitle: 'Alan Silva',
@@ -334,6 +338,10 @@
       praiaBingoShowTitle: 'Praia Bingo Show (PipaStudios)',
       praiaBingoShowSub: '75-ball multiplayer bingo game with Web-Mobile First approach. Features live streams with Pipa Studios hosts and in-game liveops including mini games, quizzes, and daily missions.',
       praiaBingoShowContribution: 'I worked from prototyping to game launch, implementing features, creating mocks for mechanics validation, and directly participating in data modeling for front-end and back-end communication. I was responsible for implementing and creating all game mechanics and features, including daily missions, ball drawing, game logic, and pattern identification, among others. During development, a framework called Bingo Maker was built, which is still used today in new Unity projects. I was responsible for building most of the gameplay-related resources in the framework, with PraiaShow being a POC of this framework. The game has been discontinued, but the framework continues to be used in new projects.',
+      // Match3 Playable Ads project translations
+      match3Title: 'Match3 Playable Ads',
+      match3Sub: 'Project created as a technical test for a PlayableAds Developer role, using Cocos Creator and TypeScript. Developed in 2 days.',
+      match3Contribution: 'Project created as a technical test for a PlayableAds Developer role. Built with Cocos Creator and TypeScript in 2 days, the project features full match-3 gameplay logic — combination detection, piece-falling system, and animations — exported as an interactive HTML5 Playable Ad.',
 
       // War project translations
       warTitle: 'War',
@@ -873,6 +881,10 @@
       ],
       'bingotopia.html': [
         'assets/projects/Bingotopia/Gif/ScreenRecording2026-03-23at13.49.45-ezgif.com-video-to-gif-converter.gif'
+      ],
+      'match3-playable-ads.html': [
+        'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.29.50-ezgif.com-video-to-gif-converter.gif',
+        'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.30.36-ezgif.com-video-to-gif-converter.gif'
       ]
     };
 

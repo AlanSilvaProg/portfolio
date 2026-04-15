@@ -167,12 +167,13 @@ Each `projects/*.html` follows this layout:
 | `war.html` | War |
 | `gamebanbanban.html` | GameBanBanBan |
 
-### Mobile (9 projects)
+### Mobile (10 projects)
 | File | Project |
 |---|---|
 | `stickman-vs-zombies.html` | Stickman vs Zombies |
 | `bingo-rex.html` | Bingo Rex |
 | `bingotopia.html` | Bingotopia |
+| `match3-playable-ads.html` | Match3 Playable Ads |
 | `aquabitz.html` | Aquabitz |
 | `icerage.html` | IceRage |
 | `minute-bomb.html` | Minute Bomb |
