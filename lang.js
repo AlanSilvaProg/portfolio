@@ -22,7 +22,7 @@
       projectsPreviewHint: 'Passe o mouse sobre um projeto para ver o preview.',
       // About section
       aboutIntroTitle: 'Resumo',
-      aboutIntroP1: 'Graduado em Design de Games (UAM) e Unity Certified Professional, atuo como Senior Game Developer na Pipa Studios com 7+ anos de experiência desenvolvendo frameworks internos, jogos B2B/B2C e soluções multiplataforma — Mobile, PC, Console, WebGL e VR.',
+      aboutIntroP1: 'Graduado em Design de Games (UAM) e Unity Certified Professional, atuo como Senior Game Developer na BetMGM com 7+ anos de experiência desenvolvendo frameworks internos, jogos B2B/B2C e soluções multiplataforma — Mobile, PC, Console, WebGL e VR.',
       aboutIntroP2: 'Especializado em otimização de performance, integrações third-party (Firebase, AWS, Unity Services, Google Play) e arquitetura de sistemas de jogo.',
       aboutIntroP3: 'Atualmente cursando Pós Tech em Arquitetura de Sistemas .NET com Azure (FIAP+Alura), expandindo minha atuação para microsserviços, cloud computing e DevOps.',
       aboutExperienceTitle: 'Experiência',
@@ -192,7 +192,7 @@
       projectsPreviewHint: 'Hover over a project to see the preview.',
       // About section
       aboutIntroTitle: 'Summary',
-      aboutIntroP1: 'Game Design graduate (UAM) and Unity Certified Professional, currently Senior Game Developer at Pipa Studios with 7+ years of experience building internal frameworks, B2B/B2C games, and multi-platform solutions — Mobile, PC, Console, WebGL, and VR.',
+      aboutIntroP1: 'Game Design graduate (UAM) and Unity Certified Professional, currently Senior Game Developer at BetMGM with 7+ years of experience building internal frameworks, B2B/B2C games, and multi-platform solutions — Mobile, PC, Console, WebGL, and VR.',
       aboutIntroP2: 'Specialized in performance optimization, third-party integrations (Firebase, AWS, Unity Services, Google Play), and game systems architecture.',
       aboutIntroP3: 'Currently pursuing a Post-grad in .NET Systems Architecture with Azure (FIAP+Alura), expanding into microservices, cloud computing, and DevOps.',
       aboutExperienceTitle: 'Experience',
