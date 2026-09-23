@@ -176,7 +176,11 @@
       // Match3 Playable Ads project translations
       match3Title: 'Match3 Playable Ads',
       match3Sub: 'Projeto criado como teste técnico para atuar como PlayableAds Developer, utilizando Cocos Creator e TypeScript. Desenvolvido em 2 dias.',
-      match3Contribution: 'Projeto criado como teste técnico para atuar como PlayableAds Developer. Desenvolvido com Cocos Creator e TypeScript em 2 dias, o projeto conta com toda a lógica de gameplay de match-3 — detecção de combinações, sistema de queda de peças e animações — exportado como Playable Ad interativo em HTML5.'
+      match3Contribution: 'Projeto criado como teste técnico para atuar como PlayableAds Developer. Desenvolvido com Cocos Creator e TypeScript em 2 dias, o projeto conta com toda a lógica de gameplay de match-3 — detecção de combinações, sistema de queda de peças e animações — exportado como Playable Ad interativo em HTML5.',
+      // Salvador — Bingão do Brasil project translations
+      salvadorTitle: 'Salvador — Bingão do Brasil',
+      salvadorSub: 'VB Salvador é um Video Bingo com 90 bolas que traz como foco a cultura baiana, exibindo um pouco de Salvador para o jogador através do seu visual, narração e efeitos sonoros.\n\nO VB Salvador é o primeiro Video Bingo do Bingão e busca oferecer uma experiência simples, utilizando apenas as mecânicas base de Video Bingo, sem nenhuma mecânica de bônus adicional.',
+      salvadorContribution: 'Participei no processo end to end do framework utilizado no desenvolvimento desse e de todos os próximos jogos do Bingão do Brasil, o BingoMaker. Framework que visa agilizar o desenvolvimento e acelerar a produção de novos jogos, aplicando patterns como Observable system, SOLID, MVP, Factory, entre outros. Também participei diretamente na modelagem de dados para a comunicação fluida entre client e servidor através de comunicação WebSocket (TCP), garantindo performance e velocidade para os sistemas. Participei diretamente de todos os processos do produto, garantindo estabilidade, entrega contínua através de CI/CD com GitHub Actions e delivery ágil perante períodos de certificação nacional.'
     },
     en: {
       headerTitle: 'Alan Silva',
@@ -348,7 +352,11 @@
       warSub: 'Players take the role of generals to conquer territories and dominate the world, each with a secret objective to fulfill. Plan attacks and defend your territories, use dice to resolve battles and cards to receive extra troops. The match ends when a player completes their mission.',
       warHeading: 'War',
       warDescription: 'Territory-based strategy inspired by the classic War: secret goals, dice, cards and map domination.',
-      warContribution: 'War is a game I had the opportunity to work on during my time at Black Willow (K-Interativa), the company currently responsible for the development of the War game by GrowGames. I was involved in maintaining various gameplay systems and mechanics, including multiplayer functionality and in-app purchasing. A significant part of my contribution focused on the development of War Romano, a variant of the classic War, featuring new mechanics, systems, and entirely new map and art assets.'
+      warContribution: 'War is a game I had the opportunity to work on during my time at Black Willow (K-Interativa), the company currently responsible for the development of the War game by GrowGames. I was involved in maintaining various gameplay systems and mechanics, including multiplayer functionality and in-app purchasing. A significant part of my contribution focused on the development of War Romano, a variant of the classic War, featuring new mechanics, systems, and entirely new map and art assets.',
+      // Salvador — Bingão do Brasil project translations
+      salvadorTitle: 'Salvador — Bingão do Brasil',
+      salvadorSub: 'VB Salvador is a 90-ball Video Bingo celebrating Bahian culture, bringing the essence of Salvador to players through its visuals, voiceover, and sound effects.\n\nAs the first Video Bingo in Bingão do Brasil, it offers a streamlined experience focused purely on core Video Bingo mechanics without additional bonus games.',
+      salvadorContribution: 'I contributed end-to-end to BingoMaker, the foundational framework powering this and all upcoming Bingão do Brasil titles. Designed to streamline development and accelerate game production, the framework implements architectural patterns such as Observable system, SOLID, MVP, Factory, and more. I also led the data modeling for fluid client-server communication over WebSockets (TCP), ensuring high performance and responsiveness. Furthermore, I was deeply involved across the entire product lifecycle, ensuring stability, continuous integration and deployment via GitHub Actions CI/CD pipelines, and agile delivery throughout the Brazilian national certification process.'
     }
   };
 
@@ -530,7 +538,10 @@
       'assets/projects/BookOfWolves/Gifs/image64.gif',
       // Match3 Playable Ads — GIFs de gameplay
       'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.29.50-ezgif.com-video-to-gif-converter.gif',
-      'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.30.36-ezgif.com-video-to-gif-converter.gif'
+      'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.30.36-ezgif.com-video-to-gif-converter.gif',
+      // Salvador — Bingão do Brasil — GIFs de bg
+      'assets/projects/Salvador/Gif/ezgif.com-video-to-gif-converter.gif',
+      'assets/projects/Salvador/Gif/ezgif.com-optimize.gif'
     ];
     if (!gifs.length) return;
     console.log(`🎬 ${gifs.length} GIFs carregados para rotação`);
@@ -914,6 +925,12 @@
       'match3-playable-ads.html': [
         'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.29.50-ezgif.com-video-to-gif-converter.gif',
         'assets/projects/Match3-PlayableAds/Gifs/ScreenRecording2026-04-15at11.30.36-ezgif.com-video-to-gif-converter.gif'
+      ],
+      'salvador.html': [
+        'assets/projects/Salvador/Gif/ezgif.com-video-to-gif-converter.gif',
+        'assets/projects/Salvador/Gif/ezgif.com-optimize.gif',
+        'assets/projects/Salvador/Gif/ezgif.com-video-to-gif-converter copy.gif',
+        'assets/projects/Salvador/Gif/ezgif.com-optimize (1).gif'
       ]
     };
 
@@ -1370,6 +1387,7 @@
       { title: 'EditoraBrasil — Salve a Pirâmide', url: 'projects/editora-salve-a-piramede.html' },
       { title: 'EditoraBrasil — Show do Monstrão', url: 'projects/editora-show-do-monstro.html' },
       { title: 'EditoraBrasil — Zumbis Desorganizados', url: 'projects/editora-zumbis-desorganizados.html' },
+      { title: 'Salvador — Bingão do Brasil', url: 'projects/salvador.html' },
       { title: 'War', url: 'projects/war.html' },
       { title: 'GameBanBanBan', url: 'projects/gamebanbanban.html' },
       { title: 'Stickman Vs Zombies - Aurecas', url: 'projects/stickman-vs-zombies.html' },
